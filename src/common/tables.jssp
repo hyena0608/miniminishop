@@ -1,38 +1,37 @@
 
 table member {
-  member_id NumID;
+  member_id Long;
   member_type TypeID;
   member_name Nickname;
   member_phone Phone;
 
   member_start_date Date;
-
   member_total_cash Money = 0;
 
   key(member_id);
 }
 
 table order {
-  order_id NumID;
+  order_id Long;
   order_status Type;
 
-  member_id NumID;
-  delivery_id NumID;
+  member_id Long;
+  delivery_id Long;
 
   key(order_id);
 }
 
 table delivery {
-  delivery_id NumID;
+  delivery_id Long;
   delivery_status Type;
 
-  member_id NumID;
+  member_id Long;
 
   key(delivery_id);
 }
 
 table item {
-  item_id NumID;
+  item_id Long;
   item_name Name;
 
   item_amount Amount;
@@ -44,11 +43,11 @@ table item {
 }
 
 table orderitem {
-  orderitem_id NumID;
+  orderitem_id Long;
 
   total_price Money;
   total_count Amount;
 
-  order_id NumID;
-  item_id NumID;
+  order_id Long;
+  item_id Long;
 }

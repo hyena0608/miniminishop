@@ -17,7 +17,7 @@ req addDelivery {
   member_id NumID;
 }
 
-res addDelibery {
+res addDelivery {
   delivery_id NumID;
 }
 

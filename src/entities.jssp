@@ -1,32 +1,31 @@
 
 entity MemberVo '회원' {
-  memberId NumID;
+  memberId Long;
   memberType TypeID;
   memberName Nickname;
   memberPhone Phone;
 
   memberStartDate Date;
-
   memberTotalCash Money;
 }
 
 entity OrderVo '주문' {
-  orderId NumID;
+  orderId Long;
   orderStatus Type;
 
-  memberId NumID;
-  deliveryId NumID;
+  memberId Long;
+  deliveryId Long;
 }
 
 entity DeliveryVo '배달'{
-  deliveryId NumID;
+  deliveryId Long;
   deliveryStatus Type;
 
-  memberId NumID;
+  memberId Long;
 }
 
 entity ItemVo '상품'{
-  itemId NumID;
+  itemId Long;
   itemName Name;
   itemAmount Amount;
   itemPrice Money;
@@ -35,11 +34,11 @@ entity ItemVo '상품'{
 }
 
 entity orderitemVo '주문_상품'{
-  orderitemId NumID;
+  orderitemId Long;
 
   totalPrice Money;
   totalCount Amount;
 
-  orderId NumID;
-  itemId NumID;
+  orderId Long;
+  itemId Long;
 }

@@ -1,6 +1,6 @@
 
 struct Member '회원' {
-  memberId NumID;
+  memberId Long;
   memberType TypeID;
   memberName Nickname;
   memberPhone Phone;
@@ -11,22 +11,22 @@ struct Member '회원' {
 }
 
 struct Order '주문' {
-  orderId NumID;
+  orderId Long;
   orderStatus Type;
 
-  memberId NumID;
-  deliveryId NumID;
+  memberId Long;
+  deliveryId Long;
 }
 
 struct Delivery '배달'{
-  deliveryId NumID;
+  deliveryId Long;
   deliveryStatus Type;
 
-  memberId NumID;
+  memberId Long;
 }
 
 struct Item '상품'{
-  itemId NumID;
+  itemId Long;
   itemName Name;
   itemAmount Amount;
   itemPrice Money;
@@ -35,11 +35,11 @@ struct Item '상품'{
 }
 
 struct Orderitem '주문_상품'{
-  orderitemId NumID;
+  orderitemId Long;
 
   totalPrice Money;
   totalCount Amount;
 
-  orderId NumID;
-  itemId NumID;
+  orderId Long;
+  itemId Long;
 }

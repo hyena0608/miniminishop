@@ -8,18 +8,18 @@ patterns:
 
   # springboot - java
   - platform: springboot
-    outPath: ../miniminishop
+    outPath: ./miniminishop
   # node - typescript
   # - platform: nodets
   #   outPath: ./out/nodets
     
   # mysql
   - platform: mysql
-    outPath: ../miniminishop-schema
+    outPath: ./miniminishop-schema
     
   # swagger 
   - platform: swagger
-    outPath: ../miniminishop-api-doc
+    outPath: ./miniminishop-api-doc
 
   # node - javascript
   # - platform: nodejs
@@ -31,7 +31,7 @@ patterns:
 
   # vue - javascript
   - platform: vuejs
-    outPath: ../miniminishop-client
+    outPath: ./miniminishop-client
     
   # vue - typescript
   # - platform: vuets
