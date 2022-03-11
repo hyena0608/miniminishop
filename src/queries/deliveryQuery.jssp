@@ -1,0 +1,17 @@
+query insertDelivery(deliveryStatus Type, memberId NumID) {
+
+	insert into delivery(
+		delivery_status, member_id
+	) values (
+		:delveryStatus, memberId
+	)
+
+}
+
+query updateDelivery(deliveryId NumID, deliveryStatus Type) {
+
+	update delivery set
+		delivery_status = :deliveryStatus
+	where delivery_id = :deliveryId
+
+}

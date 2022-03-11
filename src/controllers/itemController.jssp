@@ -1,0 +1,82 @@
+
+define opcode[controller=ApiItem, baseURL='/api/v1/']
+{
+    [method=post, action='item/add', noauth, overwrite=false]
+    addItem 2001 '상품 추가'
+
+    [method=delete, action='item/delete', noauth, overwrite=false]
+    deleteItem 2002 '상품 삭제'
+
+    [method=put, action='item/update', noauth, overwrite=false]
+    updateItem 2003 '상품 수정'
+
+    [method=get, action='item/list', noauth, overwrite=false]
+    getItemList 2004 '상품 목록 조회'
+
+    [method=get, action='item/get', noauth, overwrite=false]
+    getItem 2005 '상품 조회'
+}
+
+/**
+ * 상품 추가 
+ * 2001
+ */
+req addItem {
+  item_name Name;
+  item_amount Amount;
+  item_price Money;
+}
+
+res addItem {
+  item_id NumID;
+}
+
+/**
+ * 상품 삭제 
+ * 2002
+ */
+req deleteItem {
+  item_id NumID;
+}
+
+res deleteItem {
+} 
+
+/**
+ * 상품 수정 
+ * 2003
+ */
+req updateItem {
+  item_id NumID;
+  item_name Name;
+  item_amount Amount;
+  item_price Money;
+}
+
+res updateItem {
+  item_id NumID;
+}
+
+/**
+ * 상품 목록 조회 
+ * 2004
+ */
+req getItemList {
+}
+
+res getItemList {
+  items list<Item>
+}
+
+/**
+ * 상품 조회 
+ * 2005
+ */
+
+req getItem {
+  item_id NumID;
+}
+
+res getItem {
+  item Item
+}

@@ -15,11 +15,8 @@ table member {
 table order {
   order_id NumID;
   order_status Type;
-  order_item_amount Amount;
-  order_item_total_cash Money;
 
   member_id NumID;
-  item_id NumID;
   delivery_id NumID;
 
   key(order_id);
@@ -41,11 +38,16 @@ table item {
   item_amount Amount;
   item_price Money;
 
+  update_dt Varchar80;
+
   key(item_id);
 }
 
 table orderitem {
   orderitem_id NumID;
+
+  total_price Money;
+  total_count Amount;
 
   order_id NumID;
   item_id NumID;

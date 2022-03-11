@@ -41,7 +41,7 @@ var [platform=springboot]
     baseURL="/api/v1";
     
     // 쿼리문을 자동으로 생성합니다.
-    generateQuery = true;
+    generateQuery = false;
 }
 
 // var [platform=flutter]

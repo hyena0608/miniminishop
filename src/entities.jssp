@@ -1,44 +1,45 @@
 
-entity Member '회원' {
-  member_id NumID;
-  member_type TypeID;
-  member_name Nickname;
-  member_phone Phone;
+entity MemberVo '회원' {
+  memberId NumID;
+  memberType TypeID;
+  memberName Nickname;
+  memberPhone Phone;
 
-  member_start_date Date;
+  memberStartDate Date;
 
-  member_total_cash Money;
+  memberTotalCash Money;
 }
 
-entity Order '주문' {
-  order_id NumID;
-  order_status Type;
-  order_item_amount Amount;
-  order_item_total_cash Money;
+entity OrderVo '주문' {
+  orderId NumID;
+  orderStatus Type;
 
-  member_id NumID;
-  item_id NumID;
-  delivery_id NumID;
+  memberId NumID;
+  deliveryId NumID;
 }
 
-entity Delivery '배달'{
-  delivery_id NumID;
-  delivery_status Type;
+entity DeliveryVo '배달'{
+  deliveryId NumID;
+  deliveryStatus Type;
 
-  member_id NumID;
+  memberId NumID;
 }
 
-entity Item '상품'{
-  item_id NumID;
-  item_name Name;
+entity ItemVo '상품'{
+  itemId NumID;
+  itemName Name;
+  itemAmount Amount;
+  itemPrice Money;
 
-  item_amount Amount;
-  item_price Money;
+  updateDt Varchar80;
 }
 
-entity orderitem '주문_상품'{
-  orderitem_id NumID;
+entity orderitemVo '주문_상품'{
+  orderitemId NumID;
 
-  order_id NumID;
-  item_id NumID;
+  totalPrice Money;
+  totalCount Amount;
+
+  orderId NumID;
+  itemId NumID;
 }

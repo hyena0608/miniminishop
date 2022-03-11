@@ -1,0 +1,9 @@
+query insertOrderItem(totalPrice Money, totalCount Amount, orderId NumID, itemId NumID) {
+    
+	insert into orderitem (
+		total_price, total_count, order_id, item_id
+	) values (
+		:totalPrice, :totalCount, :orderId, :itemId
+	)
+
+}

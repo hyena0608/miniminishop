@@ -1,0 +1,21 @@
+
+define opcode[controller=ApiMember, baseURL='/api/v1/']
+{
+    [method=post, action='member/add', noauth, overwrite=false]
+    addMember 1001 '회원 가입'
+}
+
+
+/**
+ * 회원 가입
+ * 1001
+ */
+req addMember {
+    member_type TypeID;
+    member_name Nickname;
+    member_phone Phone;
+}
+
+res addMember {
+  member_id NumID;
+}

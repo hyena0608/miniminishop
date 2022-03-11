@@ -1,0 +1,35 @@
+
+define opcode[controller=ApiDelivery, baseURL='/api/v1/']
+{
+    [method=get, action='delivery/add', noauth, overwrite=false]
+    addDelivery 4001 '배달 등록'
+
+    [method=put, action='delivery/update', noauth, overwrite=false]
+    updateDeliveryStatus 4002 '배달 상태 수정'
+}
+
+/**
+ * 배달 등록 
+ * 4001
+ */
+req addDelivery {
+  delivery_status Type;
+  member_id NumID;
+}
+
+res addDelibery {
+  delivery_id NumID;
+}
+
+/**
+ * 배달 타입 수정
+ * 4002
+ */
+req updateDeliveryStatus {
+  delivery_id NumID;
+  delivery_status Type;
+}
+
+res updateDeliveryStatus {
+  delivery_id NumID;
+}

@@ -1,0 +1,18 @@
+query insertOrder(orderStatus Type, memberId NumID, deliveryId NumID) {
+
+	insert into order(
+		order_status, member_id, delivery_id
+	) values (
+		orderStatus, memberId, deliveryId
+	)
+
+}
+
+query updateOrderStatus(orderId NumID, orderStatus Type) {
+
+	update order set
+		order_status = :orderStatus
+	where
+		order_id = :orderId
+
+}
