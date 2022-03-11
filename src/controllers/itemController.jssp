@@ -4,10 +4,10 @@ define opcode[controller=ApiItem, baseURL='/api/v1/']
     [method=post, action='item/add', noauth, overwrite=false]
     addItem 2001 '상품 추가'
 
-    [method=delete, action='item/delete', noauth, overwrite=false]
+    [method=post, action='item/delete', noauth, overwrite=false]
     deleteItem 2002 '상품 삭제'
 
-    [method=put, action='item/update', noauth, overwrite=false]
+    [method=post, action='item/update', noauth, overwrite=false]
     updateItem 2003 '상품 수정'
 
     [method=get, action='item/list', noauth, overwrite=false]

@@ -1,0 +1,662 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "0.0.1",
+    "title": "miniminishop",
+    "description": "miniminishop"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "local - server"
+    },
+    {
+      "url": "http://localhost:8080",
+      "description": "test - server"
+    },
+    {
+      "url": "https://localhost:8080",
+      "description": "test - server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "ApiDelivery",
+      "description": "ApiDelivery Controller"
+    },
+    {
+      "name": "ApiItem",
+      "description": "ApiItem Controller"
+    },
+    {
+      "name": "ApiMember",
+      "description": "ApiMember Controller"
+    },
+    {
+      "name": "ApiOrder",
+      "description": "ApiOrder Controller"
+    }
+  ],
+  "paths": {
+    "/api/v1//delivery/add": {
+      "get": {
+        "summary": "배달 등록",
+        "operationId": "addDelivery",
+        "tags": [
+          "ApiDelivery"
+        ],
+        "description": "배달 등록",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "delivery_status",
+            "required": true,
+            "description": null,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "member_id",
+            "required": true,
+            "description": null,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddDeliveryResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1//delivery/update": {
+      "post": {
+        "summary": "배달 상태 수정",
+        "operationId": "updateDeliveryStatus",
+        "tags": [
+          "ApiDelivery"
+        ],
+        "requestBody": {
+          "description": "배달 상태 수정",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDeliveryStatusRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateDeliveryStatusResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1//item/add": {
+      "post": {
+        "summary": "상품 추가",
+        "operationId": "addItem",
+        "tags": [
+          "ApiItem"
+        ],
+        "requestBody": {
+          "description": "상품 추가",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddItemRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddItemResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1//item/delete": {
+      "post": {
+        "summary": "상품 삭제",
+        "operationId": "deleteItem",
+        "tags": [
+          "ApiItem"
+        ],
+        "requestBody": {
+          "description": "상품 삭제",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteItemRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteItemResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1//item/update": {
+      "post": {
+        "summary": "상품 수정",
+        "operationId": "updateItem",
+        "tags": [
+          "ApiItem"
+        ],
+        "requestBody": {
+          "description": "상품 수정",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateItemRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateItemResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1//item/list": {
+      "get": {
+        "summary": "상품 목록 조회",
+        "operationId": "getItemList",
+        "tags": [
+          "ApiItem"
+        ],
+        "description": "상품 목록 조회",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetItemListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1//item/get": {
+      "get": {
+        "summary": "상품 조회",
+        "operationId": "getItem",
+        "tags": [
+          "ApiItem"
+        ],
+        "description": "상품 조회",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "item_id",
+            "required": true,
+            "description": null,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetItemResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1//member/add": {
+      "post": {
+        "summary": "회원 가입",
+        "operationId": "addMember",
+        "tags": [
+          "ApiMember"
+        ],
+        "requestBody": {
+          "description": "회원 가입",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddMemberRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddMemberResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1//order/add": {
+      "post": {
+        "summary": "주문",
+        "operationId": "addOrder",
+        "tags": [
+          "ApiOrder"
+        ],
+        "requestBody": {
+          "description": "주문",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddOrderResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1//order/status": {
+      "post": {
+        "summary": "주문 상태 변경",
+        "operationId": "cancelOrder",
+        "tags": [
+          "ApiOrder"
+        ],
+        "requestBody": {
+          "description": "주문 상태 변경",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CancelOrderResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization"
+      }
+    },
+    "schemas": {
+      "Member": {
+        "type": "object",
+        "properties": {
+          "memberId": {
+            "type": "number"
+          },
+          "memberType": {
+            "type": "integer"
+          },
+          "memberName": {
+            "type": "string"
+          },
+          "memberPhone": {
+            "type": "string"
+          },
+          "memberStartDate": {
+            "type": "string"
+          },
+          "memberTotalCash": {
+            "type": "number"
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "number"
+          },
+          "orderStatus": {
+            "type": "string"
+          },
+          "memberId": {
+            "type": "number"
+          },
+          "deliveryId": {
+            "type": "number"
+          }
+        }
+      },
+      "Delivery": {
+        "type": "object",
+        "properties": {
+          "deliveryId": {
+            "type": "number"
+          },
+          "deliveryStatus": {
+            "type": "string"
+          },
+          "memberId": {
+            "type": "number"
+          }
+        }
+      },
+      "Item": {
+        "type": "object",
+        "properties": {
+          "itemId": {
+            "type": "number"
+          },
+          "itemName": {
+            "type": "string"
+          },
+          "itemAmount": {
+            "type": "integer"
+          },
+          "itemPrice": {
+            "type": "number"
+          },
+          "updateDt": {
+            "type": "string"
+          }
+        }
+      },
+      "Orderitem": {
+        "type": "object",
+        "properties": {
+          "orderitemId": {
+            "type": "number"
+          },
+          "totalPrice": {
+            "type": "number"
+          },
+          "totalCount": {
+            "type": "integer"
+          },
+          "orderId": {
+            "type": "number"
+          },
+          "itemId": {
+            "type": "number"
+          }
+        }
+      },
+      "AddDeliveryRequest": {
+        "type": "object",
+        "properties": {
+          "delivery_status": {
+            "type": "string"
+          },
+          "member_id": {
+            "type": "number"
+          }
+        }
+      },
+      "UpdateDeliveryStatusRequest": {
+        "type": "object",
+        "properties": {
+          "delivery_id": {
+            "type": "number"
+          },
+          "delivery_status": {
+            "type": "string"
+          }
+        }
+      },
+      "AddItemRequest": {
+        "type": "object",
+        "properties": {
+          "item_name": {
+            "type": "string"
+          },
+          "item_amount": {
+            "type": "integer"
+          },
+          "item_price": {
+            "type": "number"
+          }
+        }
+      },
+      "DeleteItemRequest": {
+        "type": "object",
+        "properties": {
+          "item_id": {
+            "type": "number"
+          }
+        }
+      },
+      "UpdateItemRequest": {
+        "type": "object",
+        "properties": {
+          "item_id": {
+            "type": "number"
+          },
+          "item_name": {
+            "type": "string"
+          },
+          "item_amount": {
+            "type": "integer"
+          },
+          "item_price": {
+            "type": "number"
+          }
+        }
+      },
+      "GetItemListRequest": {
+        "type": "object",
+        "properties": {}
+      },
+      "GetItemRequest": {
+        "type": "object",
+        "properties": {
+          "item_id": {
+            "type": "number"
+          }
+        }
+      },
+      "AddMemberRequest": {
+        "type": "object",
+        "properties": {
+          "member_type": {
+            "type": "integer"
+          },
+          "member_name": {
+            "type": "string"
+          },
+          "member_phone": {
+            "type": "string"
+          }
+        }
+      },
+      "AddOrderRequest": {
+        "type": "object",
+        "properties": {
+          "order_status": {
+            "type": "string"
+          },
+          "order_item_amount": {
+            "type": "integer"
+          },
+          "order_item_total_cash": {
+            "type": "number"
+          },
+          "member_id": {
+            "type": "number"
+          },
+          "item_id": {
+            "type": "number"
+          },
+          "delivery_id": {
+            "type": "number"
+          }
+        }
+      },
+      "CancelOrderRequest": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "number"
+          }
+        }
+      },
+      "AddDeliveryResponse": {
+        "type": "object",
+        "properties": {
+          "delivery_id": {
+            "type": "number"
+          }
+        }
+      },
+      "UpdateDeliveryStatusResponse": {
+        "type": "object",
+        "properties": {
+          "delivery_id": {
+            "type": "number"
+          }
+        }
+      },
+      "AddItemResponse": {
+        "type": "object",
+        "properties": {
+          "item_id": {
+            "type": "number"
+          }
+        }
+      },
+      "DeleteItemResponse": {
+        "type": "object",
+        "properties": {}
+      },
+      "UpdateItemResponse": {
+        "type": "object",
+        "properties": {
+          "item_id": {
+            "type": "number"
+          }
+        }
+      },
+      "GetItemListResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Item"
+            }
+          }
+        }
+      },
+      "GetItemResponse": {
+        "type": "object",
+        "properties": {
+          "item": {
+            "$ref": "#/components/schemas/Item"
+          }
+        }
+      },
+      "AddMemberResponse": {
+        "type": "object",
+        "properties": {
+          "member_id": {
+            "type": "number"
+          }
+        }
+      },
+      "AddOrderResponse": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "number"
+          }
+        }
+      },
+      "CancelOrderResponse": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  }
+}

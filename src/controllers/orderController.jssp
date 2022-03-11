@@ -4,7 +4,7 @@ define opcode[controller=ApiOrder, baseURL='/api/v1/']
     [method=post, action='order/add', noauth, overwrite=false]
     addOrder 3001 '주문'
 
-    [method=put, action='order/status', noauth, overwrite=false]
+    [method=post, action='order/status', noauth, overwrite=false]
     cancelOrder 3002 '주문 상태 변경'
 }
 

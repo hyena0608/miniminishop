@@ -4,7 +4,7 @@ define opcode[controller=ApiDelivery, baseURL='/api/v1/']
     [method=get, action='delivery/add', noauth, overwrite=false]
     addDelivery 4001 '배달 등록'
 
-    [method=put, action='delivery/update', noauth, overwrite=false]
+    [method=post, action='delivery/update', noauth, overwrite=false]
     updateDeliveryStatus 4002 '배달 상태 수정'
 }
 
