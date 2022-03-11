@@ -17,9 +17,9 @@ public interface miniminishopMapper {
 
   void updateItem(@Param("itemId") long itemId, @Param("itemName") String itemName, @Param("itemAmount") int itemAmount, @Param("itemPrice") long itemPrice);
 
-  void selectItemList(@Param("itemName") String itemName);
+  List<ItemVo> selectItemList(@Param("itemName") String itemName);
 
-  void selectItem(@Param("itemName") String itemName);
+  ItemVo selectItem(@Param("itemName") String itemName);
 
   void insertOrder(@Param("orderStatus") String orderStatus, @Param("memberId") long memberId, @Param("deliveryId") long deliveryId);
 

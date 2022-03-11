@@ -48,7 +48,7 @@
     ]]>
   </update>
 
-  <select id="selectItemList">
+  <select id="selectItemList" resultType="ItemVo">
     <![CDATA[
     select
 		item_id, item_name, item_amount, item_price
@@ -58,7 +58,7 @@
     ]]>
   </select>
 
-  <select id="selectItem">
+  <select id="selectItem" resultType="ItemVo">
     <![CDATA[
     select
 		item_id, item_name, item_amount, item_price

@@ -2,7 +2,9 @@ package com.example.miniminishop.controller.handler;
 
 import com.example.miniminishop.controller.request.*;
 import com.example.miniminishop.controller.response.*;
+import com.example.miniminishop.mapper.miniminishopMapper;
 import com.example.miniminishop.service.CustomUserDetails;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import com.example.miniminishop.controller.ResultCode;
@@ -10,7 +12,10 @@ import java.util.List;
 
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class AddMemberHandler extends BaseHandler {
+
+  private final miniminishopMapper mapper;
 
   public AddMemberResponse execute(CustomUserDetails user, AddMemberRequest req) {
     AddMemberResponse res = new AddMemberResponse();
@@ -25,7 +30,6 @@ public class AddMemberHandler extends BaseHandler {
     }
 
     try {
-
       this.mapper.insertMember(memberType, memberName, memberPhone);
 
       // code here

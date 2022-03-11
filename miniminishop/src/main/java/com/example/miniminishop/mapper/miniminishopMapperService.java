@@ -9,8 +9,7 @@ import java.util.List;
 @Service
 public class miniminishopMapperService {
 
-  @Autowired
-   miniminishopMapper mapper;
+  @Autowired miniminishopMapper mapper;
 
   public void insertDelivery(String deliveryStatus, long memberId) {
     mapper.insertDelivery(deliveryStatus, memberId);
@@ -32,12 +31,12 @@ public class miniminishopMapperService {
     mapper.updateItem(itemId, itemName, itemAmount, itemPrice);
   }
 
-  public void selectItemList(String itemName) {
-    mapper.selectItemList(itemName);
+  public List<ItemVo> selectItemList(String itemName) {
+    return mapper.selectItemList(itemName);
   }
 
-  public void selectItem(String itemName) {
-    mapper.selectItem(itemName);
+  public ItemVo selectItem(String itemName) {
+    return mapper.selectItem(itemName);
   }
 
   public void insertOrder(String orderStatus, long memberId, long deliveryId) {
