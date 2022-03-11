@@ -1,17 +1,44 @@
 
-    
-entity UserVo '사용자 정보' {
-  userId UserID;
-  nickname Nickname;
-  email Email;
-  userType TypeID;
+entity Member '회원' {
+  member_id NumID;
+  member_type TypeID;
+  member_name Nickname;
+  member_phone Phone;
+
+  member_start_date Date;
+
+  member_total_cash Money;
 }
 
-entity NoticeVo '공지사항 정보' {
-  noticeId int32;
-  subject Subject;
-  content Content;
-  createDt string;
+entity Order '주문' {
+  order_id NumID;
+  order_status Type;
+  order_item_amount Amount;
+  order_item_total_cash Money;
+
+  member_id NumID;
+  item_id NumID;
+  delivery_id NumID;
 }
-    
-    
+
+entity Delivery '배달'{
+  delivery_id NumID;
+  delivery_status Type;
+
+  member_id NumID;
+}
+
+entity Item '상품'{
+  item_id NumID;
+  item_name Name;
+
+  item_amount Amount;
+  item_price Money;
+}
+
+entity orderitem '주문_상품'{
+  orderitem_id NumID;
+
+  order_id NumID;
+  item_id NumID;
+}

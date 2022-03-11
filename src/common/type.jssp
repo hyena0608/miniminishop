@@ -50,3 +50,10 @@ domain Zipcode char(6);
 domain JusoCode char(10);
 domain Keyword varchar(64);
 domain Text text;
+
+/**
+* 밑은 수제
+*/
+domain Type varchar(32);
+domain Date date;
+domain Amount int;

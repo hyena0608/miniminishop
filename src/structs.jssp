@@ -1,16 +1,44 @@
 
+entity Member '회원' {
+  member_id NumID;
+  member_type TypeID;
+  member_name Nickname;
+  member_phone Phone;
 
-struct UserInfo 'user info'
-{
-    email Email 'user email'
-    nickname Nickname 'user nickname'
+  member_start_date Date;
+
+  member_total_cash Money;
 }
 
-struct NoticeInfo 'notice info'
-{
-  noticeId int32 '공지사항 아이디'
-  subject Subject '제목'
-  content Content '내용'
-  createDt string '생성 일시'
+entity Order '주문' {
+  order_id NumID;
+  order_status Type;
+  order_item_amount Amount;
+  order_item_total_cash Money;
+
+  member_id NumID;
+  item_id NumID;
+  delivery_id NumID;
 }
-    
+
+entity Delivery '배달'{
+  delivery_id NumID;
+  delivery_status Type;
+
+  member_id NumID;
+}
+
+entity Item '상품'{
+  item_id NumID;
+  item_name Name;
+
+  item_amount Amount;
+  item_price Money;
+}
+
+entity orderitem '주문_상품'{
+  orderitem_id NumID;
+
+  order_id NumID;
+  item_id NumID;
+}

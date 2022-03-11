@@ -1,50 +1,52 @@
 
-    
-table user_type {
-  userType TypeID = 0;
-  name Name = '';
-  
-  key(userType);
+table member {
+  member_id NumID;
+  member_type TypeID;
+  member_name Nickname;
+  member_phone Phone;
+
+  member_start_date Date;
+
+  member_total_cash Money = 0;
+
+  key(member_id);
 }
 
-data user_type {
-  (1, 'guest')
-  (2, 'member')
-  (99, 'super user')
+table order {
+  order_id NumID;
+  order_status Type;
+  order_item_amount Amount;
+  order_item_total_cash Money;
+
+  member_id NumID;
+  item_id NumID;
+  delivery_id NumID;
+
+  key(order_id);
 }
 
-table user {
-  userId UserID = '';
-  nickname Nickname = '';
-  email Email = '';
-  userType TypeID = 0;
-  
-  createDt Datetime;
-  updateDt Datetime;
-  
-  key(userId);
-  
-  link(userType) to user_type(userType);
-  
-  index(email);
-  unique index(nickname);
+table delivery {
+  delivery_id NumID;
+  delivery_status Type;
+
+  member_id NumID;
+
+  key(delivery_id);
 }
 
-table notice {
-  noticeId NumID auto = 0;
-  writerId UserID = '';
-  subject Subject = '';
-  content Content = '';
-  createDt Datetime;
-  updateDt Datetime;  
-  
-  [name="notice_pk"]
-  key(noticeId);
-  
-  [name="notice_fk1"]
-  link(writerId) to user(userId);
+table item {
+  item_id NumID;
+  item_name Name;
+
+  item_amount Amount;
+  item_price Money;
+
+  key(item_id);
 }
 
+table orderitem {
+  orderitem_id NumID;
 
-    
-    
+  order_id NumID;
+  item_id NumID;
+}

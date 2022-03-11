@@ -20,11 +20,11 @@ import 'controllers/test.jssp';
 **/
 
 // 프로젝트명
-var projectName = "Demo";
+var projectName = "miniminishop";
 
 
 // 테이블 생성시 앞에 붙는 이름
-var prefixTable = 'tb';
+var prefixTable = '';
 
 // value object 클래스를 생성시 붙는 이름
 var suffixVo = 'Vo';
@@ -32,7 +32,7 @@ var suffixVo = 'Vo';
 var [platform=springboot]
 {
     // springboot 루트 패키지명
-    package="com.coders.demo.api";
+    package="com.example.miniminishop";
     
     // default 컨트롤러명
     controller="Api"; // default controller
@@ -44,17 +44,17 @@ var [platform=springboot]
     generateQuery = true;
 }
 
-var [platform=flutter]
-{
-    // flutter 루트 패키지명 
-    package = "com.coders.demo.app";
-}
+// var [platform=flutter]
+// {
+//     // flutter 루트 패키지명 
+//     package = "com.coders.demo.app";
+// }
 
-var [platform=nodets]
-{
-    // 쿼리문을 자동으로 생성합니다.
-    generateQuery = true;
-}
+// var [platform=nodets]
+// {
+//     // 쿼리문을 자동으로 생성합니다.
+//     generateQuery = true;
+// }
 
 var [platform=mysql]
 {
@@ -77,19 +77,19 @@ var [platform=testjs]
 // {
 // }
 
-var [platform=nodejs]
-{
-}
+// var [platform=nodejs]
+// {
+// }
 
-var [platform=vuejs]
-{
-  generateStore = true;
-  
-  generateRoute = true;
-  
-  useMock = true;
-}
-
-var [platform=vuets]
-{
-}
+// var [platform=vuejs]
+// {
+//   generateStore = true;
+//   
+//   generateRoute = true;
+//   
+//   useMock = true;
+// }
+// 
+// var [platform=vuets]
+// {
+// }

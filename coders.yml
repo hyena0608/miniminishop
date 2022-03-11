@@ -8,7 +8,7 @@ patterns:
 
   # springboot - java
   - platform: springboot
-    outPath: ./out/springboot
+    outPath: ../springboot
 
   # node - typescript
   # - platform: nodets
