@@ -1,24 +1,24 @@
 import 'entities.jssp';
 import 'structs.jssp';
 
-import 'common/constants.jssp';
-import 'common/errors.jssp';
-import 'common/tables.jssp';
-import 'common/procedures.jssp';
-import 'common/type.jssp';
+import './common/constants.jssp';
+import './common/errors.jssp';
+import './common/tables.jssp';
+import './common/procedures.jssp';
+import './common/type.jssp';
 
-import 'controller/deliveryController.jssp';
-import 'controller/itemController.jssp';
-import 'controller/memberController.jssp';
-import 'controller/orderController.jssp';
+import './controllers/deliveryController.jssp';
+import './controllers/itemController.jssp';
+import './controllers/memberController.jssp';
+import './controllers/orderController.jssp';
 
-import 'pages/pages.jssp';
+import './pages/pages.jssp';
 
-import 'queries/delivertQuery.jssp';
-import 'queries/itemQuery.jssp';
-import 'queries/orderQuery.jssp';
-import 'queries/memberQuery.jssp';
-import 'queries/orderItemQuery.jssp';
+import './queries/delivertQuery.jssp';
+import './queries/itemQuery.jssp';
+import './queries/orderQuery.jssp';
+import './queries/memberQuery.jssp';
+import './queries/orderItemQuery.jssp';
 
 /**
 전역 변수를 설정
