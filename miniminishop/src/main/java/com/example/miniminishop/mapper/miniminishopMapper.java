@@ -3,8 +3,6 @@ package com.example.miniminishop.mapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import com.example.miniminishop.mapper.vo.*;
-
-import java.time.LocalDate;
 import java.util.List;
 @Mapper
 public interface miniminishopMapper {
@@ -27,7 +25,7 @@ public interface miniminishopMapper {
 
   void updateOrderStatus(@Param("orderId") long orderId, @Param("orderStatus") String orderStatus);
 
-  void insertMember(@Param("memberType") int memberType, @Param("memberName") String memberName, @Param("memberPhone") String memberPhone, @Param("memberStartDate") LocalDate memberStartDate);
+  void insertMember(@Param("memberType") int memberType, @Param("memberName") String memberName, @Param("memberPhone") String memberPhone);
 
   void insertOrderItem(@Param("totalPrice") long totalPrice, @Param("totalCount") int totalCount, @Param("orderId") long orderId, @Param("itemId") long itemId);
 }

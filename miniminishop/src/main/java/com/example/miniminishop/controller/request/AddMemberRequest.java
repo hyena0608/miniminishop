@@ -11,11 +11,11 @@ import java.util.List;
 public class AddMemberRequest {
 
   @ApiParam(value = "null", required = true)
-  private int member_type;
+  private int memberType;
 
   @ApiParam(value = "null", required = true)
-  private String member_name;
+  private String memberName;
 
   @ApiParam(value = "null", required = true)
-  private String member_phone;
+  private String memberPhone;
 }

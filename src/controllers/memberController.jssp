@@ -11,11 +11,11 @@ define opcode[controller=ApiMember, baseURL='/api/v1/']
  * 1001
  */
 req addMember {
-    member_type TypeID;
-    member_name Nickname;
-    member_phone Phone;
+    memberType TypeID;
+    memberName Nickname;
+    memberPhone Phone;
 }
 
 res addMember {
-  member_id NumID;
+  memberId NumID;
 }

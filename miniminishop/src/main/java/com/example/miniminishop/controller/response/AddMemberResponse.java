@@ -12,5 +12,5 @@ import java.util.List;
 @Data
 public class AddMemberResponse extends BaseResponse {
 
-  public long member_id = 0;
+  public long memberId = 0;
 }

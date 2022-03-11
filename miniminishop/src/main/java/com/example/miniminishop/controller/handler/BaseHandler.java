@@ -1,8 +1,15 @@
 package com.example.miniminishop.controller.handler;
 
+import com.example.miniminishop.mapper.miniminishopMapper;
+
 import javax.servlet.http.HttpServletRequest;
 
 public class BaseHandler {
+
+  /**
+   * mapper 추가
+   */
+  protected miniminishopMapper mapper;
 
   protected HttpServletRequest request;
 

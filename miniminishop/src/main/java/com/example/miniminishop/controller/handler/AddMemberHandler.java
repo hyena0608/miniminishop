@@ -15,16 +15,19 @@ public class AddMemberHandler extends BaseHandler {
   public AddMemberResponse execute(CustomUserDetails user, AddMemberRequest req) {
     AddMemberResponse res = new AddMemberResponse();
 
-    final int member_type = req.getMember_type();
-    final String member_name = req.getMember_name();
-    final String member_phone = req.getMember_phone();
+    final int memberType = req.getMemberType();
+    final String memberName = req.getMemberName();
+    final String memberPhone = req.getMemberPhone();
 
-    if(emptyParam(member_type) || emptyParam(member_name) || emptyParam(member_phone)) {
+    if(emptyParam(memberType) || emptyParam(memberName) || emptyParam(memberPhone)) {
       res.setCode(ResultCode.BadParams);
       return res;
     }
 
     try {
+
+      this.mapper.insertMember(memberType, memberName, memberPhone);
+
       // code here
       res.setCode(ResultCode.Success);
       return res;

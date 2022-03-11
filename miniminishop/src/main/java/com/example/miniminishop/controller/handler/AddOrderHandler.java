@@ -2,6 +2,7 @@ package com.example.miniminishop.controller.handler;
 
 import com.example.miniminishop.controller.request.*;
 import com.example.miniminishop.controller.response.*;
+import com.example.miniminishop.service.CustomUserDetails;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import com.example.miniminishop.controller.ResultCode;
@@ -11,7 +12,7 @@ import java.util.List;
 @Component
 public class AddOrderHandler extends BaseHandler {
 
-  public AddOrderResponse execute(AddOrderRequest req) {
+  public AddOrderResponse execute(CustomUserDetails user, AddOrderRequest req) {
     AddOrderResponse res = new AddOrderResponse();
 
     final String order_status = req.getOrder_status();

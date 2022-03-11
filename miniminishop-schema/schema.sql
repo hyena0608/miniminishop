@@ -6,7 +6,7 @@ CREATE TABLE member (
   member_type INT NOT NULL,
   member_name VARCHAR(32) NOT NULL,
   member_phone VARCHAR(20) NOT NULL,
-  member_start_date DATE NOT NULL,
+  member_start_date TIMESTAMP NOT NULL DEFAULT CURRENT_DATE,
   member_total_cash BIGINT NOT NULL DEFAULT 0
 );
 

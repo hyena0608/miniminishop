@@ -57,3 +57,4 @@ domain Text text;
 domain Type varchar(32);
 domain Date date;
 domain Amount int;
+domain Timestamp timestamp;

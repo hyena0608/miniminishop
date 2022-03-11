@@ -39,7 +39,7 @@ public class ApiItemController {
   @ApiOperation(value = "상품 삭제")
   DeleteItemResponse deleteItem(@RequestBody DeleteItemRequest req, HttpServletRequest request) {
     deleteItemHandler.setHttpServletRequest(request);
-    return deleteItemHandler.execute(null);
+    return deleteItemHandler.execute(null, req);
   }
 
   private UpdateItemHandler updateItemHandler;
@@ -48,7 +48,7 @@ public class ApiItemController {
   @ApiOperation(value = "상품 수정")
   UpdateItemResponse updateItem(@RequestBody UpdateItemRequest req, HttpServletRequest request) {
     updateItemHandler.setHttpServletRequest(request);
-    return updateItemHandler.execute(null);
+    return updateItemHandler.execute(null, req);
   }
 
   private GetItemListHandler getItemListHandler;
@@ -58,7 +58,7 @@ public class ApiItemController {
   GetItemListResponse getItemList(HttpServletRequest request) {
     getItemListHandler.setHttpServletRequest(request);
     GetItemListRequest req = new GetItemListRequest();
-    return getItemListHandler.execute(null);
+    return getItemListHandler.execute(null, req);
   }
 
   private GetItemHandler getItemHandler;
@@ -69,6 +69,6 @@ public class ApiItemController {
     getItemHandler.setHttpServletRequest(request);
     GetItemRequest req = new GetItemRequest();
     req.setItem_id(item_id);
-    return getItemHandler.execute(null);
+    return getItemHandler.execute(null, req);
   }
 }

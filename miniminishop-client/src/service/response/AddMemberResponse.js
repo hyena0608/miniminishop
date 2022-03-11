@@ -6,6 +6,6 @@ export default class AddMemberResponse extends BaseResponse {
   constructor() {
     super();
 
-    this.member_id = 0;
+    this.memberId = 0;
   }
 }

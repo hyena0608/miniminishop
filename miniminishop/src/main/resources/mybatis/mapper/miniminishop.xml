@@ -90,9 +90,9 @@
   <insert id="insertMember">
     <![CDATA[
     insert into member (
-		member_type, member_name, member_phone, member_start_date
+		member_type, member_name, member_phone
 	) values (
-		#{memberType}, #{memberName}, #{memberPhone}, #{memberStartdate}
+		#{memberType}, #{memberName}, #{memberPhone}
 	)
     ]]>
   </insert>

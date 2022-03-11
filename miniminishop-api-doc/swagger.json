@@ -540,13 +540,13 @@
       "AddMemberRequest": {
         "type": "object",
         "properties": {
-          "member_type": {
+          "memberType": {
             "type": "integer"
           },
-          "member_name": {
+          "memberName": {
             "type": "string"
           },
-          "member_phone": {
+          "memberPhone": {
             "type": "string"
           }
         }
@@ -640,7 +640,7 @@
       "AddMemberResponse": {
         "type": "object",
         "properties": {
-          "member_id": {
+          "memberId": {
             "type": "number"
           }
         }

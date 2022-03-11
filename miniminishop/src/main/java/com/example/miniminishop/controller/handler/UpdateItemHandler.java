@@ -2,6 +2,7 @@ package com.example.miniminishop.controller.handler;
 
 import com.example.miniminishop.controller.request.*;
 import com.example.miniminishop.controller.response.*;
+import com.example.miniminishop.service.CustomUserDetails;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import com.example.miniminishop.controller.ResultCode;
@@ -11,7 +12,7 @@ import java.util.List;
 @Component
 public class UpdateItemHandler extends BaseHandler {
 
-  public UpdateItemResponse execute(UpdateItemRequest req) {
+  public UpdateItemResponse execute(CustomUserDetails user, UpdateItemRequest req) {
     UpdateItemResponse res = new UpdateItemResponse();
 
     final long item_id = req.getItem_id();

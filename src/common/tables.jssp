@@ -5,7 +5,7 @@ table member {
   member_name Nickname;
   member_phone Phone;
 
-  member_start_date Date;
+  member_start_date Timestamp = CURRENT_DATE;
   member_total_cash Money = 0;
 
   key(member_id);

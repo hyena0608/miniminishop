@@ -30,7 +30,7 @@ public class ApiOrderController {
   @ApiOperation(value = "주문")
   AddOrderResponse addOrder(@RequestBody AddOrderRequest req, HttpServletRequest request) {
     addOrderHandler.setHttpServletRequest(request);
-    return addOrderHandler.execute(null);
+    return addOrderHandler.execute(null, req);
   }
 
   private CancelOrderHandler cancelOrderHandler;
@@ -39,6 +39,6 @@ public class ApiOrderController {
   @ApiOperation(value = "주문 상태 변경")
   CancelOrderResponse cancelOrder(@RequestBody CancelOrderRequest req, HttpServletRequest request) {
     cancelOrderHandler.setHttpServletRequest(request);
-    return cancelOrderHandler.execute(null);
+    return cancelOrderHandler.execute(null, req);
   }
 }

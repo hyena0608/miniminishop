@@ -3,8 +3,6 @@ package com.example.miniminishop.mapper;
 import com.example.miniminishop.mapper.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,8 +48,8 @@ public class miniminishopMapperService {
     mapper.updateOrderStatus(orderId, orderStatus);
   }
 
-  public void insertMember(int memberType, String memberName, String memberPhone, LocalDate memberStartDate) {
-    mapper.insertMember(memberType, memberName, memberPhone, memberStartDate);
+  public void insertMember(int memberType, String memberName, String memberPhone) {
+    mapper.insertMember(memberType, memberName, memberPhone);
   }
 
   public void insertOrderItem(long totalPrice, int totalCount, long orderId, long itemId) {

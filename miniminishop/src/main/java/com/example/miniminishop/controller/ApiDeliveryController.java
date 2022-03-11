@@ -42,6 +42,6 @@ public class ApiDeliveryController {
   @ApiOperation(value = "배달 상태 수정")
   UpdateDeliveryStatusResponse updateDeliveryStatus(@RequestBody UpdateDeliveryStatusRequest req, HttpServletRequest request) {
     updateDeliveryStatusHandler.setHttpServletRequest(request);
-    return updateDeliveryStatusHandler.execute(null);
+    return updateDeliveryStatusHandler.execute(null, req);
   }
 }

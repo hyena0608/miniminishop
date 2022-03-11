@@ -2,6 +2,7 @@ package com.example.miniminishop.controller.handler;
 
 import com.example.miniminishop.controller.request.*;
 import com.example.miniminishop.controller.response.*;
+import com.example.miniminishop.service.CustomUserDetails;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import com.example.miniminishop.controller.ResultCode;
@@ -11,7 +12,7 @@ import java.util.List;
 @Component
 public class DeleteItemHandler extends BaseHandler {
 
-  public DeleteItemResponse execute(DeleteItemRequest req) {
+  public DeleteItemResponse execute(CustomUserDetails user, DeleteItemRequest req) {
     DeleteItemResponse res = new DeleteItemResponse();
 
     final long item_id = req.getItem_id();
