@@ -122,15 +122,34 @@ export class ApiService {
     })
   }
 
-  getItem(req /*: GetItemRequest*/) {
-    const url = '/api/v1//item/get?' + qs.stringify(req);
-    return new Promise/*<GetItemResponse>*/((resolve, reject) => {
+  getItemByName(req /*: GetItemByNameRequest*/) {
+    const url = '/api/v1//item/getByName?' + qs.stringify(req);
+    return new Promise/*<GetItemByNameResponse>*/((resolve, reject) => {
       if (this.useMock) {
-        let resData = require('../mock/ApiItem/2005_getItem');
+        let resData = require('../mock/ApiItem/2005_getItemByName');
         resolve(resData.default[0]);
         return;
       }
-      Vue.axios.get/*<GetItemResponse>*/(url).then(res => {
+      Vue.axios.get/*<GetItemByNameResponse>*/(url).then(res => {
+        if (res.status === 200) {
+          resolve(res.data);
+          return;
+        }
+        console.error(res.status, res.statusText);
+        reject(null);
+      })
+    })
+  }
+
+  getItemById(req /*: GetItemByIdRequest*/) {
+    const url = '/api/v1//item/getById?' + qs.stringify(req);
+    return new Promise/*<GetItemByIdResponse>*/((resolve, reject) => {
+      if (this.useMock) {
+        let resData = require('../mock/ApiItem/2006_getItemById');
+        resolve(resData.default[0]);
+        return;
+      }
+      Vue.axios.get/*<GetItemByIdResponse>*/(url).then(res => {
         if (res.status === 200) {
           resolve(res.data);
           return;
@@ -185,6 +204,61 @@ export class ApiService {
         return;
       }
       Vue.axios.post/*<CancelOrderResponse>*/("/api/v1//order/status", req).then(res => {
+        if (res.status === 200) {
+          resolve(res.data);
+          return;
+        }
+        console.error(res.status, res.statusText);
+        reject(null);
+      })
+    })
+  }
+
+  addOrderitem(req /*: AddOrderitemRequest*/) {
+    return new Promise/*<AddOrderitemResponse>*/((resolve, reject) => {
+      if (this.useMock) {
+        let resData = require('../mock/ApiOrderiem/5001_addOrderitem');
+        resolve(resData.default[0]);
+        return;
+      }
+      Vue.axios.post/*<AddOrderitemResponse>*/("/api/v1//orderitem/add", req).then(res => {
+        if (res.status === 200) {
+          resolve(res.data);
+          return;
+        }
+        console.error(res.status, res.statusText);
+        reject(null);
+      })
+    })
+  }
+
+  deleteOneOrderitem(req /*: DeleteOneOrderitemRequest*/) {
+    return new Promise/*<DeleteOneOrderitemResponse>*/((resolve, reject) => {
+      if (this.useMock) {
+        let resData = require('../mock/ApiOrderiem/5002_deleteOneOrderitem');
+        resolve(resData.default[0]);
+        return;
+      }
+      Vue.axios.post/*<DeleteOneOrderitemResponse>*/("/api/v1//orderitem/remove", req).then(res => {
+        if (res.status === 200) {
+          resolve(res.data);
+          return;
+        }
+        console.error(res.status, res.statusText);
+        reject(null);
+      })
+    })
+  }
+
+  getOrderitemByMemberId(req /*: GetOrderitemByMemberIdRequest*/) {
+    const url = '/api/v1//ordertiem/getByOrderId?' + qs.stringify(req);
+    return new Promise/*<GetOrderitemByMemberIdResponse>*/((resolve, reject) => {
+      if (this.useMock) {
+        let resData = require('../mock/ApiOrderiem/5003_getOrderitemByMemberId');
+        resolve(resData.default[0]);
+        return;
+      }
+      Vue.axios.get/*<GetOrderitemByMemberIdResponse>*/(url).then(res => {
         if (res.status === 200) {
           resolve(res.data);
           return;

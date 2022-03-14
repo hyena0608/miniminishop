@@ -6,6 +6,8 @@ define opcode[controller=ApiOrder, baseURL='/api/v1/']
 
     [method=post, action='order/status', noauth, overwrite=false]
     cancelOrder 3002 '주문 상태 변경'
+
+   
 }
 
 /**
@@ -13,25 +15,25 @@ define opcode[controller=ApiOrder, baseURL='/api/v1/']
  * 3001
  */
 req addOrder {
-  order_status Type;
-  order_item_amount Amount;
-  order_item_total_cash Money;
+  orderStatus Type;
   
-  member_id NumID;
-  item_id NumID
-  delivery_id NumID;
+  memberId Long;
+  deliveryId Long;
 }
 
 res addOrder {
-  order_id NumID;
+  orderId Long;
 }
+
 /**
  * 주문 상태 변경 
  * 3002
  */
 req cancelOrder {
-  order_id NumID;
+  orderId Long;
 }
 
 res cancelOrder {
 }
+
+

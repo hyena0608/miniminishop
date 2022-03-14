@@ -11,8 +11,8 @@ import java.util.List;
 public class UpdateDeliveryStatusRequest {
 
   @ApiParam(value = "null", required = true)
-  private long delivery_id;
+  private long deliveryId;
 
   @ApiParam(value = "null", required = true)
-  private String delivery_status;
+  private String deliveryStatus;
 }

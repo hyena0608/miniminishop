@@ -15,7 +15,7 @@ public class MemberVo {
 
   public String memberPhone;
 
-  public Date memberStartDate;
+  public String memberStartDate;
 
   public long memberTotalCash;
 }

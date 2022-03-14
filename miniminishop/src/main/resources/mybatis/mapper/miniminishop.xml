@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.miniminishop.mapper.miniminishopMapper">
+<mapper namespace="com.example.miniminishop.mapper.MiniminishopMapper">
 
-  <insert id="insertDelivery">
+  <insert id="insertDelivery" useGeneratedKeys="true" keyColumn="delivery_id">
     <![CDATA[
     insert into delivery(
 		delivery_status, member_id
 	) values (
-		#{delveryStatus}, memberId
+		#{deliveryStatus}, #{memberId}
 	)
     ]]>
   </insert>
@@ -20,7 +20,7 @@
     ]]>
   </update>
 
-  <insert id="insertItem">
+  <insert id="insertItem" useGeneratedKeys="true" keyColumn="itme.item_id">
     <![CDATA[
     insert into item (
 		item_name, item_amount, item_price
@@ -58,7 +58,7 @@
     ]]>
   </select>
 
-  <select id="selectItem" resultType="ItemVo">
+  <select id="selectItemByName" resultType="ItemVo">
     <![CDATA[
     select
 		item_id, item_name, item_amount, item_price
@@ -68,26 +68,36 @@
     ]]>
   </select>
 
-  <insert id="insertOrder">
+  <select id="selectItemById" resultType="ItemVo">
     <![CDATA[
-    insert into order(
+    select
+		item_id, item_name, item_amount, item_price
+	from
+		item
+	where item_id = #{itemId}
+    ]]>
+  </select>
+
+  <insert id="insertOrder" useGeneratedKeys="true" keyColumn="order_id">
+    <![CDATA[
+    insert into orders(
 		order_status, member_id, delivery_id
 	) values (
-		orderStatus, memberId, deliveryId
+		#{orderStatus}, #{memberId}, #{deliveryId}
 	)
     ]]>
   </insert>
 
   <update id="updateOrderStatus">
     <![CDATA[
-    update order set
+    update orders set
 		order_status = #{orderStatus}
 	where
 		order_id = #{orderId}
     ]]>
   </update>
 
-  <insert id="insertMember">
+  <insert id="insertMember" useGeneratedKeys="true" keyColumn="member_id">
     <![CDATA[
     insert into member (
 		member_type, member_name, member_phone
@@ -100,10 +110,31 @@
   <insert id="insertOrderItem">
     <![CDATA[
     insert into orderitem (
-		total_price, total_count, order_id, item_id
+		member_id, item_id, item_price, item_amount, order_id
 	) values (
-		#{totalPrice}, #{totalCount}, #{orderId}, #{itemId}
+		#{memberId}, #{itemId}, #{itemPrice}, #{itemAmount}, #{orderId}
 	)
     ]]>
   </insert>
+
+  <delete id="deleteOneOrderItem">
+    <![CDATA[
+    delete from orderitem
+	where member_id = #{memberId} and item_id = #{itemId}
+    ]]>
+  </delete>
+
+  <delete id="deleteAllOrderItem">
+    <![CDATA[
+    delete from orderitem
+	where member_id = #{memberId}
+    ]]>
+  </delete>
+
+  <select id="selectOrderitemByOrderId" resultType="com.example.miniminishop.mapper.vo.OrderitemVo">
+    <![CDATA[
+    select * from orderitem
+	where order_id = #{orderId}
+    ]]>
+  </select>
 </mapper>

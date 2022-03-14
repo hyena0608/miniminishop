@@ -12,5 +12,5 @@ import java.util.List;
 @Data
 public class AddOrderResponse extends BaseResponse {
 
-  public long order_id = 0;
+  public long orderId = 0;
 }

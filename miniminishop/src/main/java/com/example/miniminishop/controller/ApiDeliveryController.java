@@ -28,11 +28,11 @@ public class ApiDeliveryController {
 
   @RequestMapping(method = RequestMethod.GET, value = "delivery/add")
   @ApiOperation(value = "배달 등록")
-  AddDeliveryResponse addDelivery(@RequestParam("delivery_status") String delivery_status, @RequestParam("member_id") long member_id, HttpServletRequest request) {
+  AddDeliveryResponse addDelivery(@RequestParam("deliveryStatus") String deliveryStatus, @RequestParam("memberId") long memberId, HttpServletRequest request) {
     addDeliveryHandler.setHttpServletRequest(request);
     AddDeliveryRequest req = new AddDeliveryRequest();
-    req.setDelivery_status(delivery_status);
-    req.setMember_id(member_id);
+    req.setDeliveryStatus(deliveryStatus);
+    req.setMemberId(memberId);
     return addDeliveryHandler.execute(null, req);
   }
 

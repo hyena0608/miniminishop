@@ -1,6 +1,6 @@
 
 
-export default class Order {
+export default class Orders {
 
   constructor() {
 

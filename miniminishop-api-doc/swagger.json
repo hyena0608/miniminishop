@@ -2,8 +2,8 @@
   "openapi": "3.0.0",
   "info": {
     "version": "0.0.1",
-    "title": "miniminishop",
-    "description": "miniminishop"
+    "title": "Miniminishop",
+    "description": "Miniminishop"
   },
   "servers": [
     {
@@ -35,6 +35,10 @@
     {
       "name": "ApiOrder",
       "description": "ApiOrder Controller"
+    },
+    {
+      "name": "ApiOrderiem",
+      "description": "ApiOrderiem Controller"
     }
   ],
   "paths": {
@@ -49,7 +53,7 @@
         "parameters": [
           {
             "in": "query",
-            "name": "delivery_status",
+            "name": "deliveryStatus",
             "required": true,
             "description": null,
             "schema": {
@@ -58,7 +62,7 @@
           },
           {
             "in": "query",
-            "name": "member_id",
+            "name": "memberId",
             "required": true,
             "description": null,
             "schema": {
@@ -231,14 +235,47 @@
         }
       }
     },
-    "/api/v1//item/get": {
+    "/api/v1//item/getByName": {
       "get": {
-        "summary": "상품 조회",
-        "operationId": "getItem",
+        "summary": "상품 이름으로 조회",
+        "operationId": "getItemByName",
         "tags": [
           "ApiItem"
         ],
-        "description": "상품 조회",
+        "description": "상품 이름으로 조회",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "item_name",
+            "required": true,
+            "description": null,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetItemByNameResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1//item/getById": {
+      "get": {
+        "summary": "상품 아이디로 조회",
+        "operationId": "getItemById",
+        "tags": [
+          "ApiItem"
+        ],
+        "description": "상품 아이디로 조회",
         "parameters": [
           {
             "in": "query",
@@ -256,7 +293,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetItemResponse"
+                  "$ref": "#/components/schemas/GetItemByIdResponse"
                 }
               }
             }
@@ -359,6 +396,103 @@
           }
         }
       }
+    },
+    "/api/v1//orderitem/add": {
+      "post": {
+        "summary": "주문상품 담기",
+        "operationId": "addOrderitem",
+        "tags": [
+          "ApiOrderiem"
+        ],
+        "requestBody": {
+          "description": "주문상품 담기",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddOrderitemRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddOrderitemResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1//orderitem/remove": {
+      "post": {
+        "summary": "주문상품 덜기",
+        "operationId": "deleteOneOrderitem",
+        "tags": [
+          "ApiOrderiem"
+        ],
+        "requestBody": {
+          "description": "주문상품 덜기",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteOneOrderitemRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteOneOrderitemResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1//ordertiem/getByOrderId": {
+      "get": {
+        "summary": "주문상품 주문 아이디로 찾기",
+        "operationId": "getOrderitemByMemberId",
+        "tags": [
+          "ApiOrderiem"
+        ],
+        "description": "주문상품 주문 아이디로 찾기",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "member_id",
+            "required": true,
+            "description": null,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetOrderitemByMemberIdResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -393,7 +527,7 @@
           }
         }
       },
-      "Order": {
+      "Orders": {
         "type": "object",
         "properties": {
           "orderId": {
@@ -447,19 +581,22 @@
       "Orderitem": {
         "type": "object",
         "properties": {
-          "orderitemId": {
+          "orderitem_id": {
             "type": "number"
           },
-          "totalPrice": {
-            "type": "number"
-          },
-          "totalCount": {
-            "type": "integer"
-          },
-          "orderId": {
+          "memberId": {
             "type": "number"
           },
           "itemId": {
+            "type": "number"
+          },
+          "itemPrice": {
+            "type": "number"
+          },
+          "itemAmount": {
+            "type": "integer"
+          },
+          "orderId": {
             "type": "number"
           }
         }
@@ -467,10 +604,10 @@
       "AddDeliveryRequest": {
         "type": "object",
         "properties": {
-          "delivery_status": {
+          "deliveryStatus": {
             "type": "string"
           },
-          "member_id": {
+          "memberId": {
             "type": "number"
           }
         }
@@ -478,10 +615,10 @@
       "UpdateDeliveryStatusRequest": {
         "type": "object",
         "properties": {
-          "delivery_id": {
+          "deliveryId": {
             "type": "number"
           },
-          "delivery_status": {
+          "deliveryStatus": {
             "type": "string"
           }
         }
@@ -529,7 +666,15 @@
         "type": "object",
         "properties": {}
       },
-      "GetItemRequest": {
+      "GetItemByNameRequest": {
+        "type": "object",
+        "properties": {
+          "item_name": {
+            "type": "string"
+          }
+        }
+      },
+      "GetItemByIdRequest": {
         "type": "object",
         "properties": {
           "item_id": {
@@ -554,22 +699,13 @@
       "AddOrderRequest": {
         "type": "object",
         "properties": {
-          "order_status": {
+          "orderStatus": {
             "type": "string"
           },
-          "order_item_amount": {
-            "type": "integer"
-          },
-          "order_item_total_cash": {
+          "memberId": {
             "type": "number"
           },
-          "member_id": {
-            "type": "number"
-          },
-          "item_id": {
-            "type": "number"
-          },
-          "delivery_id": {
+          "deliveryId": {
             "type": "number"
           }
         }
@@ -577,7 +713,46 @@
       "CancelOrderRequest": {
         "type": "object",
         "properties": {
-          "order_id": {
+          "orderId": {
+            "type": "number"
+          }
+        }
+      },
+      "AddOrderitemRequest": {
+        "type": "object",
+        "properties": {
+          "memberId": {
+            "type": "number"
+          },
+          "itemId": {
+            "type": "number"
+          },
+          "itemPrice": {
+            "type": "number"
+          },
+          "itemAmount": {
+            "type": "integer"
+          },
+          "orderId": {
+            "type": "number"
+          }
+        }
+      },
+      "DeleteOneOrderitemRequest": {
+        "type": "object",
+        "properties": {
+          "memberId": {
+            "type": "number"
+          },
+          "itemId": {
+            "type": "number"
+          }
+        }
+      },
+      "GetOrderitemByMemberIdRequest": {
+        "type": "object",
+        "properties": {
+          "member_id": {
             "type": "number"
           }
         }
@@ -585,7 +760,7 @@
       "AddDeliveryResponse": {
         "type": "object",
         "properties": {
-          "delivery_id": {
+          "deliveryId": {
             "type": "number"
           }
         }
@@ -593,7 +768,7 @@
       "UpdateDeliveryStatusResponse": {
         "type": "object",
         "properties": {
-          "delivery_id": {
+          "deliveryId": {
             "type": "number"
           }
         }
@@ -629,7 +804,15 @@
           }
         }
       },
-      "GetItemResponse": {
+      "GetItemByNameResponse": {
+        "type": "object",
+        "properties": {
+          "item": {
+            "$ref": "#/components/schemas/Item"
+          }
+        }
+      },
+      "GetItemByIdResponse": {
         "type": "object",
         "properties": {
           "item": {
@@ -648,7 +831,7 @@
       "AddOrderResponse": {
         "type": "object",
         "properties": {
-          "order_id": {
+          "orderId": {
             "type": "number"
           }
         }
@@ -656,6 +839,29 @@
       "CancelOrderResponse": {
         "type": "object",
         "properties": {}
+      },
+      "AddOrderitemResponse": {
+        "type": "object",
+        "properties": {
+          "orderitemId": {
+            "type": "number"
+          }
+        }
+      },
+      "DeleteOneOrderitemResponse": {
+        "type": "object",
+        "properties": {}
+      },
+      "GetOrderitemByMemberIdResponse": {
+        "type": "object",
+        "properties": {
+          "orderitems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Orderitem"
+            }
+          }
+        }
       }
     }
   }

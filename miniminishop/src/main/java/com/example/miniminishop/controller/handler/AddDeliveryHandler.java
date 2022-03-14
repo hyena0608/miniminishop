@@ -15,10 +15,10 @@ public class AddDeliveryHandler extends BaseHandler {
   public AddDeliveryResponse execute(CustomUserDetails user, AddDeliveryRequest req) {
     AddDeliveryResponse res = new AddDeliveryResponse();
 
-    final String delivery_status = req.getDelivery_status();
-    final long member_id = req.getMember_id();
+    final String deliveryStatus = req.getDeliveryStatus();
+    final long memberId = req.getMemberId();
 
-    if(emptyParam(delivery_status) || emptyParam(member_id)) {
+    if(emptyParam(deliveryStatus) || emptyParam(memberId)) {
       res.setCode(ResultCode.BadParams);
       return res;
     }

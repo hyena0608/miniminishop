@@ -5,13 +5,13 @@ table member {
   member_name Nickname;
   member_phone Phone;
 
-  member_start_date Timestamp = CURRENT_DATE;
+  member_start_date Timestamp = CURRENT_TIMESTAMP;
   member_total_cash Money = 0;
 
   key(member_id);
 }
 
-table order {
+table orders {
   order_id Long;
   order_status Type;
 
@@ -33,7 +33,6 @@ table delivery {
 table item {
   item_id Long;
   item_name Name;
-
   item_amount Amount;
   item_price Money;
 
@@ -45,9 +44,11 @@ table item {
 table orderitem {
   orderitem_id Long;
 
-  total_price Money;
-  total_count Amount;
+  memberId Long;
+  itemId Long;
+  itemPrice Money;
+  itemAmount Amount;
+  orderId Long;
 
-  order_id Long;
-  item_id Long;
+  key(orderitem_id);
 }

@@ -11,20 +11,11 @@ import java.util.List;
 public class AddOrderRequest {
 
   @ApiParam(value = "null", required = true)
-  private String order_status;
+  private String orderStatus;
 
   @ApiParam(value = "null", required = true)
-  private int order_item_amount;
+  private long memberId;
 
   @ApiParam(value = "null", required = true)
-  private long order_item_total_cash;
-
-  @ApiParam(value = "null", required = true)
-  private long member_id;
-
-  @ApiParam(value = "null", required = true)
-  private long item_id;
-
-  @ApiParam(value = "null", required = true)
-  private long delivery_id;
+  private long deliveryId;
 }

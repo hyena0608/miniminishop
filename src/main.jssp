@@ -18,6 +18,7 @@ import './controllers/deliveryController.jssp';
 import './controllers/itemController.jssp';
 import './controllers/memberController.jssp';
 import './controllers/orderController.jssp';
+import './controllers/orderitemController.jssp';
 
 // import './pages/pages.jssp';
 
@@ -26,7 +27,7 @@ import './controllers/orderController.jssp';
 **/
 
 // 프로젝트명
-var projectName = "miniminishop";
+var projectName = "Miniminishop";
 
 
 // 테이블 생성시 앞에 붙는 이름

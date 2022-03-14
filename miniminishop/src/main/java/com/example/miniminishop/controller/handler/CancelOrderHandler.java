@@ -15,9 +15,9 @@ public class CancelOrderHandler extends BaseHandler {
   public CancelOrderResponse execute(CustomUserDetails user, CancelOrderRequest req) {
     CancelOrderResponse res = new CancelOrderResponse();
 
-    final long order_id = req.getOrder_id();
+    final long orderId = req.getOrderId();
 
-    if(emptyParam(order_id)) {
+    if(emptyParam(orderId)) {
       res.setCode(ResultCode.BadParams);
       return res;
     }

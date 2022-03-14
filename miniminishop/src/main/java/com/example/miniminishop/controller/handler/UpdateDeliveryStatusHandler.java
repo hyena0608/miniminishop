@@ -15,10 +15,10 @@ public class UpdateDeliveryStatusHandler extends BaseHandler {
   public UpdateDeliveryStatusResponse execute(CustomUserDetails user, UpdateDeliveryStatusRequest req) {
     UpdateDeliveryStatusResponse res = new UpdateDeliveryStatusResponse();
 
-    final long delivery_id = req.getDelivery_id();
-    final String delivery_status = req.getDelivery_status();
+    final long deliveryId = req.getDeliveryId();
+    final String deliveryStatus = req.getDeliveryStatus();
 
-    if(emptyParam(delivery_id) || emptyParam(delivery_status)) {
+    if(emptyParam(deliveryId) || emptyParam(deliveryStatus)) {
       res.setCode(ResultCode.BadParams);
       return res;
     }

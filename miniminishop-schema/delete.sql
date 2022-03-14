@@ -1,5 +1,5 @@
 DELETE FROM member;
-DELETE FROM order;
+DELETE FROM orders;
 DELETE FROM delivery;
 DELETE FROM item;
 DELETE FROM orderitem;

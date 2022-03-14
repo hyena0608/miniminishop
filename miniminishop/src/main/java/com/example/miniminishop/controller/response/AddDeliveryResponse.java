@@ -12,5 +12,5 @@ import java.util.List;
 @Data
 public class AddDeliveryResponse extends BaseResponse {
 
-  public long delivery_id = 0;
+  public long deliveryId = 0;
 }

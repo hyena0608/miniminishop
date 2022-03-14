@@ -4,8 +4,8 @@ export default class AddDeliveryRequest {
 
   constructor() {
 
-    this.delivery_status = "";
+    this.deliveryStatus = "";
 
-    this.member_id = 0;
+    this.memberId = 0;
   }
 }

@@ -6,6 +6,6 @@ export default class AddDeliveryResponse extends BaseResponse {
   constructor() {
     super();
 
-    this.delivery_id = 0;
+    this.deliveryId = 0;
   }
 }

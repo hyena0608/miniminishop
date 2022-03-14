@@ -11,5 +11,5 @@ import java.util.List;
 public class CancelOrderRequest {
 
   @ApiParam(value = "null", required = true)
-  private long order_id;
+  private long orderId;
 }

@@ -36,12 +36,21 @@ query selectItemList(itemName Name) ItemVo[] {
 
 }
 
-query selectItem(itemName Name) ItemVo {
+query selectItemByName(itemName Name) ItemVo {
 
 	select
 		item_id, item_name, item_amount, item_price
 	from
 		item
 	where item_name = :itemName
+}
+
+query selectItemById(itemId Long) ItemVo {
+
+	select
+		item_id, item_name, item_amount, item_price
+	from
+		item
+	where item_id = :itemId
 
 }

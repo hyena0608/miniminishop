@@ -13,12 +13,12 @@ define opcode[controller=ApiDelivery, baseURL='/api/v1/']
  * 4001
  */
 req addDelivery {
-  delivery_status Type;
-  member_id NumID;
+  deliveryStatus Type;
+  memberId Long;
 }
 
 res addDelivery {
-  delivery_id NumID;
+  deliveryId Long;
 }
 
 /**
@@ -26,10 +26,10 @@ res addDelivery {
  * 4002
  */
 req updateDeliveryStatus {
-  delivery_id NumID;
-  delivery_status Type;
+  deliveryId Long;
+  deliveryStatus Type;
 }
 
 res updateDeliveryStatus {
-  delivery_id NumID;
+  deliveryId Long;
 }

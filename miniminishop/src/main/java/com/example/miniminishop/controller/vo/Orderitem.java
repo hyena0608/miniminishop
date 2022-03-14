@@ -12,13 +12,15 @@ import java.sql.Time;
 @Data
 public class Orderitem {
 
-  public long orderitemId = 0;
+  public long orderitem_id = 0;
 
-  public long totalPrice = 0;
-
-  public int totalCount = 0;
-
-  public long orderId = 0;
+  public long memberId = 0;
 
   public long itemId = 0;
+
+  public long itemPrice = 0;
+
+  public int itemAmount = 0;
+
+  public long orderId = 0;
 }

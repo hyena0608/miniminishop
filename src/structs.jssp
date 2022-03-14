@@ -10,7 +10,7 @@ struct Member '회원' {
   memberTotalCash Money;
 }
 
-struct Order '주문' {
+struct Orders '주문' {
   orderId Long;
   orderStatus Type;
 
@@ -35,11 +35,11 @@ struct Item '상품'{
 }
 
 struct Orderitem '주문_상품'{
-  orderitemId Long;
+  orderitem_id Long;
 
-  totalPrice Money;
-  totalCount Amount;
-
-  orderId Long;
+  memberId Long;
   itemId Long;
+  itemPrice Money;
+  itemAmount Amount;
+  orderId Long;
 }

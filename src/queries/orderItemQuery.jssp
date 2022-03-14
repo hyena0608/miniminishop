@@ -1,9 +1,30 @@
-query insertOrderItem(totalPrice Money, totalCount Amount, orderId NumID, itemId NumID) {
+query insertOrderItem(memberId Long, itemId Long, itemPrice Money, itemAmount Amount, orderId Long) {
     
 	insert into orderitem (
-		total_price, total_count, order_id, item_id
+		member_id, item_id, item_price, item_amount, order_id
 	) values (
-		:totalPrice, :totalCount, :orderId, :itemId
+		:memberId, :itemId, :itemPrice, :itemAmount, :orderId
 	)
+
+}
+
+query deleteOneOrderItem(memberId Long, itemId Long) {
+
+    delete from orderitem
+	where member_id = :memberId and item_id = :itemId
+
+}
+
+query deleteAllOrderItem(memberId Long) {
+
+	delete from orderitem
+	where member_id = :memberId
+
+}
+
+query selectOrderitemByOrderId(memberId Long) {
+
+	select * from orderitem
+	where member_id = :memberId
 
 }
