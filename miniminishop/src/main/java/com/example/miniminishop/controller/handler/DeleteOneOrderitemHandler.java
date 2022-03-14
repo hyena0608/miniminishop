@@ -10,10 +10,10 @@ import java.util.List;
 
 @Slf4j
 @Component
-public class DeleteOneOrderitemHandler extends BaseHandler {
+public class DeleteOneOrderItemHandler extends BaseHandler {
 
-  public DeleteOneOrderitemResponse execute(CustomUserDetails user, DeleteOneOrderitemRequest req) {
-    DeleteOneOrderitemResponse res = new DeleteOneOrderitemResponse();
+  public DeleteOneOrderItemResponse execute(CustomUserDetails user, DeleteOneOrderItemRequest req) {
+    DeleteOneOrderItemResponse res = new DeleteOneOrderItemResponse();
 
     final long memberId = req.getMemberId();
     final long itemId = req.getItemId();

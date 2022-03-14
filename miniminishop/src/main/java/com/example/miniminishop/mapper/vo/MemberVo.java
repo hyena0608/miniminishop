@@ -3,6 +3,7 @@ package com.example.miniminishop.mapper.vo;
 import lombok.Data;
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDateTime;
 
 @Data
 public class MemberVo {
@@ -15,7 +16,5 @@ public class MemberVo {
 
   public String memberPhone;
 
-  public String memberStartDate;
-
-  public long memberTotalCash;
+  public LocalDateTime memberStartDate;
 }

@@ -1,14 +1,14 @@
-query insertOrder(orderStatus Type, memberId NumID, deliveryId NumID) {
+query insertOrder(orderStatus Type, memberId NumID, deliveryId NumID) Long {
 
 	insert into orders(
 		order_status, member_id, delivery_id
 	) values (
-		orderStatus, memberId, deliveryId
+		:orderStatus, :memberId, :deliveryId
 	)
 
 }
 
-query updateOrderStatus(orderId NumID, orderStatus Type) {
+query updateOrderStatus(orderId NumID, orderStatus Type) Long {
 
 	update orders set
 		order_status = :orderStatus
@@ -16,3 +16,4 @@ query updateOrderStatus(orderId NumID, orderStatus Type) {
 		order_id = :orderId
 
 }
+

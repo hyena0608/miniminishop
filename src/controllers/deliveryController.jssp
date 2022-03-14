@@ -1,23 +1,23 @@
 
 define opcode[controller=ApiDelivery, baseURL='/api/v1/']
 {
-    [method=get, action='delivery/add', noauth, overwrite=false]
-    addDelivery 4001 '배달 등록'
+    [method=post, action='delivery/add', noauth, overwrite=true]
+    insertDelivery 4001 '배달 등록'
 
-    [method=post, action='delivery/update', noauth, overwrite=false]
-    updateDeliveryStatus 4002 '배달 상태 수정'
+    [method=post, action='delivery/update', noauth, overwrite=true]
+    updateDelivery 4002 '배달 상태 수정'
 }
 
 /**
  * 배달 등록 
  * 4001
  */
-req addDelivery {
+req insertDelivery {
   deliveryStatus Type;
   memberId Long;
 }
 
-res addDelivery {
+res insertDelivery {
   deliveryId Long;
 }
 
@@ -25,11 +25,11 @@ res addDelivery {
  * 배달 타입 수정
  * 4002
  */
-req updateDeliveryStatus {
+req updateDelivery {
   deliveryId Long;
   deliveryStatus Type;
 }
 
-res updateDeliveryStatus {
+res updateDelivery {
   deliveryId Long;
 }

@@ -12,8 +12,6 @@ export default class Member {
 
     this.memberPhone = "";
 
-    this.memberStartDate = "";
-
-    this.memberTotalCash = 0;
+    this.memberStartDate;
   }
 }

@@ -10,5 +10,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @ApiModel(description = "주문상품 덜기")
 @Data
-public class DeleteOneOrderitemResponse extends BaseResponse {
+public class DeleteOneOrderItemResponse extends BaseResponse {
+
+  public long orderitemId = 0;
 }

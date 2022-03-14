@@ -11,14 +11,14 @@ import java.util.List;
 public class UpdateItemRequest {
 
   @ApiParam(value = "null", required = true)
-  private long item_id;
+  private long itemId;
 
   @ApiParam(value = "null", required = true)
-  private String item_name;
+  private String itemName;
 
   @ApiParam(value = "null", required = true)
-  private int item_amount;
+  private int itemAmount;
 
   @ApiParam(value = "null", required = true)
-  private long item_price;
+  private long itemPrice;
 }

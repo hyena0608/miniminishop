@@ -24,24 +24,21 @@ import java.util.List;
 public class ApiDeliveryController {
   static Logger logger = LoggerFactory.getLogger(ApiDeliveryController.class);
 
-  private AddDeliveryHandler addDeliveryHandler;
+  private InsertDeliveryHandler insertDeliveryHandler;
 
-  @RequestMapping(method = RequestMethod.GET, value = "delivery/add")
+  @RequestMapping(method = RequestMethod.POST, value = "delivery/add", consumes = MediaType.APPLICATION_JSON_VALUE)
   @ApiOperation(value = "배달 등록")
-  AddDeliveryResponse addDelivery(@RequestParam("deliveryStatus") String deliveryStatus, @RequestParam("memberId") long memberId, HttpServletRequest request) {
-    addDeliveryHandler.setHttpServletRequest(request);
-    AddDeliveryRequest req = new AddDeliveryRequest();
-    req.setDeliveryStatus(deliveryStatus);
-    req.setMemberId(memberId);
-    return addDeliveryHandler.execute(null, req);
+  InsertDeliveryResponse insertDelivery(@RequestBody InsertDeliveryRequest req, HttpServletRequest request) {
+    insertDeliveryHandler.setHttpServletRequest(request);
+    return insertDeliveryHandler.execute(null, req);
   }
 
-  private UpdateDeliveryStatusHandler updateDeliveryStatusHandler;
+  private UpdateDeliveryHandler updateDeliveryHandler;
 
   @RequestMapping(method = RequestMethod.POST, value = "delivery/update", consumes = MediaType.APPLICATION_JSON_VALUE)
   @ApiOperation(value = "배달 상태 수정")
-  UpdateDeliveryStatusResponse updateDeliveryStatus(@RequestBody UpdateDeliveryStatusRequest req, HttpServletRequest request) {
-    updateDeliveryStatusHandler.setHttpServletRequest(request);
-    return updateDeliveryStatusHandler.execute(null, req);
+  UpdateDeliveryResponse updateDelivery(@RequestBody UpdateDeliveryRequest req, HttpServletRequest request) {
+    updateDeliveryHandler.setHttpServletRequest(request);
+    return updateDeliveryHandler.execute(null, req);
   }
 }

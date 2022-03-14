@@ -11,4 +11,6 @@ import java.util.List;
 @ApiModel(description = "상품 삭제")
 @Data
 public class DeleteItemResponse extends BaseResponse {
+
+  public long itemId = 0;
 }

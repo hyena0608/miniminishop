@@ -6,6 +6,6 @@ export default class UpdateItemResponse extends BaseResponse {
   constructor() {
     super();
 
-    this.item_id = 0;
+    this.itemId = 0;
   }
 }

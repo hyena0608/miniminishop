@@ -14,6 +14,4 @@ public class ItemVo {
   public int itemAmount;
 
   public long itemPrice;
-
-  public String updateDt;
 }

@@ -1,4 +1,4 @@
-query insertItem(itemName Name, itemAmount Amount,  itemPrice Money) {
+query insertItem(itemName Name, itemAmount Amount,  itemPrice Money) Long {
 
 	insert into item (
 		item_name, item_amount, item_price
@@ -8,14 +8,14 @@ query insertItem(itemName Name, itemAmount Amount,  itemPrice Money) {
 
 }
 
-query deleteItem(itemId NumID) {
+query deleteItem(itemId NumID) Long {
 
 	delete from item i
 	where i.item_id = :itemId
 
 }
 
-query updateItem(itemId NumID, itemName Name, itemAmount Amount, itemPrice Money) {
+query updateItem(itemId NumID, itemName Name, itemAmount Amount, itemPrice Money) Long	 {
 
 	update item set
         update_dt = NOW()

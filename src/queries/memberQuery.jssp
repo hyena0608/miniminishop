@@ -1,4 +1,4 @@
-query insertMember(memberType TypeID, memberName Nickname, memberPhone Phone) {
+query insertMember(memberType TypeID, memberName Nickname, memberPhone Phone) Long {
 
 	insert into member (
 		member_type, member_name, member_phone
@@ -6,4 +6,15 @@ query insertMember(memberType TypeID, memberName Nickname, memberPhone Phone) {
 		:memberType, :memberName, :memberPhone
 	)
 
+}
+
+query selectMemberList() MemberVo[] {
+
+	select * from member
+
+}
+
+query selectMemberById(memberId Long) MemberVo {
+	select * from member
+	where member_id = :memberId
 }

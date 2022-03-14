@@ -28,16 +28,16 @@ public class MiniminishopMapperServiceTest {
     public void 상품_주문_후_주문리스트_확인_및_결제_비용_비교() throws Exception {
 
         // given
-        int memberId = mapperService.insertMember(1, "홍길동", "010-000-000");
-        int deliveryId = mapperService.insertDelivery(DeliveryStatus.NOTHING.toString(), memberId);
-        int orderId = mapperService.insertOrder(OrderStatus.YET.toString(), memberId, deliveryId);
+        long memberId = mapperService.insertMember(1, "홍길동", "010-000-000");
+        long deliveryId = mapperService.insertDelivery(DeliveryStatus.NOTHING.toString(), memberId);
+        long orderId = mapperService.insertOrder(OrderStatus.YET.toString(), memberId, deliveryId);
 
 
         // when
-        int itemFirstId = mapperService.insertItem("치킨", 100, 20000);
-        int itemSecondId = mapperService.insertItem("피자", 70, 25000);
-        int itemThirdId = mapperService.insertItem("햄버거", 80, 10000);
-        int itemFourthId = mapperService.insertItem("족발", 90, 50000);
+        long itemFirstId = mapperService.insertItem("치킨", 100, 20000);
+        long itemSecondId = mapperService.insertItem("피자", 70, 25000);
+        long itemThirdId = mapperService.insertItem("햄버거", 80, 10000);
+        long itemFourthId = mapperService.insertItem("족발", 90, 50000);
 
         mapperService.insertOrderItem(memberId, itemFirstId, 20000, 2, orderId);
         mapperService.insertOrderItem(memberId, itemSecondId, 25000, 10, orderId);

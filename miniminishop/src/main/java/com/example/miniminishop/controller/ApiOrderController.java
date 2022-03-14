@@ -24,21 +24,21 @@ import java.util.List;
 public class ApiOrderController {
   static Logger logger = LoggerFactory.getLogger(ApiOrderController.class);
 
-  private AddOrderHandler addOrderHandler;
+  private InsertOrderHandler insertOrderHandler;
 
   @RequestMapping(method = RequestMethod.POST, value = "order/add", consumes = MediaType.APPLICATION_JSON_VALUE)
   @ApiOperation(value = "주문")
-  AddOrderResponse addOrder(@RequestBody AddOrderRequest req, HttpServletRequest request) {
-    addOrderHandler.setHttpServletRequest(request);
-    return addOrderHandler.execute(null, req);
+  InsertOrderResponse insertOrder(@RequestBody InsertOrderRequest req, HttpServletRequest request) {
+    insertOrderHandler.setHttpServletRequest(request);
+    return insertOrderHandler.execute(null, req);
   }
 
-  private CancelOrderHandler cancelOrderHandler;
+  private UpdateOrderStatusHandler updateOrderStatusHandler;
 
   @RequestMapping(method = RequestMethod.POST, value = "order/status", consumes = MediaType.APPLICATION_JSON_VALUE)
   @ApiOperation(value = "주문 상태 변경")
-  CancelOrderResponse cancelOrder(@RequestBody CancelOrderRequest req, HttpServletRequest request) {
-    cancelOrderHandler.setHttpServletRequest(request);
-    return cancelOrderHandler.execute(null, req);
+  UpdateOrderStatusResponse updateOrderStatus(@RequestBody UpdateOrderStatusRequest req, HttpServletRequest request) {
+    updateOrderStatusHandler.setHttpServletRequest(request);
+    return updateOrderStatusHandler.execute(null, req);
   }
 }

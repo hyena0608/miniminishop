@@ -4,24 +4,20 @@ entity MemberVo '회원' {
   memberType TypeID;
   memberName Nickname;
   memberPhone Phone;
-
   memberStartDate Timestamp;
-  memberTotalCash Money;
 }
 
 entity OrderVo '주문' {
-  orderId Long;
+  orderId Long; // pk
   orderStatus Type;
-
-  memberId Long;
-  deliveryId Long;
+  memberId Long; // fk
+  deliveryId Long; // fk
 }
 
 entity DeliveryVo '배달'{
-  deliveryId Long;
+  deliveryId Long; // pk
   deliveryStatus Type;
-
-  memberId Long;
+  memberId Long; // fk
 }
 
 entity ItemVo '상품'{
@@ -29,11 +25,9 @@ entity ItemVo '상품'{
   itemName Name;
   itemAmount Amount;
   itemPrice Money;
-
-  updateDt Varchar80;
 }
 
-entity orderitemVo '주문_상품'{
+entity OrderitemVo '주문_상품'{
   orderitem_id Long;
 
   memberId Long;

@@ -24,13 +24,13 @@ import java.util.List;
 public class ApiItemController {
   static Logger logger = LoggerFactory.getLogger(ApiItemController.class);
 
-  private AddItemHandler addItemHandler;
+  private InsertItemHandler insertItemHandler;
 
   @RequestMapping(method = RequestMethod.POST, value = "item/add", consumes = MediaType.APPLICATION_JSON_VALUE)
   @ApiOperation(value = "상품 추가")
-  AddItemResponse addItem(@RequestBody AddItemRequest req, HttpServletRequest request) {
-    addItemHandler.setHttpServletRequest(request);
-    return addItemHandler.execute(null, req);
+  InsertItemResponse insertItem(@RequestBody InsertItemRequest req, HttpServletRequest request) {
+    insertItemHandler.setHttpServletRequest(request);
+    return insertItemHandler.execute(null, req);
   }
 
   private DeleteItemHandler deleteItemHandler;
@@ -51,35 +51,35 @@ public class ApiItemController {
     return updateItemHandler.execute(null, req);
   }
 
-  private GetItemListHandler getItemListHandler;
+  private SelectItemListHandler selectItemListHandler;
 
   @RequestMapping(method = RequestMethod.GET, value = "item/list")
   @ApiOperation(value = "상품 목록 조회")
-  GetItemListResponse getItemList(HttpServletRequest request) {
-    getItemListHandler.setHttpServletRequest(request);
-    GetItemListRequest req = new GetItemListRequest();
-    return getItemListHandler.execute(null, req);
+  SelectItemListResponse selectItemList(HttpServletRequest request) {
+    selectItemListHandler.setHttpServletRequest(request);
+    SelectItemListRequest req = new SelectItemListRequest();
+    return selectItemListHandler.execute(null, req);
   }
 
-  private GetItemByNameHandler getItemByNameHandler;
+  private SelectItemByNameHandler selectItemByNameHandler;
 
   @RequestMapping(method = RequestMethod.GET, value = "item/getByName")
   @ApiOperation(value = "상품 이름으로 조회")
-  GetItemByNameResponse getItemByName(@RequestParam("item_name") String item_name, HttpServletRequest request) {
-    getItemByNameHandler.setHttpServletRequest(request);
-    GetItemByNameRequest req = new GetItemByNameRequest();
-    req.setItem_name(item_name);
-    return getItemByNameHandler.execute(null, req);
+  SelectItemByNameResponse selectItemByName(@RequestParam("itemName") String itemName, HttpServletRequest request) {
+    selectItemByNameHandler.setHttpServletRequest(request);
+    SelectItemByNameRequest req = new SelectItemByNameRequest();
+    req.setItemName(itemName);
+    return selectItemByNameHandler.execute(null, req);
   }
 
-  private GetItemByIdHandler getItemByIdHandler;
+  private SelectItemByIdHandler selectItemByIdHandler;
 
   @RequestMapping(method = RequestMethod.GET, value = "item/getById")
   @ApiOperation(value = "상품 아이디로 조회")
-  GetItemByIdResponse getItemById(@RequestParam("item_id") long item_id, HttpServletRequest request) {
-    getItemByIdHandler.setHttpServletRequest(request);
-    GetItemByIdRequest req = new GetItemByIdRequest();
-    req.setItem_id(item_id);
-    return getItemByIdHandler.execute(null, req);
+  SelectItemByIdResponse selectItemById(@RequestParam("itemId") long itemId, HttpServletRequest request) {
+    selectItemByIdHandler.setHttpServletRequest(request);
+    SelectItemByIdRequest req = new SelectItemByIdRequest();
+    req.setItemId(itemId);
+    return selectItemByIdHandler.execute(null, req);
   }
 }

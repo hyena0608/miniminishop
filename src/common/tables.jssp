@@ -1,54 +1,48 @@
 
 table member {
-  member_id Long;
+  member_id Long auto; // pk
   member_type TypeID;
   member_name Nickname;
   member_phone Phone;
-
   member_start_date Timestamp = CURRENT_TIMESTAMP;
-  member_total_cash Money = 0;
 
   key(member_id);
 }
 
 table orders {
-  order_id Long;
+  order_id Long auto; // pk
   order_status Type;
-
-  member_id Long;
-  delivery_id Long;
+  member_id Long; // fk
+  delivery_id Long; // fk
 
   key(order_id);
 }
 
 table delivery {
-  delivery_id Long;
+  delivery_id Long auto; // pk
   delivery_status Type;
-
-  member_id Long;
+  member_id Long; // fk
 
   key(delivery_id);
 }
 
 table item {
-  item_id Long;
+  item_id Long auto; // pk
   item_name Name;
   item_amount Amount;
   item_price Money;
-
-  update_dt Varchar80;
 
   key(item_id);
 }
 
 table orderitem {
-  orderitem_id Long;
+  orderitem_id Long auto; // pk
 
-  memberId Long;
-  itemId Long;
+  memberId Long; // fk
+  itemId Long; // fk
   itemPrice Money;
   itemAmount Amount;
-  orderId Long;
+  orderId Long; // fk
 
   key(orderitem_id);
 }

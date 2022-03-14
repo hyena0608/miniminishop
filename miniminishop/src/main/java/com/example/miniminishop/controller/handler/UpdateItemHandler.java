@@ -15,12 +15,12 @@ public class UpdateItemHandler extends BaseHandler {
   public UpdateItemResponse execute(CustomUserDetails user, UpdateItemRequest req) {
     UpdateItemResponse res = new UpdateItemResponse();
 
-    final long item_id = req.getItem_id();
-    final String item_name = req.getItem_name();
-    final int item_amount = req.getItem_amount();
-    final long item_price = req.getItem_price();
+    final long itemId = req.getItemId();
+    final String itemName = req.getItemName();
+    final int itemAmount = req.getItemAmount();
+    final long itemPrice = req.getItemPrice();
 
-    if(emptyParam(item_id) || emptyParam(item_name) || emptyParam(item_amount) || emptyParam(item_price)) {
+    if(emptyParam(itemId) || emptyParam(itemName) || emptyParam(itemAmount) || emptyParam(itemPrice)) {
       res.setCode(ResultCode.BadParams);
       return res;
     }

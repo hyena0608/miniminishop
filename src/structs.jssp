@@ -4,16 +4,12 @@ struct Member '회원' {
   memberType TypeID;
   memberName Nickname;
   memberPhone Phone;
-
-  memberStartDate Date;
-
-  memberTotalCash Money;
+  memberStartDate Timestamp;
 }
 
 struct Orders '주문' {
   orderId Long;
   orderStatus Type;
-
   memberId Long;
   deliveryId Long;
 }
@@ -21,6 +17,7 @@ struct Orders '주문' {
 struct Delivery '배달'{
   deliveryId Long;
   deliveryStatus Type;
+  member_id Long;
 
   memberId Long;
 }
@@ -31,7 +28,6 @@ struct Item '상품'{
   itemAmount Amount;
   itemPrice Money;
 
-  updateDt Varchar80;
 }
 
 struct Orderitem '주문_상품'{

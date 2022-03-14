@@ -24,22 +24,22 @@ import java.util.List;
 public class ApiOrderiemController {
   static Logger logger = LoggerFactory.getLogger(ApiOrderiemController.class);
 
-  private AddOrderitemHandler addOrderitemHandler;
+  private InsertOrderItemHandler insertOrderItemHandler;
 
   @RequestMapping(method = RequestMethod.POST, value = "orderitem/add", consumes = MediaType.APPLICATION_JSON_VALUE)
   @ApiOperation(value = "주문상품 담기")
-  AddOrderitemResponse addOrderitem(@RequestBody AddOrderitemRequest req, HttpServletRequest request) {
-    addOrderitemHandler.setHttpServletRequest(request);
-    return addOrderitemHandler.execute(null, req);
+  InsertOrderItemResponse insertOrderItem(@RequestBody InsertOrderItemRequest req, HttpServletRequest request) {
+    insertOrderItemHandler.setHttpServletRequest(request);
+    return insertOrderItemHandler.execute(null, req);
   }
 
-  private DeleteOneOrderitemHandler deleteOneOrderitemHandler;
+  private DeleteOneOrderItemHandler deleteOneOrderItemHandler;
 
   @RequestMapping(method = RequestMethod.POST, value = "orderitem/remove", consumes = MediaType.APPLICATION_JSON_VALUE)
   @ApiOperation(value = "주문상품 덜기")
-  DeleteOneOrderitemResponse deleteOneOrderitem(@RequestBody DeleteOneOrderitemRequest req, HttpServletRequest request) {
-    deleteOneOrderitemHandler.setHttpServletRequest(request);
-    return deleteOneOrderitemHandler.execute(null, req);
+  DeleteOneOrderItemResponse deleteOneOrderItem(@RequestBody DeleteOneOrderItemRequest req, HttpServletRequest request) {
+    deleteOneOrderItemHandler.setHttpServletRequest(request);
+    return deleteOneOrderItemHandler.execute(null, req);
   }
 
   private GetOrderitemByMemberIdHandler getOrderitemByMemberIdHandler;

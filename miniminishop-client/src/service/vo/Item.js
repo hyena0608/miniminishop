@@ -11,7 +11,5 @@ export default class Item {
     this.itemAmount = 0;
 
     this.itemPrice = 0;
-
-    this.updateDt = "";
   }
 }

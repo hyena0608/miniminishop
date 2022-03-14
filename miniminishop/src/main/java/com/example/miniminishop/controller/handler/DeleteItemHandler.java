@@ -15,9 +15,9 @@ public class DeleteItemHandler extends BaseHandler {
   public DeleteItemResponse execute(CustomUserDetails user, DeleteItemRequest req) {
     DeleteItemResponse res = new DeleteItemResponse();
 
-    final long item_id = req.getItem_id();
+    final long itemId = req.getItemId();
 
-    if(emptyParam(item_id)) {
+    if(emptyParam(itemId)) {
       res.setCode(ResultCode.BadParams);
       return res;
     }

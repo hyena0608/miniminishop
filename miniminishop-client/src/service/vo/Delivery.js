@@ -8,6 +8,8 @@ export default class Delivery {
 
     this.deliveryStatus = "";
 
+    this.member_id = 0;
+
     this.memberId = 0;
   }
 }

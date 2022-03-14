@@ -1,11 +1,11 @@
 
 define opcode[controller=ApiOrder, baseURL='/api/v1/']
 {
-    [method=post, action='order/add', noauth, overwrite=false]
-    addOrder 3001 '주문'
+    [method=post, action='order/add', noauth, overwrite=true]
+    insertOrder 3001 '주문'
 
-    [method=post, action='order/status', noauth, overwrite=false]
-    cancelOrder 3002 '주문 상태 변경'
+    [method=post, action='order/status', noauth, overwrite=true]
+    updateOrderStatus 3002 '주문 상태 변경'
 
    
 }
@@ -14,14 +14,14 @@ define opcode[controller=ApiOrder, baseURL='/api/v1/']
  * 주문 
  * 3001
  */
-req addOrder {
+req insertOrder {
   orderStatus Type;
   
   memberId Long;
   deliveryId Long;
 }
 
-res addOrder {
+res insertOrder {
   orderId Long;
 }
 
@@ -29,11 +29,12 @@ res addOrder {
  * 주문 상태 변경 
  * 3002
  */
-req cancelOrder {
+req updateOrderStatus {
   orderId Long;
 }
 
-res cancelOrder {
+res updateOrderStatus {
+  orderId Long;
 }
 
 

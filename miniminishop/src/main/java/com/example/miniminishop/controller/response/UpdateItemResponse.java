@@ -12,5 +12,5 @@ import java.util.List;
 @Data
 public class UpdateItemResponse extends BaseResponse {
 
-  public long item_id = 0;
+  public long itemId = 0;
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 @ApiModel(description = "주문상품 덜기")
 @Data
-public class DeleteOneOrderitemRequest {
+public class DeleteOneOrderItemRequest {
 
   @ApiParam(value = "null", required = true)
   private long memberId;

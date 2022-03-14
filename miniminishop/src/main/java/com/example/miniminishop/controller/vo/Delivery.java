@@ -16,5 +16,7 @@ public class Delivery {
 
   public String deliveryStatus = "";
 
+  public long member_id = 0;
+
   public long memberId = 0;
 }

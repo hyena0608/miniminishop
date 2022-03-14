@@ -19,6 +19,4 @@ public class Item {
   public int itemAmount = 0;
 
   public long itemPrice = 0;
-
-  public String updateDt = "";
 }

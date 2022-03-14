@@ -4,12 +4,12 @@ export default class UpdateItemRequest {
 
   constructor() {
 
-    this.item_id = 0;
+    this.itemId = 0;
 
-    this.item_name = "";
+    this.itemName = "";
 
-    this.item_amount = 0;
+    this.itemAmount = 0;
 
-    this.item_price = 0;
+    this.itemPrice = 0;
   }
 }

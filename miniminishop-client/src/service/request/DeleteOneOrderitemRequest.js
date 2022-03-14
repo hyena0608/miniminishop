@@ -1,6 +1,6 @@
 
 
-export default class DeleteOneOrderitemRequest {
+export default class DeleteOneOrderItemRequest {
 
   constructor() {
 

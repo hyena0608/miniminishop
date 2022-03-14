@@ -12,15 +12,14 @@ export class ApiService {
     Vue.axios.defaults.headers.common['Authorization'] = accessToken;
   }
 
-  addDelivery(req /*: AddDeliveryRequest*/) {
-    const url = '/api/v1//delivery/add?' + qs.stringify(req);
-    return new Promise/*<AddDeliveryResponse>*/((resolve, reject) => {
+  insertDelivery(req /*: InsertDeliveryRequest*/) {
+    return new Promise/*<InsertDeliveryResponse>*/((resolve, reject) => {
       if (this.useMock) {
-        let resData = require('../mock/ApiDelivery/4001_addDelivery');
+        let resData = require('../mock/ApiDelivery/4001_insertDelivery');
         resolve(resData.default[0]);
         return;
       }
-      Vue.axios.get/*<AddDeliveryResponse>*/(url).then(res => {
+      Vue.axios.post/*<InsertDeliveryResponse>*/("/api/v1//delivery/add", req).then(res => {
         if (res.status === 200) {
           resolve(res.data);
           return;
@@ -31,14 +30,14 @@ export class ApiService {
     })
   }
 
-  updateDeliveryStatus(req /*: UpdateDeliveryStatusRequest*/) {
-    return new Promise/*<UpdateDeliveryStatusResponse>*/((resolve, reject) => {
+  updateDelivery(req /*: UpdateDeliveryRequest*/) {
+    return new Promise/*<UpdateDeliveryResponse>*/((resolve, reject) => {
       if (this.useMock) {
-        let resData = require('../mock/ApiDelivery/4002_updateDeliveryStatus');
+        let resData = require('../mock/ApiDelivery/4002_updateDelivery');
         resolve(resData.default[0]);
         return;
       }
-      Vue.axios.post/*<UpdateDeliveryStatusResponse>*/("/api/v1//delivery/update", req).then(res => {
+      Vue.axios.post/*<UpdateDeliveryResponse>*/("/api/v1//delivery/update", req).then(res => {
         if (res.status === 200) {
           resolve(res.data);
           return;
@@ -49,14 +48,14 @@ export class ApiService {
     })
   }
 
-  addItem(req /*: AddItemRequest*/) {
-    return new Promise/*<AddItemResponse>*/((resolve, reject) => {
+  insertItem(req /*: InsertItemRequest*/) {
+    return new Promise/*<InsertItemResponse>*/((resolve, reject) => {
       if (this.useMock) {
-        let resData = require('../mock/ApiItem/2001_addItem');
+        let resData = require('../mock/ApiItem/2001_insertItem');
         resolve(resData.default[0]);
         return;
       }
-      Vue.axios.post/*<AddItemResponse>*/("/api/v1//item/add", req).then(res => {
+      Vue.axios.post/*<InsertItemResponse>*/("/api/v1//item/add", req).then(res => {
         if (res.status === 200) {
           resolve(res.data);
           return;
@@ -103,15 +102,15 @@ export class ApiService {
     })
   }
 
-  getItemList(req /*: GetItemListRequest*/) {
+  selectItemList(req /*: SelectItemListRequest*/) {
     const url = '/api/v1//item/list?' + qs.stringify(req);
-    return new Promise/*<GetItemListResponse>*/((resolve, reject) => {
+    return new Promise/*<SelectItemListResponse>*/((resolve, reject) => {
       if (this.useMock) {
-        let resData = require('../mock/ApiItem/2004_getItemList');
+        let resData = require('../mock/ApiItem/2004_selectItemList');
         resolve(resData.default[0]);
         return;
       }
-      Vue.axios.get/*<GetItemListResponse>*/(url).then(res => {
+      Vue.axios.get/*<SelectItemListResponse>*/(url).then(res => {
         if (res.status === 200) {
           resolve(res.data);
           return;
@@ -122,15 +121,15 @@ export class ApiService {
     })
   }
 
-  getItemByName(req /*: GetItemByNameRequest*/) {
+  selectItemByName(req /*: SelectItemByNameRequest*/) {
     const url = '/api/v1//item/getByName?' + qs.stringify(req);
-    return new Promise/*<GetItemByNameResponse>*/((resolve, reject) => {
+    return new Promise/*<SelectItemByNameResponse>*/((resolve, reject) => {
       if (this.useMock) {
-        let resData = require('../mock/ApiItem/2005_getItemByName');
+        let resData = require('../mock/ApiItem/2005_selectItemByName');
         resolve(resData.default[0]);
         return;
       }
-      Vue.axios.get/*<GetItemByNameResponse>*/(url).then(res => {
+      Vue.axios.get/*<SelectItemByNameResponse>*/(url).then(res => {
         if (res.status === 200) {
           resolve(res.data);
           return;
@@ -141,15 +140,15 @@ export class ApiService {
     })
   }
 
-  getItemById(req /*: GetItemByIdRequest*/) {
+  selectItemById(req /*: SelectItemByIdRequest*/) {
     const url = '/api/v1//item/getById?' + qs.stringify(req);
-    return new Promise/*<GetItemByIdResponse>*/((resolve, reject) => {
+    return new Promise/*<SelectItemByIdResponse>*/((resolve, reject) => {
       if (this.useMock) {
-        let resData = require('../mock/ApiItem/2006_getItemById');
+        let resData = require('../mock/ApiItem/2006_selectItemById');
         resolve(resData.default[0]);
         return;
       }
-      Vue.axios.get/*<GetItemByIdResponse>*/(url).then(res => {
+      Vue.axios.get/*<SelectItemByIdResponse>*/(url).then(res => {
         if (res.status === 200) {
           resolve(res.data);
           return;
@@ -160,14 +159,14 @@ export class ApiService {
     })
   }
 
-  addMember(req /*: AddMemberRequest*/) {
-    return new Promise/*<AddMemberResponse>*/((resolve, reject) => {
+  insertMember(req /*: InsertMemberRequest*/) {
+    return new Promise/*<InsertMemberResponse>*/((resolve, reject) => {
       if (this.useMock) {
-        let resData = require('../mock/ApiMember/1001_addMember');
+        let resData = require('../mock/ApiMember/1001_insertMember');
         resolve(resData.default[0]);
         return;
       }
-      Vue.axios.post/*<AddMemberResponse>*/("/api/v1//member/add", req).then(res => {
+      Vue.axios.post/*<InsertMemberResponse>*/("/api/v1//member/add", req).then(res => {
         if (res.status === 200) {
           resolve(res.data);
           return;
@@ -178,14 +177,15 @@ export class ApiService {
     })
   }
 
-  addOrder(req /*: AddOrderRequest*/) {
-    return new Promise/*<AddOrderResponse>*/((resolve, reject) => {
+  selectMemberList(req /*: SelectMemberListRequest*/) {
+    const url = '/api/v1//member/getMemberList?' + qs.stringify(req);
+    return new Promise/*<SelectMemberListResponse>*/((resolve, reject) => {
       if (this.useMock) {
-        let resData = require('../mock/ApiOrder/3001_addOrder');
+        let resData = require('../mock/ApiMember/1002_selectMemberList');
         resolve(resData.default[0]);
         return;
       }
-      Vue.axios.post/*<AddOrderResponse>*/("/api/v1//order/add", req).then(res => {
+      Vue.axios.get/*<SelectMemberListResponse>*/(url).then(res => {
         if (res.status === 200) {
           resolve(res.data);
           return;
@@ -196,14 +196,15 @@ export class ApiService {
     })
   }
 
-  cancelOrder(req /*: CancelOrderRequest*/) {
-    return new Promise/*<CancelOrderResponse>*/((resolve, reject) => {
+  selectMemberById(req /*: SelectMemberByIdRequest*/) {
+    const url = '/api/v1//member/getMemberByid?' + qs.stringify(req);
+    return new Promise/*<SelectMemberByIdResponse>*/((resolve, reject) => {
       if (this.useMock) {
-        let resData = require('../mock/ApiOrder/3002_cancelOrder');
+        let resData = require('../mock/ApiMember/1003_selectMemberById');
         resolve(resData.default[0]);
         return;
       }
-      Vue.axios.post/*<CancelOrderResponse>*/("/api/v1//order/status", req).then(res => {
+      Vue.axios.get/*<SelectMemberByIdResponse>*/(url).then(res => {
         if (res.status === 200) {
           resolve(res.data);
           return;
@@ -214,14 +215,14 @@ export class ApiService {
     })
   }
 
-  addOrderitem(req /*: AddOrderitemRequest*/) {
-    return new Promise/*<AddOrderitemResponse>*/((resolve, reject) => {
+  insertOrder(req /*: InsertOrderRequest*/) {
+    return new Promise/*<InsertOrderResponse>*/((resolve, reject) => {
       if (this.useMock) {
-        let resData = require('../mock/ApiOrderiem/5001_addOrderitem');
+        let resData = require('../mock/ApiOrder/3001_insertOrder');
         resolve(resData.default[0]);
         return;
       }
-      Vue.axios.post/*<AddOrderitemResponse>*/("/api/v1//orderitem/add", req).then(res => {
+      Vue.axios.post/*<InsertOrderResponse>*/("/api/v1//order/add", req).then(res => {
         if (res.status === 200) {
           resolve(res.data);
           return;
@@ -232,14 +233,50 @@ export class ApiService {
     })
   }
 
-  deleteOneOrderitem(req /*: DeleteOneOrderitemRequest*/) {
-    return new Promise/*<DeleteOneOrderitemResponse>*/((resolve, reject) => {
+  updateOrderStatus(req /*: UpdateOrderStatusRequest*/) {
+    return new Promise/*<UpdateOrderStatusResponse>*/((resolve, reject) => {
       if (this.useMock) {
-        let resData = require('../mock/ApiOrderiem/5002_deleteOneOrderitem');
+        let resData = require('../mock/ApiOrder/3002_updateOrderStatus');
         resolve(resData.default[0]);
         return;
       }
-      Vue.axios.post/*<DeleteOneOrderitemResponse>*/("/api/v1//orderitem/remove", req).then(res => {
+      Vue.axios.post/*<UpdateOrderStatusResponse>*/("/api/v1//order/status", req).then(res => {
+        if (res.status === 200) {
+          resolve(res.data);
+          return;
+        }
+        console.error(res.status, res.statusText);
+        reject(null);
+      })
+    })
+  }
+
+  insertOrderItem(req /*: InsertOrderItemRequest*/) {
+    return new Promise/*<InsertOrderItemResponse>*/((resolve, reject) => {
+      if (this.useMock) {
+        let resData = require('../mock/ApiOrderiem/5001_insertOrderItem');
+        resolve(resData.default[0]);
+        return;
+      }
+      Vue.axios.post/*<InsertOrderItemResponse>*/("/api/v1//orderitem/add", req).then(res => {
+        if (res.status === 200) {
+          resolve(res.data);
+          return;
+        }
+        console.error(res.status, res.statusText);
+        reject(null);
+      })
+    })
+  }
+
+  deleteOneOrderItem(req /*: DeleteOneOrderItemRequest*/) {
+    return new Promise/*<DeleteOneOrderItemResponse>*/((resolve, reject) => {
+      if (this.useMock) {
+        let resData = require('../mock/ApiOrderiem/5002_deleteOneOrderItem');
+        resolve(resData.default[0]);
+        return;
+      }
+      Vue.axios.post/*<DeleteOneOrderItemResponse>*/("/api/v1//orderitem/remove", req).then(res => {
         if (res.status === 200) {
           resolve(res.data);
           return;

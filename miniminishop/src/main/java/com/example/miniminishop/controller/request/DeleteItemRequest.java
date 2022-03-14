@@ -11,5 +11,5 @@ import java.util.List;
 public class DeleteItemRequest {
 
   @ApiParam(value = "null", required = true)
-  private long item_id;
+  private long itemId;
 }

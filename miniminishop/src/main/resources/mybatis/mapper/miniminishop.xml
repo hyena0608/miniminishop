@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.miniminishop.mapper.MiniminishopMapper">
 
-  <insert id="insertDelivery" useGeneratedKeys="true" keyColumn="delivery_id">
+  <insert id="insertDelivery">
     <![CDATA[
     insert into delivery(
 		delivery_status, member_id
@@ -20,7 +20,7 @@
     ]]>
   </update>
 
-  <insert id="insertItem" useGeneratedKeys="true" keyColumn="itme.item_id">
+  <insert id="insertItem">
     <![CDATA[
     insert into item (
 		item_name, item_amount, item_price
@@ -78,7 +78,7 @@
     ]]>
   </select>
 
-  <insert id="insertOrder" useGeneratedKeys="true" keyColumn="order_id">
+  <insert id="insertOrder">
     <![CDATA[
     insert into orders(
 		order_status, member_id, delivery_id
@@ -97,7 +97,7 @@
     ]]>
   </update>
 
-  <insert id="insertMember" useGeneratedKeys="true" keyColumn="member_id">
+  <insert id="insertMember">
     <![CDATA[
     insert into member (
 		member_type, member_name, member_phone
@@ -106,6 +106,19 @@
 	)
     ]]>
   </insert>
+
+  <select id="selectMemberList" resultType="MemberVo">
+    <![CDATA[
+    select * from member
+    ]]>
+  </select>
+
+  <select id="selectMemberById" resultType="MemberVo">
+    <![CDATA[
+    select * from member
+	where member_id = #{memberId}
+    ]]>
+  </select>
 
   <insert id="insertOrderItem">
     <![CDATA[
@@ -124,14 +137,7 @@
     ]]>
   </delete>
 
-  <delete id="deleteAllOrderItem">
-    <![CDATA[
-    delete from orderitem
-	where member_id = #{memberId}
-    ]]>
-  </delete>
-
-  <select id="selectOrderitemByOrderId" resultType="com.example.miniminishop.mapper.vo.OrderitemVo">
+  <select id="selectOrderitemByOrderId" resultType="OrderitemVo">
     <![CDATA[
     select * from orderitem
 	where order_id = #{orderId}

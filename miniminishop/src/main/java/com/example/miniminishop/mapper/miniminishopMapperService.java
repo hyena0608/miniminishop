@@ -12,24 +12,24 @@ public class MiniminishopMapperService {
   @Autowired
    MiniminishopMapper mapper;
 
-  public int insertDelivery(String deliveryStatus, long memberId) {
+  public long insertDelivery(String deliveryStatus, long memberId) {
     return mapper.insertDelivery(deliveryStatus, memberId);
   }
 
-  public void updateDelivery(long deliveryId, String deliveryStatus) {
-    mapper.updateDelivery(deliveryId, deliveryStatus);
+  public long updateDelivery(long deliveryId, String deliveryStatus) {
+    return mapper.updateDelivery(deliveryId, deliveryStatus);
   }
 
-  public int insertItem(String itemName, int itemAmount, long itemPrice) {
+  public long insertItem(String itemName, int itemAmount, long itemPrice) {
     return mapper.insertItem(itemName, itemAmount, itemPrice);
   }
 
-  public void deleteItem(long itemId) {
-    mapper.deleteItem(itemId);
+  public long deleteItem(long itemId) {
+    return mapper.deleteItem(itemId);
   }
 
-  public void updateItem(long itemId, String itemName, int itemAmount, long itemPrice) {
-    mapper.updateItem(itemId, itemName, itemAmount, itemPrice);
+  public long updateItem(long itemId, String itemName, int itemAmount, long itemPrice) {
+    return mapper.updateItem(itemId, itemName, itemAmount, itemPrice);
   }
 
   public List<ItemVo> selectItemList(String itemName) {
@@ -44,28 +44,32 @@ public class MiniminishopMapperService {
     return mapper.selectItemById(itemId);
   }
 
-  public int insertOrder(String orderStatus, long memberId, long deliveryId) {
+  public long insertOrder(String orderStatus, long memberId, long deliveryId) {
     return mapper.insertOrder(orderStatus, memberId, deliveryId);
   }
 
-  public void updateOrderStatus(long orderId, String orderStatus) {
-    mapper.updateOrderStatus(orderId, orderStatus);
+  public long updateOrderStatus(long orderId, String orderStatus) {
+    return mapper.updateOrderStatus(orderId, orderStatus);
   }
 
-  public int insertMember(int memberType, String memberName, String memberPhone) {
+  public long insertMember(int memberType, String memberName, String memberPhone) {
     return mapper.insertMember(memberType, memberName, memberPhone);
   }
 
-  public void insertOrderItem(long memberId, long itemId, long itemPrice, int itemAmount, long orderId) {
-    mapper.insertOrderItem(memberId, itemId, itemPrice, itemAmount, orderId);
+  public List<MemberVo> selectMemberList() {
+    return mapper.selectMemberList();
   }
 
-  public void deleteOneOrderItem(long memberId, long itemId) {
-    mapper.deleteOneOrderItem(memberId, itemId);
+  public MemberVo selectMemberById(long memberId) {
+    return mapper.selectMemberById(memberId);
   }
 
-  public void deleteAllOrderItem(long memberId) {
-    mapper.deleteAllOrderItem(memberId);
+  public long insertOrderItem(long memberId, long itemId, long itemPrice, int itemAmount, long orderId) {
+    return mapper.insertOrderItem(memberId, itemId, itemPrice, itemAmount, orderId);
+  }
+
+  public long deleteOneOrderItem(long memberId, long itemId) {
+    return mapper.deleteOneOrderItem(memberId, itemId);
   }
 
   public List<OrderitemVo> selectOrderitemByOrderId(long orderId) {

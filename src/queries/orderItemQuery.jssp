@@ -1,4 +1,4 @@
-query insertOrderItem(memberId Long, itemId Long, itemPrice Money, itemAmount Amount, orderId Long) {
+query insertOrderItem(memberId Long, itemId Long, itemPrice Money, itemAmount Amount, orderId Long) Long {
     
 	insert into orderitem (
 		member_id, item_id, item_price, item_amount, order_id
@@ -8,23 +8,16 @@ query insertOrderItem(memberId Long, itemId Long, itemPrice Money, itemAmount Am
 
 }
 
-query deleteOneOrderItem(memberId Long, itemId Long) {
+query deleteOneOrderItem(memberId Long, itemId Long) Long {
 
     delete from orderitem
 	where member_id = :memberId and item_id = :itemId
 
 }
 
-query deleteAllOrderItem(memberId Long) {
-
-	delete from orderitem
-	where member_id = :memberId
-
-}
-
-query selectOrderitemByOrderId(memberId Long) {
+query selectOrderitemByOrderId(orderId Long) OrderitemVo[] {
 
 	select * from orderitem
-	where member_id = :memberId
+	where order_id = :orderId
 
 }

@@ -24,12 +24,33 @@ import java.util.List;
 public class ApiMemberController {
   static Logger logger = LoggerFactory.getLogger(ApiMemberController.class);
 
-  private AddMemberHandler addMemberHandler;
+  private InsertMemberHandler insertMemberHandler;
 
   @RequestMapping(method = RequestMethod.POST, value = "member/add", consumes = MediaType.APPLICATION_JSON_VALUE)
   @ApiOperation(value = "회원 가입")
-  AddMemberResponse addMember(@RequestBody AddMemberRequest req, HttpServletRequest request) {
-    addMemberHandler.setHttpServletRequest(request);
-    return addMemberHandler.execute(null, req);
+  InsertMemberResponse insertMember(@RequestBody InsertMemberRequest req, HttpServletRequest request) {
+    insertMemberHandler.setHttpServletRequest(request);
+    return insertMemberHandler.execute(null, req);
+  }
+
+  private SelectMemberListHandler selectMemberListHandler;
+
+  @RequestMapping(method = RequestMethod.GET, value = "member/getMemberList")
+  @ApiOperation(value = "회원 리스트 가져오기")
+  SelectMemberListResponse selectMemberList(HttpServletRequest request) {
+    selectMemberListHandler.setHttpServletRequest(request);
+    SelectMemberListRequest req = new SelectMemberListRequest();
+    return selectMemberListHandler.execute(null, req);
+  }
+
+  private SelectMemberByIdHandler selectMemberByIdHandler;
+
+  @RequestMapping(method = RequestMethod.GET, value = "member/getMemberByid")
+  @ApiOperation(value = "회원 번호로 회원 찾아오기")
+  SelectMemberByIdResponse selectMemberById(@RequestParam("memberId") long memberId, HttpServletRequest request) {
+    selectMemberByIdHandler.setHttpServletRequest(request);
+    SelectMemberByIdRequest req = new SelectMemberByIdRequest();
+    req.setMemberId(memberId);
+    return selectMemberByIdHandler.execute(null, req);
   }
 }
