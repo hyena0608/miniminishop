@@ -1,0 +1,55 @@
+
+define opcode[controller=ApiOrderiem, baseURL='/api/v1/']
+{
+    [method=post, action='orderitem/add', noauth, overwrite=false]
+    insertOrderItem 5001 '주문상품 담기'
+
+    [method=post, action='orderitem/remove', noauth, overwrite=false]
+    deleteOneOrderItem 5002 '주문상품 덜기'
+
+    [method=get, action='ordertiem/getByOrderId', noauth, overwrite=true]
+    selectOrderitemByMemberIdOrderId 5003 '주문상품 주문 아이디로 찾기'
+}
+
+/**
+ * 주문상품 담기
+ * 5001
+ */
+req insertOrderItem {
+  memberId Long;
+  itemId Long;
+  itemPrice Money;
+  itemAmount Amount;
+  orderId Long;
+}
+
+res insertOrderItem {
+  orderitemId Long;
+}
+
+/**
+ * 주문상품 덜기 
+ * 5002
+ */
+req deleteOneOrderItem {
+  memberId Long;
+  itemId Long;
+}
+
+res deleteOneOrderItem {
+  orderitemId Long;
+}
+
+
+/**
+ * 주문상품 주문 아이디로 찾기
+ * 5003
+ */
+req selectOrderitemByMemberIdOrderId {
+  memberId Long;
+  orderId Long
+}
+
+res selectOrderitemByMemberIdOrderId {
+  orderitemsDetail list<OrderitemDetail>;
+}

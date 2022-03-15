@@ -1,0 +1,35 @@
+
+define opcode[controller=ApiDelivery, baseURL='/api/v1/']
+{
+    [method=post, action='delivery/add', noauth, overwrite=false]
+    insertDelivery 4001 '배달 등록'
+
+    [method=post, action='delivery/update', noauth, overwrite=false]
+    updateDelivery 4002 '배달 상태 수정'
+}
+
+/**
+ * 배달 등록 
+ * 4001
+ */
+req insertDelivery {
+  deliveryStatus Type;
+  memberId Long;
+}
+
+res insertDelivery {
+  deliveryId Long;
+}
+
+/**
+ * 배달 타입 수정
+ * 4002
+ */
+req updateDelivery {
+  deliveryId Long;
+  deliveryStatus Type;
+}
+
+res updateDelivery {
+  deliveryId Long;
+}

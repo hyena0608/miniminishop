@@ -12,4 +12,7 @@ public class UpdateOrderStatusRequest {
 
   @ApiParam(value = "null", required = true)
   private long orderId;
+
+  @ApiParam(value = "null", required = true)
+  private String orderStatus;
 }

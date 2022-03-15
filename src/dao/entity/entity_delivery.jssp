@@ -1,0 +1,5 @@
+entity DeliveryVo '배달'{
+  deliveryId Long; // pk
+  deliveryStatus Type;
+  memberId Long; // fk
+}

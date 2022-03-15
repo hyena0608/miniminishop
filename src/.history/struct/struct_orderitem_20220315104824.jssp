@@ -1,0 +1,14 @@
+struct ItemOrderd'주문된 상품 정보' {
+    itemId Long;
+    itemName Name;
+    itemAmount Amount;
+    itemPrice Money;
+}
+
+struct OrderitemDetail '주문_상품리스트' {
+
+    orderId Long;
+    orderStatus Type;
+    deliveryStatus Type;
+    itemsOrderd list<ItemOrderd>;
+}

@@ -12,6 +12,18 @@ public class MiniminishopMapperService {
   @Autowired
    MiniminishopMapper mapper;
 
+  public long insertMember(int memberType, String memberName, String memberPhone) {
+    return mapper.insertMember(memberType, memberName, memberPhone);
+  }
+
+  public List<MemberVo> selectMemberList() {
+    return mapper.selectMemberList();
+  }
+
+  public MemberVo selectMemberById(long memberId) {
+    return mapper.selectMemberById(memberId);
+  }
+
   public long insertDelivery(String deliveryStatus, long memberId) {
     return mapper.insertDelivery(deliveryStatus, memberId);
   }
@@ -32,36 +44,16 @@ public class MiniminishopMapperService {
     return mapper.updateItem(itemId, itemName, itemAmount, itemPrice);
   }
 
-  public List<ItemVo> selectItemList(String itemName) {
-    return mapper.selectItemList(itemName);
+  public List<ItemVo> selectItemList() {
+    return mapper.selectItemList();
   }
 
-  public ItemVo selectItemByName(String itemName) {
+  public List<ItemVo> selectItemByName(String itemName) {
     return mapper.selectItemByName(itemName);
   }
 
   public ItemVo selectItemById(long itemId) {
     return mapper.selectItemById(itemId);
-  }
-
-  public long insertOrder(String orderStatus, long memberId, long deliveryId) {
-    return mapper.insertOrder(orderStatus, memberId, deliveryId);
-  }
-
-  public long updateOrderStatus(long orderId, String orderStatus) {
-    return mapper.updateOrderStatus(orderId, orderStatus);
-  }
-
-  public long insertMember(int memberType, String memberName, String memberPhone) {
-    return mapper.insertMember(memberType, memberName, memberPhone);
-  }
-
-  public List<MemberVo> selectMemberList() {
-    return mapper.selectMemberList();
-  }
-
-  public MemberVo selectMemberById(long memberId) {
-    return mapper.selectMemberById(memberId);
   }
 
   public long insertOrderItem(long memberId, long itemId, long itemPrice, int itemAmount, long orderId) {
@@ -72,7 +64,15 @@ public class MiniminishopMapperService {
     return mapper.deleteOneOrderItem(memberId, itemId);
   }
 
-  public List<OrderitemVo> selectOrderitemByOrderId(long orderId) {
-    return mapper.selectOrderitemByOrderId(orderId);
+  public List<OrderitemDetailVo> selectOrderitemByMemberIdOrderId(long memberId, long orderId) {
+    return mapper.selectOrderitemByMemberIdOrderId(memberId, orderId);
+  }
+
+  public long insertOrder(String orderStatus, long memberId, long deliveryId) {
+    return mapper.insertOrder(orderStatus, memberId, deliveryId);
+  }
+
+  public long updateOrderStatus(long orderId, String orderStatus) {
+    return mapper.updateOrderStatus(orderId, orderStatus);
   }
 }

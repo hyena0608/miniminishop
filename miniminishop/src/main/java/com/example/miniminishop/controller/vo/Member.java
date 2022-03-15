@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiParam;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.sql.Date;
@@ -22,5 +22,5 @@ public class Member {
 
   public String memberPhone = "";
 
-  public LocalDateTime memberStartDate;
+  public LocalDate memberStartDate;
 }

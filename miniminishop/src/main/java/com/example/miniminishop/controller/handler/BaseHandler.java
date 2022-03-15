@@ -1,6 +1,8 @@
 package com.example.miniminishop.controller.handler;
 
 import com.example.miniminishop.mapper.MiniminishopMapper;
+import com.example.miniminishop.mapper.MiniminishopMapperService;
+import lombok.RequiredArgsConstructor;
 
 import javax.servlet.http.HttpServletRequest;
 

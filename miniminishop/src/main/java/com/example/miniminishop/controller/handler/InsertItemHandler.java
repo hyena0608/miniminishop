@@ -2,7 +2,9 @@ package com.example.miniminishop.controller.handler;
 
 import com.example.miniminishop.controller.request.*;
 import com.example.miniminishop.controller.response.*;
+import com.example.miniminishop.mapper.MiniminishopMapperService;
 import com.example.miniminishop.service.CustomUserDetails;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import com.example.miniminishop.controller.ResultCode;
@@ -10,7 +12,10 @@ import java.util.List;
 
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class InsertItemHandler extends BaseHandler {
+
+  private final MiniminishopMapperService mapperService;
 
   public InsertItemResponse execute(CustomUserDetails user, InsertItemRequest req) {
     InsertItemResponse res = new InsertItemResponse();
@@ -25,7 +30,9 @@ public class InsertItemHandler extends BaseHandler {
     }
 
     try {
-      // code here
+
+      mapperService.insertItem(itemName, itemAmount, itemPrice);
+
       res.setCode(ResultCode.Success);
       return res;
     }

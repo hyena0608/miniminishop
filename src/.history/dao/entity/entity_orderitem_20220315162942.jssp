@@ -1,0 +1,16 @@
+entity OrderitemVo '주문_상품'{
+  orderitem_id Long;
+
+  memberId Long;
+  orderId Long;
+  itemId Long;
+  itemPrice Money;
+  itemAmount Amount;
+}
+
+entity ItemOrderdVo '주문된 상품 정보' {
+    itemId Long;
+    itemName Name;
+    itemAmount Amount;
+    itemPrice Money;
+}

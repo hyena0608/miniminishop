@@ -15,7 +15,4 @@ public class InsertOrderRequest {
 
   @ApiParam(value = "null", required = true)
   private long memberId;
-
-  @ApiParam(value = "null", required = true)
-  private long deliveryId;
 }

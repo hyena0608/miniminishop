@@ -1,0 +1,7 @@
+entity MemberVo '회원' {
+  memberId Long;
+  memberType TypeID;
+  memberName Nickname;
+  memberPhone Phone;
+  memberStartDate Timestamp;
+}

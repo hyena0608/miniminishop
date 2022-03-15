@@ -287,15 +287,15 @@ export class ApiService {
     })
   }
 
-  getOrderitemByMemberId(req /*: GetOrderitemByMemberIdRequest*/) {
+  selectOrderitemByMemberIdOrderId(req /*: SelectOrderitemByMemberIdOrderIdRequest*/) {
     const url = '/api/v1//ordertiem/getByOrderId?' + qs.stringify(req);
-    return new Promise/*<GetOrderitemByMemberIdResponse>*/((resolve, reject) => {
+    return new Promise/*<SelectOrderitemByMemberIdOrderIdResponse>*/((resolve, reject) => {
       if (this.useMock) {
-        let resData = require('../mock/ApiOrderiem/5003_getOrderitemByMemberId');
+        let resData = require('../mock/ApiOrderiem/5003_selectOrderitemByMemberIdOrderId');
         resolve(resData.default[0]);
         return;
       }
-      Vue.axios.get/*<GetOrderitemByMemberIdResponse>*/(url).then(res => {
+      Vue.axios.get/*<SelectOrderitemByMemberIdOrderIdResponse>*/(url).then(res => {
         if (res.status === 200) {
           resolve(res.data);
           return;

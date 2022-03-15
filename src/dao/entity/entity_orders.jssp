@@ -1,0 +1,6 @@
+entity OrderVo '주문' {
+  orderId Long; // pk
+  orderStatus Type;
+  memberId Long; // fk
+  deliveryId Long; // fk
+}

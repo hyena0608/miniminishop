@@ -1,0 +1,56 @@
+query insertItem(itemName Name, itemAmount Amount,  itemPrice Money) Long {
+
+	insert into item (
+		item_name, item_amount, item_price
+	) values (
+		:itemName, :itemAmount, :itemPrice
+	)
+
+}
+
+query deleteItem(itemId NumID) Long {
+
+	delete from item i
+	where i.item_id = :itemId
+
+}
+
+query updateItem(itemId NumID, itemName Name, itemAmount Amount, itemPrice Money) Long	 {
+
+	update item set
+        update_dt = NOW()
+		<if test='itemName != null and itemName != ""'>, item_name = :itemName</if>
+		<if test='itemAmount != null and itemAmount != ""'>, item_amount = :itemAmount</if>
+		<if test='itemPrice != null and itemPrice != ""'>, item_price = :itemPrice</if>
+	where item_id = :itemId
+
+}
+
+query selectItemList() ItemVo[] {
+
+	select
+		item_id, item_name, item_amount, item_price
+	from
+		item;
+}
+
+
+query selectItemByName(itemName Name) ItemVo[] {
+
+	select
+		item_id, item_name, item_amount, item_price
+	from
+		item
+	where item_name contact('%', :itenName, '%')
+
+}
+
+query selectItemById(itemId Long) ItemVo {
+
+	select
+		item_id, item_name, item_amount, item_price
+	from
+		item
+	where item_id = :itemId
+
+}

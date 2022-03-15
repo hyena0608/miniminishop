@@ -1,0 +1,99 @@
+
+define opcode[controller=ApiItem, baseURL='/api/v1/']
+{
+    [method=post, action='item/add', noauth, overwrite=false]
+    insertItem 2001 '상품 추가'
+
+    [method=post, action='item/delete', noauth, overwrite=false]
+    deleteItem 2002 '상품 삭제'
+
+    [method=post, action='item/update', noauth, overwrite=false]
+    updateItem 2003 '상품 수정'
+
+    [method=get, action='item/list', noauth, overwrite=false]
+    selectItemList 2004 '상품 목록 조회'
+
+    [method=get, action='item/getByName', noauth, overwrite=false]
+    selectItemByName 2005 '상품 이름으로 조회'
+
+    [method=get, action='item/getById', noauth, overwrite=false]
+    selectItemById 2006 '상품 아이디로 조회'
+}
+
+/**
+ * 상품 추가 
+ * 2001
+ */
+req insertItem {
+  itemName Name;
+  itemAmount Amount;
+  itemPrice Money;
+}
+
+res insertItem {
+  itemId Long;
+}
+
+/**
+ * 상품 삭제 
+ * 2002
+ */
+req deleteItem {
+  itemId Long;
+}
+
+res deleteItem {
+  itemId Long;
+} 
+
+/**
+ * 상품 수정 
+ * 2003
+ */
+req updateItem {
+  itemId Long;
+  itemName Name;
+  itemAmount Amount;
+  itemPrice Money;
+}
+
+res updateItem {
+  itemId Long;
+}
+
+/**
+ * 상품 목록 조회 
+ * 2004
+ */
+req selectItemList {
+}
+
+res selectItemList {
+  items list<Item>;
+}
+
+/**
+ * 상품 이름으로 조회 
+ * 2005
+ */
+
+req selectItemByName {
+  itemName Name;
+}
+
+res selectItemByName {
+  item Item;
+}
+
+/**
+ * 상품 아이디로 조회
+ * 2006
+ */
+
+ req selectItemById {
+  itemId Long;
+ }
+
+ res selectItemById {
+  item Item;
+ }

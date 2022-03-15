@@ -11,11 +11,11 @@ public class OrderitemVo {
 
   public long memberId;
 
+  public long orderId;
+
   public long itemId;
 
   public long itemPrice;
 
   public int itemAmount;
-
-  public long orderId;
 }

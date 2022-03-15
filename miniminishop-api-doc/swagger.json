@@ -509,16 +509,25 @@
     },
     "/api/v1//ordertiem/getByOrderId": {
       "get": {
-        "summary": "주문상품 주문 아이디로 찾기",
-        "operationId": "getOrderitemByMemberId",
+        "summary": "주문상품 멤버 아이디, 주문 아이디로 찾기",
+        "operationId": "selectOrderitemByMemberIdOrderId",
         "tags": [
           "ApiOrderiem"
         ],
-        "description": "주문상품 주문 아이디로 찾기",
+        "description": "주문상품 멤버 아이디, 주문 아이디로 찾기",
         "parameters": [
           {
             "in": "query",
-            "name": "member_id",
+            "name": "memberId",
+            "required": true,
+            "description": null,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "orderId",
             "required": true,
             "description": null,
             "schema": {
@@ -532,7 +541,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetOrderitemByMemberIdResponse"
+                  "$ref": "#/components/schemas/SelectOrderitemByMemberIdOrderIdResponse"
                 }
               }
             }
@@ -570,23 +579,6 @@
           }
         }
       },
-      "Orders": {
-        "type": "object",
-        "properties": {
-          "orderId": {
-            "type": "number"
-          },
-          "orderStatus": {
-            "type": "string"
-          },
-          "memberId": {
-            "type": "number"
-          },
-          "deliveryId": {
-            "type": "number"
-          }
-        }
-      },
       "Delivery": {
         "type": "object",
         "properties": {
@@ -621,25 +613,56 @@
           }
         }
       },
-      "Orderitem": {
+      "ItemOrderd": {
         "type": "object",
         "properties": {
-          "orderitem_id": {
-            "type": "number"
-          },
-          "memberId": {
-            "type": "number"
-          },
           "itemId": {
             "type": "number"
           },
-          "itemPrice": {
-            "type": "number"
+          "itemName": {
+            "type": "string"
           },
           "itemAmount": {
             "type": "integer"
           },
+          "itemPrice": {
+            "type": "number"
+          }
+        }
+      },
+      "OrderitemDetail": {
+        "type": "object",
+        "properties": {
           "orderId": {
+            "type": "number"
+          },
+          "orderStatus": {
+            "type": "string"
+          },
+          "deliveryStatus": {
+            "type": "string"
+          },
+          "itemsOrderd": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ItemOrderd"
+            }
+          }
+        }
+      },
+      "Orders": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "number"
+          },
+          "orderStatus": {
+            "type": "string"
+          },
+          "memberId": {
+            "type": "number"
+          },
+          "deliveryId": {
             "type": "number"
           }
         }
@@ -759,9 +782,6 @@
           },
           "memberId": {
             "type": "number"
-          },
-          "deliveryId": {
-            "type": "number"
           }
         }
       },
@@ -770,6 +790,9 @@
         "properties": {
           "orderId": {
             "type": "number"
+          },
+          "orderStatus": {
+            "type": "string"
           }
         }
       },
@@ -804,10 +827,13 @@
           }
         }
       },
-      "GetOrderitemByMemberIdRequest": {
+      "SelectOrderitemByMemberIdOrderIdRequest": {
         "type": "object",
         "properties": {
-          "member_id": {
+          "memberId": {
+            "type": "number"
+          },
+          "orderId": {
             "type": "number"
           }
         }
@@ -938,13 +964,13 @@
           }
         }
       },
-      "GetOrderitemByMemberIdResponse": {
+      "SelectOrderitemByMemberIdOrderIdResponse": {
         "type": "object",
         "properties": {
-          "orderitems": {
+          "orderitemsDetail": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Orderitem"
+              "$ref": "#/components/schemas/OrderitemDetail"
             }
           }
         }

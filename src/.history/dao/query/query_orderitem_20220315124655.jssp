@@ -1,0 +1,26 @@
+query insertOrderItem(memberId Long, itemId Long, itemPrice Money, itemAmount Amount, orderId Long) Long {
+    
+	insert into orderitem (
+		member_id, item_id, item_price, item_amount, order_id
+	) values (
+		:memberId, :itemId, :itemPrice, :itemAmount, :orderId
+	)
+
+}
+
+query deleteOneOrderItem(memberId Long, itemId Long) Long {
+
+    delete from orderitem
+	where member_id = :memberId and item_id = :itemId
+
+}
+
+query selectOrderitemByMemberIdOrderId(memberId Long, orderId Long) OrderitemDetailVo[] {
+
+	select * 
+	from orderitem oi
+	JOIN item i ON oi.item_id = i.item_id
+	where oi.member_id = :memberId 
+	and oi.order_id = :orderId
+
+}

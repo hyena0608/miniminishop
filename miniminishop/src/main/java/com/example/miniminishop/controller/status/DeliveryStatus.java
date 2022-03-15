@@ -1,5 +1,5 @@
 package com.example.miniminishop.controller.status;
 
 public enum DeliveryStatus {
-    NOTHING, START, COMPLETE, CANCEL
+    YET, START, COMPLETE, CANCEL
 }
