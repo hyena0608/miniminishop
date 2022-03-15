@@ -29,22 +29,25 @@ public class MiniminishopMapperServiceTest {
 
         // given
         long memberId = mapperService.insertMember(1, "홍길동", "010-000-000");
-        long deliveryId = mapperService.insertDelivery(DeliveryStatus.NOTHING.toString(), memberId);
+        long deliveryId = mapperService.insertDelivery(DeliveryStatus.YET.toString(), memberId);
         long orderId = mapperService.insertOrder(OrderStatus.YET.toString(), memberId, deliveryId);
 
 
         // when
+        /**
+         * 현 테이블과 맞춰야함
+         */
         long itemFirstId = mapperService.insertItem("치킨", 100, 20000);
-        long itemSecondId = mapperService.insertItem("피자", 70, 25000);
-        long itemThirdId = mapperService.insertItem("햄버거", 80, 10000);
-        long itemFourthId = mapperService.insertItem("족발", 90, 50000);
+        long itemSecondId = mapperService.insertItem("피자", 70, 20000);
+        long itemThirdId = mapperService.insertItem("햄버거", 80, 20000);
+        long itemFourthId = mapperService.insertItem("족발", 90, 20000);
 
         mapperService.insertOrderItem(memberId, itemFirstId, 20000, 2, orderId);
         mapperService.insertOrderItem(memberId, itemSecondId, 25000, 10, orderId);
         mapperService.insertOrderItem(memberId, itemThirdId, 10000, 3, orderId);
         mapperService.insertOrderItem(memberId, itemFourthId, 50000, 4, orderId);
 
-        int totalPrice = 20000 * 2 + 25000 * 10 + 10000 * 3 + 50000 * 4;
+        int totalPrice = 20000 * 2 + 20000 * 10 + 20000 * 3 + 20000 * 4;
         int answer = 0;
 
         List<OrderitemVo> orderitemList = mapperService.selectOrderitemByOrderId(orderId);

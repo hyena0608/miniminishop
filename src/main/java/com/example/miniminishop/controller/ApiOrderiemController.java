@@ -42,14 +42,15 @@ public class ApiOrderiemController {
     return deleteOneOrderItemHandler.execute(null, req);
   }
 
-  private GetOrderitemByMemberIdHandler getOrderitemByMemberIdHandler;
+  private SelectOrderitemByMemberIdOrderIdHandler selectOrderitemByMemberIdOrderIdHandler;
 
   @RequestMapping(method = RequestMethod.GET, value = "ordertiem/getByOrderId")
-  @ApiOperation(value = "주문상품 주문 아이디로 찾기")
-  GetOrderitemByMemberIdResponse getOrderitemByMemberId(@RequestParam("member_id") long member_id, HttpServletRequest request) {
-    getOrderitemByMemberIdHandler.setHttpServletRequest(request);
-    GetOrderitemByMemberIdRequest req = new GetOrderitemByMemberIdRequest();
-    req.setMember_id(member_id);
-    return getOrderitemByMemberIdHandler.execute(null, req);
+  @ApiOperation(value = "주문상품 멤버 아이디, 주문 아이디로 찾기")
+  SelectOrderitemByMemberIdOrderIdResponse selectOrderitemByMemberIdOrderId(@RequestParam("memberId") long memberId, @RequestParam("orderId") long orderId, HttpServletRequest request) {
+    selectOrderitemByMemberIdOrderIdHandler.setHttpServletRequest(request);
+    SelectOrderitemByMemberIdOrderIdRequest req = new SelectOrderitemByMemberIdOrderIdRequest();
+    req.setMemberId(memberId);
+    req.setOrderId(orderId);
+    return selectOrderitemByMemberIdOrderIdHandler.execute(null, req);
   }
 }

@@ -1,6 +1,5 @@
 package com.example.miniminishop.controller.response;
 
-import com.example.miniminishop.mapper.vo.ItemVo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiParam;
 import lombok.Data;
@@ -14,5 +13,5 @@ import java.util.List;
 @Data
 public class SelectItemListResponse extends BaseResponse {
 
-  public List<ItemVo> items = null;
+  public List<Item> items = null;
 }
