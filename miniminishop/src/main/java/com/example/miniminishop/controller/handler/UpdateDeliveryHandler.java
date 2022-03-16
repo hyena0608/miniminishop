@@ -3,6 +3,7 @@ package com.example.miniminishop.controller.handler;
 import com.example.miniminishop.controller.request.*;
 import com.example.miniminishop.controller.response.*;
 import com.example.miniminishop.controller.status.DeliveryStatus;
+import com.example.miniminishop.mapper.MiniminishopMapper;
 import com.example.miniminishop.mapper.MiniminishopMapperService;
 import com.example.miniminishop.service.CustomUserDetails;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UpdateDeliveryHandler extends BaseHandler {
 
-  private final MiniminishopMapperService mapperService;
+  private final MiniminishopMapper mapper;
 
   public UpdateDeliveryResponse execute(CustomUserDetails user, UpdateDeliveryRequest req) {
     UpdateDeliveryResponse res = new UpdateDeliveryResponse();
@@ -31,7 +32,7 @@ public class UpdateDeliveryHandler extends BaseHandler {
 
     try {
       if (deliveryStatus.equals(DeliveryStatus.START.toString()) | deliveryStatus.equals(DeliveryStatus.COMPLETE.toString()) || deliveryStatus.equals(DeliveryStatus.CANCEL.toString())) {
-        mapperService.updateDelivery(deliveryId, deliveryStatus);
+        mapper.updateDelivery(deliveryId, deliveryStatus);
         res.setCode(ResultCode.Success);
         return res;
       } else {

@@ -2,6 +2,7 @@ package com.example.miniminishop.controller.handler;
 
 import com.example.miniminishop.controller.request.*;
 import com.example.miniminishop.controller.response.*;
+import com.example.miniminishop.mapper.MiniminishopMapper;
 import com.example.miniminishop.mapper.MiniminishopMapperService;
 import com.example.miniminishop.service.CustomUserDetails;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DeleteAllOrderitemHandler extends BaseHandler {
 
-  private final MiniminishopMapperService mapperService;
+  private final MiniminishopMapper mapper;
 
   public DeleteAllOrderitemResponse execute(CustomUserDetails user, DeleteAllOrderitemRequest req) {
     DeleteAllOrderitemResponse res = new DeleteAllOrderitemResponse();
@@ -29,7 +30,7 @@ public class DeleteAllOrderitemHandler extends BaseHandler {
 
     try {
 
-      long delOrderId = mapperService.deleteAllOrderitem();
+      long delOrderId = mapper.deleteAllOrderitem();
 
       res.setOrderId(delOrderId);
       res.setCode(ResultCode.Success);

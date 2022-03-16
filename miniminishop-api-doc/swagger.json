@@ -37,8 +37,8 @@
       "description": "ApiOrder Controller"
     },
     {
-      "name": "ApiOrderiem",
-      "description": "ApiOrderiem Controller"
+      "name": "ApiOrderitem",
+      "description": "ApiOrderitem Controller"
     }
   ],
   "paths": {
@@ -448,7 +448,7 @@
         "summary": "주문상품 담기",
         "operationId": "insertOrderItem",
         "tags": [
-          "ApiOrderiem"
+          "ApiOrderitem"
         ],
         "requestBody": {
           "description": "주문상품 담기",
@@ -477,10 +477,75 @@
     },
     "/api/v1//orderitem/delete": {
       "post": {
+        "summary": "주문상품 덜기",
+        "operationId": "deleteOneOrderItem",
+        "tags": [
+          "ApiOrderitem"
+        ],
+        "requestBody": {
+          "description": "주문상품 덜기",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteOneOrderItemRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteOneOrderItemResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1//orderitem/getByOrderId": {
+      "get": {
+        "summary": "주문 아이디로 주문상품 찾기",
+        "operationId": "selectOrderitemByOrderId",
+        "tags": [
+          "ApiOrderitem"
+        ],
+        "description": "주문 아이디로 주문상품 찾기",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "orderId",
+            "required": true,
+            "description": null,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SelectOrderitemByOrderIdResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1//orderitem/deleteAll": {
+      "post": {
         "summary": "모든 주문상품 지우기",
         "operationId": "deleteAllOrderitem",
         "tags": [
-          "ApiOrderiem"
+          "ApiOrderitem"
         ],
         "requestBody": {
           "description": "모든 주문상품 지우기",
@@ -507,27 +572,18 @@
         }
       }
     },
-    "/api/v1//orderitem/getByOrderId": {
+    "/api/v1//orderitem/getByOrderitemId": {
       "get": {
-        "summary": "주문상품 멤버 아이디, 주문 아이디로 찾기",
-        "operationId": "selectOrderitemByMemberIdOrderId",
+        "summary": "주문상품ID로 주문 상품 가져오기",
+        "operationId": "selectOrderitemByOrderitemId",
         "tags": [
-          "ApiOrderiem"
+          "ApiOrderitem"
         ],
-        "description": "주문상품 멤버 아이디, 주문 아이디로 찾기",
+        "description": "주문상품ID로 주문 상품 가져오기",
         "parameters": [
           {
             "in": "query",
-            "name": "memberId",
-            "required": true,
-            "description": null,
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "in": "query",
-            "name": "orderId",
+            "name": "orderitemId",
             "required": true,
             "description": null,
             "schema": {
@@ -541,7 +597,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SelectOrderitemByMemberIdOrderIdResponse"
+                  "$ref": "#/components/schemas/SelectOrderitemByOrderitemIdResponse"
                 }
               }
             }
@@ -842,6 +898,9 @@
       "DeleteOneOrderItemRequest": {
         "type": "object",
         "properties": {
+          "orderitemId": {
+            "type": "number"
+          },
           "memberId": {
             "type": "number"
           },
@@ -850,12 +909,9 @@
           }
         }
       },
-      "SelectOrderitemByMemberIdOrderIdRequest": {
+      "SelectOrderitemByOrderIdRequest": {
         "type": "object",
         "properties": {
-          "memberId": {
-            "type": "number"
-          },
           "orderId": {
             "type": "number"
           }
@@ -865,6 +921,14 @@
         "type": "object",
         "properties": {
           "orderId": {
+            "type": "number"
+          }
+        }
+      },
+      "SelectOrderitemByOrderitemIdRequest": {
+        "type": "object",
+        "properties": {
+          "orderitemId": {
             "type": "number"
           }
         }
@@ -998,7 +1062,7 @@
           }
         }
       },
-      "SelectOrderitemByMemberIdOrderIdResponse": {
+      "SelectOrderitemByOrderIdResponse": {
         "type": "object",
         "properties": {
           "orderitemsDetail": {
@@ -1014,6 +1078,14 @@
         "properties": {
           "orderId": {
             "type": "number"
+          }
+        }
+      },
+      "SelectOrderitemByOrderitemIdResponse": {
+        "type": "object",
+        "properties": {
+          "orderitem": {
+            "$ref": "#/components/schemas/Orderitem"
           }
         }
       }

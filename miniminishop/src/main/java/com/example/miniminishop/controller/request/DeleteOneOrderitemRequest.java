@@ -11,6 +11,9 @@ import java.util.List;
 public class DeleteOneOrderItemRequest {
 
   @ApiParam(value = "null", required = true)
+  private long orderitemId;
+
+  @ApiParam(value = "null", required = true)
   private long memberId;
 
   @ApiParam(value = "null", required = true)

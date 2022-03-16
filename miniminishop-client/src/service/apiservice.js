@@ -254,7 +254,7 @@ export class ApiService {
   insertOrderItem(req /*: InsertOrderItemRequest*/) {
     return new Promise/*<InsertOrderItemResponse>*/((resolve, reject) => {
       if (this.useMock) {
-        let resData = require('../mock/ApiOrderiem/5001_insertOrderItem');
+        let resData = require('../mock/ApiOrderitem/5001_insertOrderItem');
         resolve(resData.default[0]);
         return;
       }
@@ -272,7 +272,7 @@ export class ApiService {
   deleteOneOrderItem(req /*: DeleteOneOrderItemRequest*/) {
     return new Promise/*<DeleteOneOrderItemResponse>*/((resolve, reject) => {
       if (this.useMock) {
-        let resData = require('../mock/ApiOrderiem/5002_deleteOneOrderItem');
+        let resData = require('../mock/ApiOrderitem/5002_deleteOneOrderItem');
         resolve(resData.default[0]);
         return;
       }
@@ -287,15 +287,15 @@ export class ApiService {
     })
   }
 
-  selectOrderitemByMemberIdOrderId(req /*: SelectOrderitemByMemberIdOrderIdRequest*/) {
+  selectOrderitemByOrderId(req /*: SelectOrderitemByOrderIdRequest*/) {
     const url = '/api/v1//orderitem/getByOrderId?' + qs.stringify(req);
-    return new Promise/*<SelectOrderitemByMemberIdOrderIdResponse>*/((resolve, reject) => {
+    return new Promise/*<SelectOrderitemByOrderIdResponse>*/((resolve, reject) => {
       if (this.useMock) {
-        let resData = require('../mock/ApiOrderiem/5003_selectOrderitemByMemberIdOrderId');
+        let resData = require('../mock/ApiOrderitem/5003_selectOrderitemByOrderId');
         resolve(resData.default[0]);
         return;
       }
-      Vue.axios.get/*<SelectOrderitemByMemberIdOrderIdResponse>*/(url).then(res => {
+      Vue.axios.get/*<SelectOrderitemByOrderIdResponse>*/(url).then(res => {
         if (res.status === 200) {
           resolve(res.data);
           return;
@@ -309,11 +309,30 @@ export class ApiService {
   deleteAllOrderitem(req /*: DeleteAllOrderitemRequest*/) {
     return new Promise/*<DeleteAllOrderitemResponse>*/((resolve, reject) => {
       if (this.useMock) {
-        let resData = require('../mock/ApiOrderiem/5004_deleteAllOrderitem');
+        let resData = require('../mock/ApiOrderitem/5004_deleteAllOrderitem');
         resolve(resData.default[0]);
         return;
       }
-      Vue.axios.post/*<DeleteAllOrderitemResponse>*/("/api/v1//orderitem/delete", req).then(res => {
+      Vue.axios.post/*<DeleteAllOrderitemResponse>*/("/api/v1//orderitem/deleteAll", req).then(res => {
+        if (res.status === 200) {
+          resolve(res.data);
+          return;
+        }
+        console.error(res.status, res.statusText);
+        reject(null);
+      })
+    })
+  }
+
+  selectOrderitemByOrderitemId(req /*: SelectOrderitemByOrderitemIdRequest*/) {
+    const url = '/api/v1//orderitem/getByOrderitemId?' + qs.stringify(req);
+    return new Promise/*<SelectOrderitemByOrderitemIdResponse>*/((resolve, reject) => {
+      if (this.useMock) {
+        let resData = require('../mock/ApiOrderitem/5005_selectOrderitemByOrderitemId');
+        resolve(resData.default[0]);
+        return;
+      }
+      Vue.axios.get/*<SelectOrderitemByOrderitemIdResponse>*/(url).then(res => {
         if (res.status === 200) {
           resolve(res.data);
           return;

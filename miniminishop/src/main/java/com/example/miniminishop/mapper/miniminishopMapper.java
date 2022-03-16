@@ -29,15 +29,17 @@ public interface MiniminishopMapper {
 
   ItemVo selectItemById(@Param("itemId") long itemId);
 
-  long updateItemByOrderitem(@Param("itemId") long itemId, @Param("itemAmount") int itemAmount);
+  long updateItemByOrderitem(@Param("itemId") long itemId, @Param("itemAmount") int itemAmount, @Param("type") long type);
 
   long insertOrderItem(@Param("memberId") long memberId, @Param("itemId") long itemId, @Param("itemPrice") long itemPrice, @Param("itemAmount") int itemAmount, @Param("orderId") long orderId);
 
-  long deleteOneOrderItem(@Param("memberId") long memberId, @Param("itemId") long itemId);
+  long deleteOneOrderItem(@Param("orderitemId") long orderitemId, @Param("memberId") long memberId, @Param("itemId") long itemId);
 
   List<OrderitemDetailVo> selectOrderitemByMemberIdOrderId(@Param("memberId") long memberId, @Param("orderId") long orderId);
 
   long deleteAllOrderitem();
+
+  OrderitemVo selectOrderitemByOrderitemId(@Param("orderitemId") long orderitemId);
 
   long insertOrder(@Param("orderStatus") String orderStatus, @Param("memberId") long memberId, @Param("deliveryId") long deliveryId);
 

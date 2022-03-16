@@ -4,6 +4,7 @@ import com.example.miniminishop.controller.request.*;
 import com.example.miniminishop.controller.response.*;
 import com.example.miniminishop.controller.util.Converter;
 import com.example.miniminishop.controller.vo.Item;
+import com.example.miniminishop.mapper.MiniminishopMapper;
 import com.example.miniminishop.mapper.MiniminishopMapperService;
 import com.example.miniminishop.mapper.vo.ItemVo;
 import com.example.miniminishop.service.CustomUserDetails;
@@ -19,7 +20,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class SelectItemByNameHandler extends BaseHandler {
 
-  private final MiniminishopMapperService mapperService;
+  private final MiniminishopMapper mapper;
 
   public SelectItemByNameResponse execute(CustomUserDetails user, SelectItemByNameRequest req) {
     SelectItemByNameResponse res = new SelectItemByNameResponse();
@@ -33,7 +34,7 @@ public class SelectItemByNameHandler extends BaseHandler {
 
     try {
 
-      List<ItemVo> itemVoList = mapperService.selectItemByName(itemName);
+      List<ItemVo> itemVoList = mapper.selectItemByName(itemName);
       List<Item> itemList = itemVoList.stream().map(o -> Converter.convert(o, Item.class)).collect(Collectors.toList());
 
       res.setItems(itemList);

@@ -103,15 +103,6 @@
         ]]>
   </insert>
 
-    <delete id="deleteOneOrderItem">
-    <![CDATA[
-        delete
-        from orderitem
-        where member_id = #{memberId}
-          and item_id = #{itemId}
-        ]]>
-  </delete>
-
     <resultMap id="OrderitemDetailVoMap" type="OrderitemDetailVo">
         <id property="orderId" column="order_id"/>
         <result property="orderStatus" column="order_status"/>
@@ -169,11 +160,31 @@
         ]]>
   </delete>
 
-  <update id="updateItemByOrderitem">
-    <![CDATA[
-    update item set
-      item_amount = item_amount - #{itemAmount}
-    where item_id = #{itemId}
+
+    <delete id="deleteOneOrderItem">
+        <![CDATA[
+    delete from orderitem
+    where orderitem_id = #{orderitemId}
     ]]>
-  </update>
+        <if test='memberId != null and memberId != ""'>and member_id = #{memberId}</if>
+        <if test='itemId != null and itemId != ""'>and item_id = #{itemId}</if>
+    </delete>
+    <select id="selectOrderitemByOrderitemId" resultType="OrderitemVo">
+    <![CDATA[
+        select *
+        from orderitem oi
+        where oi.orderitem_id = #{orderitemId}
+        ]]>
+  </select>
+
+    <update id="updateItemByOrderitem">
+    update item set
+        item_amount =
+        item_amount
+        <if test=" type == 1 "><![CDATA[ + ]]></if>
+        <if test=" type == 0 "><![CDATA[ - ]]></if>
+        #{itemAmount}
+        where item_id = #{itemId}
+    </update>
+
 </mapper>
