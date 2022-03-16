@@ -13,5 +13,5 @@ import java.util.List;
 @Data
 public class SelectOrderitemByMemberIdOrderIdResponse extends BaseResponse {
 
-  public List<OrderitemDetailVo> orderitemsDetail = null;
+  public List<OrderitemDetail> orderitemsDetail = null;
 }

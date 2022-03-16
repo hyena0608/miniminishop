@@ -15,5 +15,5 @@ public class OrderitemDetail {
 
   public String deliveryStatus = "";
 
-  public List<ItemOrdered> itemsOrderd = null;
+  public List<ItemOrdered> itemsOrdered = null;
 }

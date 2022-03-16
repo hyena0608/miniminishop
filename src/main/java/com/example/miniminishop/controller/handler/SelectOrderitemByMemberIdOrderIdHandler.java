@@ -37,21 +37,12 @@ public class SelectOrderitemByMemberIdOrderIdHandler extends BaseHandler {
 
             List<OrderitemDetailVo> orderitemDetailVoList = mapperService.selectOrderitemByMemberIdOrderId(memberId, orderId);
 
-            orderitemDetailVoList.stream().forEach(System.out::println);
-
-
             List<OrderitemDetail> result = orderitemDetailVoList
                     .stream()
                     .map(o -> Converter.convert(o, OrderitemDetail.class))
                     .collect(Collectors.toList());
 
-
-            result.stream().forEach(System.out::println);
-
-
-            res.setOrderitemsDetail(orderitemDetailVoList);
-
-//            res.setOrderitemsDetail(result);
+            res.setOrderitemsDetail(result);
             res.setCode(ResultCode.Success);
             return res;
         } catch (Exception e) {
