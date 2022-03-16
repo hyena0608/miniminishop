@@ -34,13 +34,12 @@ public class SelectOrderitemByMemberIdOrderIdHandler extends BaseHandler {
 //    }
 
         try {
-            /**
-             * Order 단수/복수
-             */
 
             List<OrderitemDetailVo> orderitemDetailVoList = mapperService.selectOrderitemByMemberIdOrderId(memberId, orderId);
 
-            System.out.println("orderitemDetailVoList = " + orderitemDetailVoList);
+            orderitemDetailVoList.stream().forEach(System.out::println);
+
+
             List<OrderitemDetail> result = orderitemDetailVoList
                     .stream()
                     .map(o -> Converter.convert(o, OrderitemDetail.class))
@@ -51,6 +50,8 @@ public class SelectOrderitemByMemberIdOrderIdHandler extends BaseHandler {
 
 
             res.setOrderitemsDetail(orderitemDetailVoList);
+
+//            res.setOrderitemsDetail(result);
             res.setCode(ResultCode.Success);
             return res;
         } catch (Exception e) {
