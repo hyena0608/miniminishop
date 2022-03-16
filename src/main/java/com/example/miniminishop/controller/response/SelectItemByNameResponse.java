@@ -13,5 +13,5 @@ import java.util.List;
 @Data
 public class SelectItemByNameResponse extends BaseResponse {
 
-  public Item item = null;
+  public List<Item> items = null;
 }
