@@ -10,6 +10,6 @@ export default class OrderitemDetail {
 
     this.deliveryStatus = "";
 
-    this.itemsOrderd = null;
+    this.itemsOrdered = null;
   }
 }

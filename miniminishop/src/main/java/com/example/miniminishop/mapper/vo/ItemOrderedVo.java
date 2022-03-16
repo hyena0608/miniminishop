@@ -1,10 +1,9 @@
 package com.example.miniminishop.mapper.vo;
 
 import lombok.Data;
-import lombok.Getter;
+import java.sql.Date;
 
 @Data
-@Getter
 public class ItemOrderedVo {
 
   public long itemId;

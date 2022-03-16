@@ -30,7 +30,7 @@ query selectOrderitemByMemberIdOrderId(memberId Long, orderId Long) OrderitemDet
                JOIN delivery d ON d.delivery_id = o.delivery_id
       where 
       oi.member_id = :memberId
-      <if test='orderId != null and orderId != ""'> and order_id = :order_id</if>
+      <if test='orderId != null and orderId != ""'> and orderId = :order_id</if>
 
 
 }	

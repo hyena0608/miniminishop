@@ -16,11 +16,11 @@ public class Orderitem {
 
   public long memberId = 0;
 
+  public long orderId = 0;
+
   public long itemId = 0;
 
   public long itemPrice = 0;
 
   public int itemAmount = 0;
-
-  public long orderId = 0;
 }

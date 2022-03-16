@@ -1,4 +1,4 @@
-struct Orderitem '주문_상품'{
+entity OrderitemVo '주문_상품'{
 
   orderitem_id Long;
 
@@ -10,20 +10,20 @@ struct Orderitem '주문_상품'{
 
 }
 
-struct ItemOrdered '주문된 상품 정보' {
+entity ItemOrderedVo '주문된 상품 정보' {
 
     itemId Long;
     itemName Name;
     itemAmount Amount;
     itemPrice Money;
-
+    
 }
 
-struct OrderitemDetail '주문_상품리스트' {
+entity OrderitemDetailVo '주문_상품리스트' {
 
     orderId Long;
     orderStatus Type;
     deliveryStatus Type;
-    itemsOrdered list<ItemOrdered>;
+    itemsOrderedVo list<ItemOrderedVo>;
 
 }

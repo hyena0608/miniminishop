@@ -613,7 +613,30 @@
           }
         }
       },
-      "ItemOrderd": {
+      "Orderitem": {
+        "type": "object",
+        "properties": {
+          "orderitem_id": {
+            "type": "number"
+          },
+          "memberId": {
+            "type": "number"
+          },
+          "orderId": {
+            "type": "number"
+          },
+          "itemId": {
+            "type": "number"
+          },
+          "itemPrice": {
+            "type": "number"
+          },
+          "itemAmount": {
+            "type": "integer"
+          }
+        }
+      },
+      "ItemOrdered": {
         "type": "object",
         "properties": {
           "itemId": {
@@ -642,10 +665,10 @@
           "deliveryStatus": {
             "type": "string"
           },
-          "itemsOrderd": {
+          "itemsOrdered": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ItemOrderd"
+              "$ref": "#/components/schemas/ItemOrdered"
             }
           }
         }
