@@ -35,6 +35,8 @@ public interface MiniminishopMapper {
 
   List<OrderitemDetailVo> selectOrderitemByMemberIdOrderId(@Param("memberId") long memberId, @Param("orderId") long orderId);
 
+  long deleteAllOrderitem();
+
   long insertOrder(@Param("orderStatus") String orderStatus, @Param("memberId") long memberId, @Param("deliveryId") long deliveryId);
 
   long updateOrderStatus(@Param("orderId") long orderId, @Param("orderStatus") String orderStatus);

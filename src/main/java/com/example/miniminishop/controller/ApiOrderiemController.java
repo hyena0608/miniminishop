@@ -35,7 +35,7 @@ public class ApiOrderiemController {
 
   private DeleteOneOrderItemHandler deleteOneOrderItemHandler;
 
-  @RequestMapping(method = RequestMethod.POST, value = "orderitem/remove", consumes = MediaType.APPLICATION_JSON_VALUE)
+  @RequestMapping(method = RequestMethod.POST, value = "orderitem/delete", consumes = MediaType.APPLICATION_JSON_VALUE)
   @ApiOperation(value = "주문상품 덜기")
   DeleteOneOrderItemResponse deleteOneOrderItem(@RequestBody DeleteOneOrderItemRequest req, HttpServletRequest request) {
     deleteOneOrderItemHandler.setHttpServletRequest(request);
@@ -44,7 +44,7 @@ public class ApiOrderiemController {
 
   private SelectOrderitemByMemberIdOrderIdHandler selectOrderitemByMemberIdOrderIdHandler;
 
-  @RequestMapping(method = RequestMethod.GET, value = "ordertiem/getByOrderId")
+  @RequestMapping(method = RequestMethod.GET, value = "orderitem/getByOrderId")
   @ApiOperation(value = "주문상품 멤버 아이디, 주문 아이디로 찾기")
   SelectOrderitemByMemberIdOrderIdResponse selectOrderitemByMemberIdOrderId(@RequestParam("memberId") long memberId, @RequestParam("orderId") long orderId, HttpServletRequest request) {
     selectOrderitemByMemberIdOrderIdHandler.setHttpServletRequest(request);
@@ -52,5 +52,14 @@ public class ApiOrderiemController {
     req.setMemberId(memberId);
     req.setOrderId(orderId);
     return selectOrderitemByMemberIdOrderIdHandler.execute(null, req);
+  }
+
+  private DeleteAllOrderitemHandler deleteAllOrderitemHandler;
+
+  @RequestMapping(method = RequestMethod.POST, value = "orderitem/delete", consumes = MediaType.APPLICATION_JSON_VALUE)
+  @ApiOperation(value = "모든 주문상품 지우기")
+  DeleteAllOrderitemResponse deleteAllOrderitem(@RequestBody DeleteAllOrderitemRequest req, HttpServletRequest request) {
+    deleteAllOrderitemHandler.setHttpServletRequest(request);
+    return deleteAllOrderitemHandler.execute(null, req);
   }
 }
