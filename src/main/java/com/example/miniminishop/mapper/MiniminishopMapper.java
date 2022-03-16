@@ -29,6 +29,8 @@ public interface MiniminishopMapper {
 
   ItemVo selectItemById(@Param("itemId") long itemId);
 
+  long updateItemByOrderitem(@Param("itemId") long itemId, @Param("itemAmount") int itemAmount);
+
   long insertOrderItem(@Param("memberId") long memberId, @Param("itemId") long itemId, @Param("itemPrice") long itemPrice, @Param("itemAmount") int itemAmount, @Param("orderId") long orderId);
 
   long deleteOneOrderItem(@Param("memberId") long memberId, @Param("itemId") long itemId);

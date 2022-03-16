@@ -5,24 +5,18 @@ import org.slf4j.LoggerFactory;
 import com.example.miniminishop.controller.handler.*;
 import com.example.miniminishop.controller.request.*;
 import com.example.miniminishop.controller.response.*;
-import com.example.miniminishop.service.CustomUserDetails;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestClientResponseException;
-import org.springframework.web.multipart.MultipartFile;
+
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/v1/")
-public class ApiOrderiemController {
-  static Logger logger = LoggerFactory.getLogger(ApiOrderiemController.class);
+public class ApiOrderitemController {
+  static Logger logger = LoggerFactory.getLogger(ApiOrderitemController.class);
 
   private InsertOrderItemHandler insertOrderItemHandler;
 
@@ -56,7 +50,7 @@ public class ApiOrderiemController {
 
   private DeleteAllOrderitemHandler deleteAllOrderitemHandler;
 
-  @RequestMapping(method = RequestMethod.POST, value = "orderitem/delete", consumes = MediaType.APPLICATION_JSON_VALUE)
+  @RequestMapping(method = RequestMethod.POST, value = "orderitem/deleteAll", consumes = MediaType.APPLICATION_JSON_VALUE)
   @ApiOperation(value = "모든 주문상품 지우기")
   DeleteAllOrderitemResponse deleteAllOrderitem(@RequestBody DeleteAllOrderitemRequest req, HttpServletRequest request) {
     deleteAllOrderitemHandler.setHttpServletRequest(request);

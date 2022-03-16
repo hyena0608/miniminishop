@@ -168,4 +168,12 @@
         where order_id = #{orderId}
         ]]>
   </delete>
+
+  <update id="updateItemByOrderitem">
+    <![CDATA[
+    update item set
+      item_amount = item_amount - #{itemAmount}
+    where item_id = #{itemId}
+    ]]>
+  </update>
 </mapper>
