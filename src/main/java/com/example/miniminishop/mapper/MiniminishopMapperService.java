@@ -61,6 +61,7 @@ public class MiniminishopMapperService {
   }
 
   public long insertOrderItem(long memberId, long itemId, long itemPrice, int itemAmount, long orderId) {
+    mapper.updateItemByOrderitem(itemId, itemAmount);
     return mapper.insertOrderItem(memberId, itemId, itemPrice, itemAmount, orderId);
   }
 
