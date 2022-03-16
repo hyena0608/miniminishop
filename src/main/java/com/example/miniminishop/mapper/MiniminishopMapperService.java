@@ -56,16 +56,16 @@ public class MiniminishopMapperService {
     return mapper.selectItemById(itemId);
   }
 
-  public long updateItemByOrderitem(long itemId, int itemAmount) {
-    return mapper.updateItemByOrderitem(itemId, itemAmount);
+  public long updateItemByOrderitem(long itemId, int itemAmount, long type) {
+    return mapper.updateItemByOrderitem(itemId, itemAmount, type);
   }
 
   public long insertOrderItem(long memberId, long itemId, long itemPrice, int itemAmount, long orderId) {
     return mapper.insertOrderItem(memberId, itemId, itemPrice, itemAmount, orderId);
   }
 
-  public long deleteOneOrderItem(long memberId, long itemId) {
-    return mapper.deleteOneOrderItem(memberId, itemId);
+  public long deleteOneOrderItem(long orderitemId, long memberId, long itemId) {
+    return mapper.deleteOneOrderItem(orderitemId, memberId, itemId);
   }
 
   public List<OrderitemDetailVo> selectOrderitemByMemberIdOrderId(long memberId, long orderId) {
@@ -74,6 +74,10 @@ public class MiniminishopMapperService {
 
   public long deleteAllOrderitem() {
     return mapper.deleteAllOrderitem();
+  }
+
+  public OrderitemVo selectOrderitemByOrderitemId(long orderitemId) {
+    return mapper.selectOrderitemByOrderitemId(orderitemId);
   }
 
   public long insertOrder(String orderStatus, long memberId, long deliveryId) {

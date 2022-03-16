@@ -5,12 +5,18 @@ import org.slf4j.LoggerFactory;
 import com.example.miniminishop.controller.handler.*;
 import com.example.miniminishop.controller.request.*;
 import com.example.miniminishop.controller.response.*;
+import com.example.miniminishop.service.CustomUserDetails;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.client.RestClientResponseException;
+import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -36,16 +42,15 @@ public class ApiOrderitemController {
     return deleteOneOrderItemHandler.execute(null, req);
   }
 
-  private SelectOrderitemByMemberIdOrderIdHandler selectOrderitemByMemberIdOrderIdHandler;
+  private SelectOrderitemByOrderIdHandler selectOrderitemByOrderIdHandler;
 
   @RequestMapping(method = RequestMethod.GET, value = "orderitem/getByOrderId")
-  @ApiOperation(value = "주문상품 멤버 아이디, 주문 아이디로 찾기")
-  SelectOrderitemByMemberIdOrderIdResponse selectOrderitemByMemberIdOrderId(@RequestParam("memberId") long memberId, @RequestParam("orderId") long orderId, HttpServletRequest request) {
-    selectOrderitemByMemberIdOrderIdHandler.setHttpServletRequest(request);
-    SelectOrderitemByMemberIdOrderIdRequest req = new SelectOrderitemByMemberIdOrderIdRequest();
-    req.setMemberId(memberId);
+  @ApiOperation(value = "주문 아이디로 주문상품 찾기")
+  SelectOrderitemByOrderIdResponse selectOrderitemByOrderId(@RequestParam("orderId") long orderId, HttpServletRequest request) {
+    selectOrderitemByOrderIdHandler.setHttpServletRequest(request);
+    SelectOrderitemByOrderIdRequest req = new SelectOrderitemByOrderIdRequest();
     req.setOrderId(orderId);
-    return selectOrderitemByMemberIdOrderIdHandler.execute(null, req);
+    return selectOrderitemByOrderIdHandler.execute(null, req);
   }
 
   private DeleteAllOrderitemHandler deleteAllOrderitemHandler;
@@ -55,5 +60,16 @@ public class ApiOrderitemController {
   DeleteAllOrderitemResponse deleteAllOrderitem(@RequestBody DeleteAllOrderitemRequest req, HttpServletRequest request) {
     deleteAllOrderitemHandler.setHttpServletRequest(request);
     return deleteAllOrderitemHandler.execute(null, req);
+  }
+
+  private SelectOrderitemByOrderitemIdHandler selectOrderitemByOrderitemIdHandler;
+
+  @RequestMapping(method = RequestMethod.GET, value = "orderitem/getByOrderitemId")
+  @ApiOperation(value = "주문상품ID로 주문 상품 가져오기")
+  SelectOrderitemByOrderitemIdResponse selectOrderitemByOrderitemId(@RequestParam("orderitemId") long orderitemId, HttpServletRequest request) {
+    selectOrderitemByOrderitemIdHandler.setHttpServletRequest(request);
+    SelectOrderitemByOrderitemIdRequest req = new SelectOrderitemByOrderitemIdRequest();
+    req.setOrderitemId(orderitemId);
+    return selectOrderitemByOrderitemIdHandler.execute(null, req);
   }
 }

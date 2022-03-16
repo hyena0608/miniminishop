@@ -6,16 +6,10 @@ import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
-@ApiModel(description = "주문상품 덜기")
+@ApiModel(description = "주문 아이디로 주문상품 찾기")
 @Data
-public class DeleteOneOrderItemRequest {
+public class SelectOrderitemByOrderIdRequest {
 
   @ApiParam(value = "null", required = true)
-  private long orderitemId;
-
-  @ApiParam(value = "null", required = true)
-  private long memberId;
-
-  @ApiParam(value = "null", required = true)
-  private long itemId;
+  private long orderId;
 }

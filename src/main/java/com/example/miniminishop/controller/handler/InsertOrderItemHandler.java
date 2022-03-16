@@ -35,7 +35,8 @@ public class InsertOrderItemHandler extends BaseHandler {
     try {
 
       long orderitemId = mapper.insertOrderItem(memberId, itemId, itemPrice, itemAmount, orderId);
-      mapper.updateItemByOrderitem(itemId, itemAmount);
+      // type 0 : MINUS
+      mapper.updateItemByOrderitem(itemId, itemAmount, 0);
 
       res.setOrderitemId(orderitemId);
       res.setCode(ResultCode.Success);

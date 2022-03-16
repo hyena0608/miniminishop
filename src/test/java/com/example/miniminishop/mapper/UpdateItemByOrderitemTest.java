@@ -15,13 +15,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class UpdateItemByOrderitemTest {
 
     @Autowired
-    MiniminishopMapperService mapperService;
+    MiniminishopMapper mapper;
 
     @Test
     public void 주문_시_상품_재고_재설정() throws Exception {
         // given
-        long updateItemId = mapperService.updateItemByOrderitem(1, 10);
-        ItemVo findItem = mapperService.selectItemById(1);
+        long updateItemId = mapper.updateItemByOrderitem(1, 10, 0);
+        ItemVo findItem = mapper.selectItemById(1);
 
         // when
         int itemAmount = findItem.getItemAmount();
