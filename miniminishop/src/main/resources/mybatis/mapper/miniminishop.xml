@@ -121,7 +121,7 @@
     </resultMap>
 
     <resultMap id="itemMap" type="ItemOrderedVo">
-        <id property="itemId" column="item_id"/>
+        <result property="itemId" column="item_id"/>
         <result property="itemName" column="item_name"/>
         <result property="itemAmount" column="item_amount"/>
         <result property="itemPrice" column="item_price"/>

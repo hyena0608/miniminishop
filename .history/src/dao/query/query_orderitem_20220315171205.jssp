@@ -17,17 +17,15 @@ query deleteOneOrderItem(memberId Long, itemId Long) Long {
 
 query selectOrderitemByMemberIdOrderId(memberId Long, orderId Long) OrderitemDetailVo[] {
 
-	 select oi.order_id,
-               o.order_status,
-               d.delivery_status,
-               i.item_id,
-               i.item_name,
-               oi.item_amount,
-               oi.item_price
-        from orderitem oi
-               JOIN item i ON oi.item_id = i.item_id
-               JOIN orders o ON oi.order_id = o.order_id
-               JOIN delivery d ON d.delivery_id = o.delivery_id
-      where oi.member_id = :memberId and oi.order_id = :orderId
+	select oi.order_id,
+	o.order_status,
+	d.delivery_status,
+	i.item_name
+	from orderitem oi
+	JOIN item i ON oi.item_id = i.item_id
+	JOIN orders o ON oi.order_id = o.order_id
+	JOIN delivery d ON o.delivery_id = o.delivery_id
+	where oi.member_id = :memberId 
+	and oi.order_id = :orderId
 
 }	
