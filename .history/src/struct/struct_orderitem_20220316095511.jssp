@@ -1,12 +1,4 @@
-struct OrderitemVo '주문_상품'{
-  orderitem_id Long;
 
-  memberId Long;
-  orderId Long;
-  itemId Long;
-  itemPrice Money;
-  itemAmount Amount;
-}
 
 struct ItemOrderd'주문된 상품 정보' {
     itemId Long;
