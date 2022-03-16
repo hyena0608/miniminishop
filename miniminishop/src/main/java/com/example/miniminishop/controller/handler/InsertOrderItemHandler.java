@@ -33,8 +33,10 @@ public class InsertOrderItemHandler extends BaseHandler {
 
     try {
 
-      mapperService.insertOrderItem(memberId, itemId, itemPrice, itemAmount, orderId);
+      long orderitemId = mapperService.insertOrderItem(memberId, itemId, itemPrice, itemAmount, orderId);
+      mapperService.updateItemByOrderitem(itemId, itemAmount);
 
+      res.setOrderitemId(orderitemId);
       res.setCode(ResultCode.Success);
       return res;
     }

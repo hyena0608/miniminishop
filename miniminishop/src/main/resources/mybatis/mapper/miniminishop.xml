@@ -2,124 +2,149 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.miniminishop.mapper.MiniminishopMapper">
 
-  <insert id="insertMember">
+    <insert id="insertMember">
     <![CDATA[
-    insert into member (
-		member_type, member_name, member_phone
-	) values (
-		#{memberType}, #{memberName}, #{memberPhone}
-	)
-    ]]>
+        insert into member (member_type, member_name, member_phone)
+        values (#{memberType}, #{memberName}, #{memberPhone})
+        ]]>
   </insert>
 
-  <select id="selectMemberList" resultType="MemberVo">
+    <select id="selectMemberList" resultType="MemberVo">
     <![CDATA[
-    select * from member
-    ]]>
+        select *
+        from member
+        ]]>
   </select>
 
-  <select id="selectMemberById" resultType="MemberVo">
+    <select id="selectMemberById" resultType="MemberVo">
     <![CDATA[
-    select * from member
-	where member_id = #{memberId}
-    ]]>
+        select *
+        from member
+        where member_id = #{memberId}
+        ]]>
   </select>
 
-  <insert id="insertDelivery">
+    <insert id="insertDelivery">
     <![CDATA[
-    insert into delivery(
-		delivery_status, member_id
-	) values (
-		#{deliveryStatus}, #{memberId}
-	)
-    ]]>
+        insert into delivery(delivery_status, member_id)
+        values (#{deliveryStatus}, #{memberId})
+        ]]>
   </insert>
 
-  <update id="updateDelivery">
+    <update id="updateDelivery">
     <![CDATA[
-    update delivery set
-		delivery_status = #{deliveryStatus}
-	where delivery_id = #{deliveryId}
-    ]]>
+        update delivery
+        set delivery_status = #{deliveryStatus}
+        where delivery_id = #{deliveryId}
+        ]]>
   </update>
 
-  <insert id="insertItem">
+    <insert id="insertItem">
     <![CDATA[
-    insert into item (
-		item_name, item_amount, item_price
-	) values (
-		#{itemName}, #{itemAmount}, #{itemPrice}
-	)
-    ]]>
+        insert into item (item_name, item_amount, item_price)
+        values (#{itemName}, #{itemAmount}, #{itemPrice})
+        ]]>
   </insert>
 
-  <delete id="deleteItem">
+    <delete id="deleteItem">
     <![CDATA[
-    delete from item i
-	where i.item_id = #{itemId}
-    ]]>
+        delete
+        from item i
+        where i.item_id = #{itemId}
+        ]]>
   </delete>
 
-  <update id="updateItem">
+    <update id="updateItem">
+        update item
+        set update_dt = NOW()
+          <![CDATA[
+            <
+                        if test='itemName != null and itemName != ""'>, item_name = #{itemName}</ if > < if test='itemAmount != null and itemAmount != ""'>, item_amount = #{itemAmount}</ if > < if test='itemPrice != null and itemPrice != ""'>, item_price = #{itemPrice}</ if > ]]>
+        where item_id = #{itemId}
+    </update>
+
+    <select id="selectItemList" resultType="ItemVo">
     <![CDATA[
-    update item set
-        update_dt = NOW()
-		<if test='itemName != null and itemName != ""'>, item_name = #{itemName}</if>
-		<if test='itemAmount != null and itemAmount != ""'>, item_amount = #{itemAmount}</if>
-		<if test='itemPrice != null and itemPrice != ""'>, item_price = #{itemPrice}</if>
-	where item_id = #{itemId}
-    ]]>
+        select item_id,
+               item_name,
+               item_amount,
+               item_price
+        from item
+        ]]>
+  </select>
+
+    <select id="selectItemByName" resultType="ItemVo">
+    <![CDATA[
+        select item_id,
+               item_name,
+               item_amount,
+               item_price
+        from item
+        where item_name contact('%', #{itenName}
+            , '%')
+        ]]>
+  </select>
+
+    <select id="selectItemById" resultType="ItemVo">
+    <![CDATA[
+        select item_id,
+               item_name,
+               item_amount,
+               item_price
+        from item
+        where item_id = #{itemId}
+        ]]>
+  </select>
+
+    <insert id="insertOrderItem">
+    <![CDATA[
+        insert into orderitem (member_id, item_id, item_price, item_amount, order_id)
+        values (#{memberId}, #{itemId}, #{itemPrice}, #{itemAmount}, #{orderId})
+        ]]>
+  </insert>
+
+    <delete id="deleteOneOrderItem">
+    <![CDATA[
+        delete
+        from orderitem
+        where member_id = #{memberId}
+          and item_id = #{itemId}
+        ]]>
+  </delete>
+
+    <resultMap id="OrderitemDetailVoMap" type="OrderitemDetailVo">
+        <id property="orderId" column="order_id"/>
+        <result property="orderStatus" column="order_status"/>
+        <result property="deliveryStatus" column="delivery_status"/>
+        <collection property="itemsOrdered" resultMap="itemMap"/>
+    </resultMap>
+
+    <resultMap id="itemMap" type="ItemOrderedVo">
+        <result property="itemId" column="item_id"/>
+        <result property="itemName" column="item_name"/>
+        <result property="itemAmount" column="item_amount"/>
+        <result property="itemPrice" column="item_price"/>
+    </resultMap>
+
+    <insert id="insertOrder">
+    <![CDATA[
+        insert into orders(order_status, member_id, delivery_id)
+        values (#{orderStatus}, #{memberId}, #{deliveryId})
+        ]]>
+  </insert>
+
+
+    <update id="updateOrderStatus">
+    <![CDATA[
+        update orders
+        set order_status = #{orderStatus}
+        where order_id = #{orderId}
+        ]]>
   </update>
 
-  <select id="selectItemList" resultType="ItemVo">
-    <![CDATA[
-    select
-		item_id, item_name, item_amount, item_price
-	from
-		item
-    ]]>
-  </select>
-
-  <select id="selectItemByName" resultType="ItemVo">
-    <![CDATA[
-    select
-		item_id, item_name, item_amount, item_price
-	from
-		item
-	where item_name contact('%', #{itenName}, '%')
-    ]]>
-  </select>
-
-  <select id="selectItemById" resultType="ItemVo">
-    <![CDATA[
-    select
-		item_id, item_name, item_amount, item_price
-	from
-		item
-	where item_id = #{itemId}
-    ]]>
-  </select>
-
-  <insert id="insertOrderItem">
-    <![CDATA[
-    insert into orderitem (
-		member_id, item_id, item_price, item_amount, order_id
-	) values (
-		#{memberId}, #{itemId}, #{itemPrice}, #{itemAmount}, #{orderId}
-	)
-    ]]>
-  </insert>
-
-  <delete id="deleteOneOrderItem">
-    <![CDATA[
-    delete from orderitem
-	where member_id = #{memberId} and item_id = #{itemId}
-    ]]>
-  </delete>
-
-  <select id="selectOrderitemByMemberIdOrderId" resultType="OrderitemDetailVo">
-    <![CDATA[
-    select oi.order_id,
+    <select id="selectOrderitemByMemberIdOrderId" resultMap="OrderitemDetailVoMap">
+        <![CDATA[
+        select oi.order_id,
                o.order_status,
                d.delivery_status,
                i.item_id,
@@ -127,38 +152,28 @@
                oi.item_amount,
                oi.item_price
         from orderitem oi
-               JOIN item i ON oi.item_id = i.item_id
-               JOIN orders o ON oi.order_id = o.order_id
-               JOIN delivery d ON d.delivery_id = o.delivery_id
-      where 
-      oi.member_id = #{memberId}
-      <if test='orderId != null and orderId != ""'> and order_id = #{order_id}</if>
-    ]]>
-  </select>
+                 JOIN item i ON oi.item_id = i.item_id
+                 JOIN orders o ON oi.order_id = o.order_id
+                 JOIN delivery d ON d.delivery_id = o.delivery_id
+        where oi.member_id = #{memberId}
+        ]]>
+        <if test='orderId != null and orderId != ""'>and oi.order_id = #{orderId}
+        </if>
+    </select>
 
-  <delete id="deleteAllOrderitem">
+    <delete id="deleteAllOrderitem">
     <![CDATA[
-    delete from orderitem
-    where order_id = #{orderId}
-    ]]>
+        delete
+        from orderitem
+        where order_id = #{orderId}
+        ]]>
   </delete>
 
-  <insert id="insertOrder">
+  <update id="updateItemByOrderitem">
     <![CDATA[
-    insert into orders(
-		order_status, member_id, delivery_id
-	) values (
-		#{orderStatus}, #{memberId}, #{deliveryId}
-	)
-    ]]>
-  </insert>
-
-  <update id="updateOrderStatus">
-    <![CDATA[
-    update orders set
-		order_status = #{orderStatus}
-	where
-		order_id = #{orderId}
+    update item set
+      item_amount = item_amount - #{itemAmount}
+    where item_id = #{itemId}
     ]]>
   </update>
 </mapper>

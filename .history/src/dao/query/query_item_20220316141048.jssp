@@ -58,7 +58,7 @@ query selectItemById(itemId Long) ItemVo {
 query updateItemByOrderitem(itemId Long, itemAmount Amount) Long {
 
 	update item set
-		item_amount = item_amount - :itemAmount
+		item_amount = :itemAmount
 	where item_id = :itemId
 
 }
