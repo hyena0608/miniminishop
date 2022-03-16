@@ -1,11 +1,11 @@
 package com.example.miniminishop.controller.response;
 
-import com.example.miniminishop.mapper.vo.OrderitemDetailVo;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiParam;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import com.example.miniminishop.controller.vo.OrderitemDetail;
-
+import java.util.HashMap;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
