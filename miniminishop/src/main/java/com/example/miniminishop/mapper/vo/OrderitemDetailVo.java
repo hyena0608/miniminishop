@@ -15,5 +15,5 @@ public class OrderitemDetailVo {
 
   public String deliveryStatus;
 
-  public List<ItemOrderedVo> itemsOrdered;
+  public List<ItemOrdered> itemsOrdered;
 }

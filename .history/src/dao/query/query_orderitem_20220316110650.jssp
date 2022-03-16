@@ -32,11 +32,5 @@ query selectOrderitemByMemberIdOrderId(memberId Long, orderId Long) OrderitemDet
       oi.member_id = :memberId
       <if test='orderId != null and orderId != ""'> and order_id = :order_id</if>
 
+
 }	
-
-query deleteAllOrderitem() Long {
-
-    delete from orderitem
-    where order_id = :orderId
-    
-}

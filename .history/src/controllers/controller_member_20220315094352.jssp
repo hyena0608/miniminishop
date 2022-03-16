@@ -7,7 +7,7 @@ define opcode[controller=ApiMember, baseURL='/api/v1/']
     [method=get, action='member/getMemberList', noauth, overwrite=false]
     selectMemberList 1002 '회원 리스트 가져오기'
 
-    [method=get, action='member/getMemberById', noauth, overwrite=false]
+    [method=get, action='member/getMemberByid', noauth, overwrite=false]
     selectMemberById 1003 '회원 번호로 회원 찾아오기'
 
 }

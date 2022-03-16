@@ -4,13 +4,13 @@ define opcode[controller=ApiOrderiem, baseURL='/api/v1/']
     [method=post, action='orderitem/add', noauth, overwrite=false]
     insertOrderItem 5001 '주문상품 담기'
 
-    [method=post, action='orderitem/delete', noauth, overwrite=false]
+    [method=post, action='orderitem/delete', noauth, overwrite=true]
     deleteOneOrderItem 5002 '주문상품 덜기'
 
     [method=get, action='orderitem/getByOrderId', noauth, overwrite=false]
     selectOrderitemByMemberIdOrderId 5003 '주문상품 멤버 아이디, 주문 아이디로 찾기'
 
-    [method=post, action='orderitem/delete', noauth, overwrite=true]
+    [method=delete, action='orderitem/delete', noauth, overwrite=true]
     deleteAllOrderitem 5004 '모든 주문상품 지우기'
 }
 
@@ -61,7 +61,6 @@ res selectOrderitemByMemberIdOrderId {
  * 5004
  */
 req deleteAllOrderitem {
-  orderId Long
 }
 
 res deleteAllOrderitem {

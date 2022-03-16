@@ -82,7 +82,7 @@ req selectItemByName {
 }
 
 res selectItemByName {
-  items list<Item>;
+  item Item;
 }
 
 /**

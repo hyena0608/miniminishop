@@ -28,15 +28,6 @@ query selectOrderitemByMemberIdOrderId(memberId Long, orderId Long) OrderitemDet
                JOIN item i ON oi.item_id = i.item_id
                JOIN orders o ON oi.order_id = o.order_id
                JOIN delivery d ON d.delivery_id = o.delivery_id
-      where 
-      oi.member_id = :memberId
-      <if test='orderId != null and orderId != ""'> and order_id = :order_id</if>
+      where oi.member_id = :memberId and oi.order_id = :orderId
 
 }	
-
-query deleteAllOrderitem() Long {
-
-    delete from orderitem
-    where order_id = :orderId
-    
-}

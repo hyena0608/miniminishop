@@ -346,7 +346,7 @@
         }
       }
     },
-    "/api/v1//member/getMemberByid": {
+    "/api/v1//member/getMemberById": {
       "get": {
         "summary": "회원 번호로 회원 찾아오기",
         "operationId": "selectMemberById",
@@ -475,20 +475,20 @@
         }
       }
     },
-    "/api/v1//orderitem/remove": {
+    "/api/v1//orderitem/delete": {
       "post": {
-        "summary": "주문상품 덜기",
-        "operationId": "deleteOneOrderItem",
+        "summary": "모든 주문상품 지우기",
+        "operationId": "deleteAllOrderitem",
         "tags": [
           "ApiOrderiem"
         ],
         "requestBody": {
-          "description": "주문상품 덜기",
+          "description": "모든 주문상품 지우기",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DeleteOneOrderItemRequest"
+                "$ref": "#/components/schemas/DeleteAllOrderitemRequest"
               }
             }
           }
@@ -499,7 +499,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DeleteOneOrderItemResponse"
+                  "$ref": "#/components/schemas/DeleteAllOrderitemResponse"
                 }
               }
             }
@@ -507,7 +507,7 @@
         }
       }
     },
-    "/api/v1//ordertiem/getByOrderId": {
+    "/api/v1//orderitem/getByOrderId": {
       "get": {
         "summary": "주문상품 멤버 아이디, 주문 아이디로 찾기",
         "operationId": "selectOrderitemByMemberIdOrderId",
@@ -861,6 +861,14 @@
           }
         }
       },
+      "DeleteAllOrderitemRequest": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "number"
+          }
+        }
+      },
       "InsertDeliveryResponse": {
         "type": "object",
         "properties": {
@@ -915,8 +923,11 @@
       "SelectItemByNameResponse": {
         "type": "object",
         "properties": {
-          "item": {
-            "$ref": "#/components/schemas/Item"
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Item"
+            }
           }
         }
       },
@@ -995,6 +1006,14 @@
             "items": {
               "$ref": "#/components/schemas/OrderitemDetail"
             }
+          }
+        }
+      },
+      "DeleteAllOrderitemResponse": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "number"
           }
         }
       }

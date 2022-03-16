@@ -8,9 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
-@ApiModel(description = "장바구니 구매")
+@ApiModel(description = "모든 주문상품 지우기")
 @Data
 public class DeleteAllOrderitemResponse extends BaseResponse {
 
-  public long member_id = 0;
+  public long orderId = 0;
 }

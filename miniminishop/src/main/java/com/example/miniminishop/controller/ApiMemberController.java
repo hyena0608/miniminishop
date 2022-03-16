@@ -45,7 +45,7 @@ public class ApiMemberController {
 
   private SelectMemberByIdHandler selectMemberByIdHandler;
 
-  @RequestMapping(method = RequestMethod.GET, value = "member/getMemberByid")
+  @RequestMapping(method = RequestMethod.GET, value = "member/getMemberById")
   @ApiOperation(value = "회원 번호로 회원 찾아오기")
   SelectMemberByIdResponse selectMemberById(@RequestParam("memberId") long memberId, HttpServletRequest request) {
     selectMemberByIdHandler.setHttpServletRequest(request);

@@ -1,7 +1,7 @@
 import BaseResponse from '@/service/response/BaseResponse';
 
 
-export default class DeleteAllOrderitemResponse extends BaseResponse {
+export default class DeleteAllOrderitemHandlerResponse extends BaseResponse {
 
   constructor() {
     super();

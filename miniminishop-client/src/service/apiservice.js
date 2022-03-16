@@ -197,7 +197,7 @@ export class ApiService {
   }
 
   selectMemberById(req /*: SelectMemberByIdRequest*/) {
-    const url = '/api/v1//member/getMemberByid?' + qs.stringify(req);
+    const url = '/api/v1//member/getMemberById?' + qs.stringify(req);
     return new Promise/*<SelectMemberByIdResponse>*/((resolve, reject) => {
       if (this.useMock) {
         let resData = require('../mock/ApiMember/1003_selectMemberById');
@@ -276,7 +276,7 @@ export class ApiService {
         resolve(resData.default[0]);
         return;
       }
-      Vue.axios.post/*<DeleteOneOrderItemResponse>*/("/api/v1//orderitem/remove", req).then(res => {
+      Vue.axios.post/*<DeleteOneOrderItemResponse>*/("/api/v1//orderitem/delete", req).then(res => {
         if (res.status === 200) {
           resolve(res.data);
           return;
@@ -288,7 +288,7 @@ export class ApiService {
   }
 
   selectOrderitemByMemberIdOrderId(req /*: SelectOrderitemByMemberIdOrderIdRequest*/) {
-    const url = '/api/v1//ordertiem/getByOrderId?' + qs.stringify(req);
+    const url = '/api/v1//orderitem/getByOrderId?' + qs.stringify(req);
     return new Promise/*<SelectOrderitemByMemberIdOrderIdResponse>*/((resolve, reject) => {
       if (this.useMock) {
         let resData = require('../mock/ApiOrderiem/5003_selectOrderitemByMemberIdOrderId');
@@ -296,6 +296,24 @@ export class ApiService {
         return;
       }
       Vue.axios.get/*<SelectOrderitemByMemberIdOrderIdResponse>*/(url).then(res => {
+        if (res.status === 200) {
+          resolve(res.data);
+          return;
+        }
+        console.error(res.status, res.statusText);
+        reject(null);
+      })
+    })
+  }
+
+  deleteAllOrderitem(req /*: DeleteAllOrderitemRequest*/) {
+    return new Promise/*<DeleteAllOrderitemResponse>*/((resolve, reject) => {
+      if (this.useMock) {
+        let resData = require('../mock/ApiOrderiem/5004_deleteAllOrderitem');
+        resolve(resData.default[0]);
+        return;
+      }
+      Vue.axios.post/*<DeleteAllOrderitemResponse>*/("/api/v1//orderitem/delete", req).then(res => {
         if (res.status === 200) {
           resolve(res.data);
           return;

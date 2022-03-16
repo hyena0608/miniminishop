@@ -68,6 +68,10 @@ public class MiniminishopMapperService {
     return mapper.selectOrderitemByMemberIdOrderId(memberId, orderId);
   }
 
+  public long deleteAllOrderitem() {
+    return mapper.deleteAllOrderitem();
+  }
+
   public long insertOrder(String orderStatus, long memberId, long deliveryId) {
     return mapper.insertOrder(orderStatus, memberId, deliveryId);
   }

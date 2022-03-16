@@ -10,14 +10,15 @@ import java.util.List;
 
 @Slf4j
 @Component
+@
 public class DeleteAllOrderitemHandler extends BaseHandler {
 
   public DeleteAllOrderitemResponse execute(CustomUserDetails user, DeleteAllOrderitemRequest req) {
     DeleteAllOrderitemResponse res = new DeleteAllOrderitemResponse();
 
-    final long member_id = req.getMember_id();
+    final long orderId = req.getOrderId();
 
-    if(emptyParam(member_id)) {
+    if(emptyParam(orderId)) {
       res.setCode(ResultCode.BadParams);
       return res;
     }
