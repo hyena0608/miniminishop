@@ -2,6 +2,7 @@ package com.example.miniminishop.controller.handler;
 
 import com.example.miniminishop.controller.request.*;
 import com.example.miniminishop.controller.response.*;
+import com.example.miniminishop.mapper.MiniminishopMapper;
 import com.example.miniminishop.mapper.MiniminishopMapperService;
 import com.example.miniminishop.service.CustomUserDetails;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class InsertItemHandler extends BaseHandler {
 
-  private final MiniminishopMapperService mapperService;
+  private final MiniminishopMapper mapper;
 
   public InsertItemResponse execute(CustomUserDetails user, InsertItemRequest req) {
     InsertItemResponse res = new InsertItemResponse();
@@ -31,7 +32,7 @@ public class InsertItemHandler extends BaseHandler {
 
     try {
 
-      mapperService.insertItem(itemName, itemAmount, itemPrice);
+      mapper.insertItem(itemName, itemAmount, itemPrice);
 
       res.setCode(ResultCode.Success);
       return res;

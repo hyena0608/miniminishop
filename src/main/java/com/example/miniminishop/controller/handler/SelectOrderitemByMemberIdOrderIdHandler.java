@@ -4,6 +4,7 @@ import com.example.miniminishop.controller.request.*;
 import com.example.miniminishop.controller.response.*;
 import com.example.miniminishop.controller.util.Converter;
 import com.example.miniminishop.controller.vo.OrderitemDetail;
+import com.example.miniminishop.mapper.MiniminishopMapper;
 import com.example.miniminishop.mapper.MiniminishopMapperService;
 import com.example.miniminishop.mapper.vo.OrderitemDetailVo;
 import com.example.miniminishop.service.CustomUserDetails;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class SelectOrderitemByMemberIdOrderIdHandler extends BaseHandler {
 
-    private final MiniminishopMapperService mapperService;
+    private final MiniminishopMapper mapper;
 
     public SelectOrderitemByMemberIdOrderIdResponse execute(CustomUserDetails user, SelectOrderitemByMemberIdOrderIdRequest req) {
         SelectOrderitemByMemberIdOrderIdResponse res = new SelectOrderitemByMemberIdOrderIdResponse();
@@ -35,7 +36,7 @@ public class SelectOrderitemByMemberIdOrderIdHandler extends BaseHandler {
 
         try {
 
-            List<OrderitemDetailVo> orderitemDetailVoList = mapperService.selectOrderitemByMemberIdOrderId(memberId, orderId);
+            List<OrderitemDetailVo> orderitemDetailVoList = mapper.selectOrderitemByMemberIdOrderId(memberId, orderId);
 
             List<OrderitemDetail> result = orderitemDetailVoList
                     .stream()
