@@ -68,8 +68,8 @@ public class MiniminishopMapperService {
     return mapper.deleteOneOrderItem(orderitemId, memberId, itemId);
   }
 
-  public List<OrderitemDetailVo> selectOrderitemByMemberIdOrderId(long memberId, long orderId) {
-    return mapper.selectOrderitemByMemberIdOrderId(memberId, orderId);
+  public List<OrderitemDetailVo> selectOrderitemByMemberIdOrderIdStatus(long memberId, long orderId, String orderStatus) {
+    return mapper.selectOrderitemByMemberIdOrderIdStatus(memberId, orderId, orderStatus);
   }
 
   public long deleteAllOrderitem() {

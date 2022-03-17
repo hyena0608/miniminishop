@@ -42,15 +42,17 @@ public class ApiOrderitemController {
     return deleteOneOrderItemHandler.execute(null, req);
   }
 
-  private SelectOrderitemByOrderIdHandler selectOrderitemByOrderIdHandler;
+  private SelectOrderitemByMemberIdOrderIdStatusHandler selectOrderitemByMemberIdOrderIdStatusHandler;
 
   @RequestMapping(method = RequestMethod.GET, value = "orderitem/getByOrderId")
-  @ApiOperation(value = "주문 아이디로 주문상품 찾기")
-  SelectOrderitemByOrderIdResponse selectOrderitemByOrderId(@RequestParam("orderId") long orderId, HttpServletRequest request) {
-    selectOrderitemByOrderIdHandler.setHttpServletRequest(request);
-    SelectOrderitemByOrderIdRequest req = new SelectOrderitemByOrderIdRequest();
+  @ApiOperation(value = "회원ID || 주문ID || 주문상태로 주문상품 찾기")
+  SelectOrderitemByMemberIdOrderIdStatusResponse selectOrderitemByMemberIdOrderIdStatus(@RequestParam("memberId") long memberId, @RequestParam("orderId") long orderId, @RequestParam("orderStatus") String orderStatus, HttpServletRequest request) {
+    selectOrderitemByMemberIdOrderIdStatusHandler.setHttpServletRequest(request);
+    SelectOrderitemByMemberIdOrderIdStatusRequest req = new SelectOrderitemByMemberIdOrderIdStatusRequest();
+    req.setMemberId(memberId);
     req.setOrderId(orderId);
-    return selectOrderitemByOrderIdHandler.execute(null, req);
+    req.setOrderStatus(orderStatus);
+    return selectOrderitemByMemberIdOrderIdStatusHandler.execute(null, req);
   }
 
   private DeleteAllOrderitemHandler deleteAllOrderitemHandler;
