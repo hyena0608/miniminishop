@@ -1,0 +1,11 @@
+query insertRider (riderName Name, riderVehicle Name) {
+
+}
+
+query selectRiderListByStatus () {
+
+}
+
+query selectRiderByStatus () {
+
+}

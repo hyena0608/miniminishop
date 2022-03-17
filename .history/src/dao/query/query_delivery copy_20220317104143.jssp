@@ -1,0 +1,21 @@
+query insertRider (riderName Name, riderVehicle Name) {
+
+	insert into rider(rider_name, rider_vehicle)
+	values(:riderName, :riderVehicle)
+
+}
+
+query selectRiderListByStatus (riderStatus Type) {
+
+	select rider_id,
+			rider_name,
+			rider_vehicle,
+			rider_status
+	from rider r
+	where r.rider_status = :riderStatus
+
+}
+
+query selectRiderByRiderId (orderId Long) {
+
+}

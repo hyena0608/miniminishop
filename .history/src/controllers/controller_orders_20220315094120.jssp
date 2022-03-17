@@ -15,7 +15,6 @@ define opcode[controller=ApiOrder, baseURL='/api/v1/']
 req insertOrder {
   orderStatus Type;
   memberId Long;
-  riderId Long;
 }
 
 res insertOrder {

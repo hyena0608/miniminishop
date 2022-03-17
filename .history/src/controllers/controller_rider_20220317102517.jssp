@@ -1,0 +1,53 @@
+
+define opcode[controller=ApiRider, baseURL='/api/v1/']
+{
+    [method=post, action='rider/add', noauth, overwrite=false]
+    insertMember 1001 '라이더 회원 가입'
+
+    [method=get, action='rider/getRiderList', noauth, overwrite=false]
+    selectMemberList 1002 '라이더 배달 상태로 리스트 가져오기'
+
+    [method=get, action='rider/getMemberById', noauth, overwrite=false]
+    selectMemberById 1003 '라이더 번호로 라이더 찾아오기'
+
+    [method=get, action='rider
+
+}
+
+
+/**
+ * 회원 가입
+ * 1001
+ */
+req insertMember {
+    memberType TypeID;
+    memberName Nickname;
+    memberPhone Phone;
+}
+
+res insertMember {
+  memberId Long;
+}
+
+/**
+ * 회원 리스트 가져오기
+ * 1002
+ */
+req selectMemberList {
+}
+
+res selectMemberList {
+    members list<Member>;
+}
+
+/**
+ * 회원 번호로 회원 가져오기
+ * 1003
+ */
+ req selectMemberById {
+    memberId Long;
+ }
+
+res selectMemberById {
+  member Member;
+}

@@ -1,0 +1,11 @@
+query insertRider () {
+
+}
+
+query selectRiderListByStatus () {
+
+}
+
+query selectRiderByStatus () {
+
+}

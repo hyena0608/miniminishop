@@ -1,0 +1,7 @@
+struct Delivery '배달'{
+  deliveryId Long;
+  deliveryStatus Type;
+  member_id Long;
+
+  memberId Long;
+}

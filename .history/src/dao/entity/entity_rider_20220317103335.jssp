@@ -1,0 +1,6 @@
+struct Rider '라이더'{
+  riderId Long;
+  riderName Name;
+  riderVehicle Name;
+  riderStatus Type;
+}

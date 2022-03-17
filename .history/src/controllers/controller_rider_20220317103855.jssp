@@ -1,0 +1,47 @@
+
+define opcode[controller=ApiRider, baseURL='/api/v1/']
+{
+    [method=post, action='rider/add', noauth, overwrite=false]
+    insertRider 6001 '라이더 회원 가입'
+
+    [method=get, action='rider/getRiderListByStatus', noauth, overwrite=false]
+    selectRiderListByStatus 6002 '라이더 배달 상태로 라이더 리스트 조회'
+
+    [method=get, action='rider/getRiderByRiderId', noauth, overwrite=false]
+    selectRiderByRiderId 6003 '라이더 아이디로 라이더 조회'
+}
+
+
+/**
+ * 6001
+ */
+req insertRider {
+  riderName Name;
+  riderVehicle Name;
+}
+
+res insertRider {
+  riderId Long;
+}
+
+/**
+ * 6002
+ */
+req selectRiderListByStatus {
+  riderStatus Type;
+}
+
+res selectRiderListByStatus {
+  riders list(Rider)
+}
+
+/**
+ * 6003
+ */
+req selectRiderByRiderId {
+  riderId Long;
+}
+
+res selectRiderByRiderId {
+  rider Rider
+}

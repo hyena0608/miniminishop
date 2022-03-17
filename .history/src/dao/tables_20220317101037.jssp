@@ -14,7 +14,6 @@ table orders {
   order_status Type;
   member_id Long; // fk
   delivery_id Long; // fk
-  rider_id Long; // fk
 
   key(order_id);
 }
@@ -49,7 +48,7 @@ table orderitem {
 }
 
 table rider {
-  rider_id Long auto; // pk
+  rider_id Long auto;
 
   rider_name Name;
   rider_vehicle Name;

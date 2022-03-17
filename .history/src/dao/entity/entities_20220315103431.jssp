@@ -3,4 +3,3 @@ import './entity_member.jssp';
 import './entity_delivery.jssp';
 import './entity_orderitem.jssp';
 import './entity_orders.jssp';
-import './entity_rider.jssp';

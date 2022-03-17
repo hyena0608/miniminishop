@@ -1,6 +1,5 @@
 import './controller_delivery.jssp';
 import './controller_item.jssp';
 import './controller_member.jssp';
-import './controller_orderitem.jssp';
 import './controller_orders.jssp';
-import './controller_rider.jssp';
+import './controller_orderitem.jssp';
