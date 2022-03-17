@@ -36,7 +36,7 @@ public class ApiMemberController {
   private SelectMemberListHandler selectMemberListHandler;
 
   @RequestMapping(method = RequestMethod.GET, value = "member/getMemberList")
-  @ApiOperation(value = "회원 리스트 가져오기")
+  @ApiOperation(value = "회원 리스트 조회")
   SelectMemberListResponse selectMemberList(HttpServletRequest request) {
     selectMemberListHandler.setHttpServletRequest(request);
     SelectMemberListRequest req = new SelectMemberListRequest();
@@ -46,7 +46,7 @@ public class ApiMemberController {
   private SelectMemberByIdHandler selectMemberByIdHandler;
 
   @RequestMapping(method = RequestMethod.GET, value = "member/getMemberById")
-  @ApiOperation(value = "회원 번호로 회원 찾아오기")
+  @ApiOperation(value = "회원 ID로 회원 조회")
   SelectMemberByIdResponse selectMemberById(@RequestParam("memberId") long memberId, HttpServletRequest request) {
     selectMemberByIdHandler.setHttpServletRequest(request);
     SelectMemberByIdRequest req = new SelectMemberByIdRequest();

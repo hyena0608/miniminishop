@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
-@ApiModel(description = "회원 리스트 가져오기")
+@ApiModel(description = "회원 리스트 조회")
 @Data
 public class SelectMemberListResponse extends BaseResponse {
 

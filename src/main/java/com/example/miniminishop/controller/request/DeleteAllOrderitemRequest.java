@@ -6,7 +6,7 @@ import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
-@ApiModel(description = "모든 주문상품 지우기")
+@ApiModel(description = "모든 주문상품 삭제")
 @Data
 public class DeleteAllOrderitemRequest {
 

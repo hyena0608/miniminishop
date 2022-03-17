@@ -6,7 +6,7 @@ import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
-@ApiModel(description = "회원 번호로 회원 찾아오기")
+@ApiModel(description = "회원 ID로 회원 조회")
 @Data
 public class SelectMemberByIdRequest {
 

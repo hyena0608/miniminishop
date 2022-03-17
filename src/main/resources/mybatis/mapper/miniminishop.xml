@@ -158,7 +158,7 @@
                JOIN item i ON oi.item_id = i.item_id
                JOIN orders o ON oi.order_id = o.order_id
                JOIN delivery d ON d.delivery_id = o.delivery_id
-      where 
+      where
       oi.member_id = #{memberId}
     ]]>
     <if test='orderId != null and orderId != ""'> and o.order_id = #{orderId}</if>
@@ -198,4 +198,34 @@
 		order_id = #{orderId}
     ]]>
   </update>
+
+
+  <insert id="insertRider">
+    <![CDATA[
+    insert into rider(rider_name, rider_vehicle)
+    values(#{riderName}, #{riderVehicle})
+    ]]>
+  </insert>
+
+  <select id="selectRiderListByStatus">
+    <![CDATA[
+    select rider_id,
+           rider_name,
+           rider_vehicle,
+           rider_status
+    from rider r
+    where r.rider_status = #{riderStatus}
+    ]]>
+  </select>
+
+  <select id="selectRiderByRiderId">
+    <![CDATA[
+    select rider_id,
+           rider_name,
+           rider_vehicle,
+           rider_status
+    from rider r
+    where r.rider_id = #{riderId}
+    ]]>
+  </select>
 </mapper>

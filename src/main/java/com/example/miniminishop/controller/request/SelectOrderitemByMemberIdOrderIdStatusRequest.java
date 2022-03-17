@@ -6,7 +6,7 @@ import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
-@ApiModel(description = "회원ID || 주문ID || 주문상태로 주문상품 찾기")
+@ApiModel(description = "회원ID || 주문ID || 주문상태로 주문상품 조회")
 @Data
 public class SelectOrderitemByMemberIdOrderIdStatusRequest {
 

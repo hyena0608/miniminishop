@@ -44,4 +44,10 @@ public interface MiniminishopMapper {
   long insertOrder(@Param("orderStatus") String orderStatus, @Param("memberId") long memberId, @Param("deliveryId") long deliveryId);
 
   long updateOrderStatus(@Param("orderId") long orderId, @Param("orderStatus") String orderStatus);
+
+  void insertRider(@Param("riderName") String riderName, @Param("riderVehicle") String riderVehicle);
+
+  void selectRiderListByStatus(@Param("riderStatus") String riderStatus);
+
+  void selectRiderByRiderId(@Param("orderId") long orderId);
 }
