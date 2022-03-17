@@ -38,11 +38,11 @@ table item {
 table orderitem {
   orderitem_id Long auto; // pk
 
-  member_id Long; // fk
-  item_id Long; // fk
-  item_price Money;
-  item_amount Amount;
-  order_id Long; // fk
+  memberId Long; // fk
+  itemId Long; // fk
+  itemPrice Money;
+  itemAmount Amount;
+  orderId Long; // fk
 
   key(orderitem_id);
 }
