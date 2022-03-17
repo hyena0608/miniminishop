@@ -17,7 +17,7 @@ query deleteOneOrderItem(orderitemId Long, memberId Long, itemId Long) Long {
 
 }
 
-query selectOrderitemByMemberIdOrderIdStatus(memberId Long, orderId Long, orderStatus Type) OrderitemDetailVo[] {
+query selectOrderitemByMemberIdOrderId(memberId Long, orderId Long) OrderitemDetailVo[] {
 
 	 select oi.order_id,
                o.order_status,
@@ -32,9 +32,7 @@ query selectOrderitemByMemberIdOrderIdStatus(memberId Long, orderId Long, orderS
                JOIN delivery d ON d.delivery_id = o.delivery_id
       where 
       oi.member_id = :memberId
-      <if test='orderId != null and orderId != ""'> and order_id = :orderId</if>
-      <if test='orderStatus != null and orderStatus != ""'> and order_status = :orderStatus</if>
-
+      <if test='orderId != null and orderId != ""'> and order_id = :order_id</if>
 
 }	
 

@@ -509,13 +509,22 @@
     },
     "/api/v1//orderitem/getByOrderId": {
       "get": {
-        "summary": "주문 아이디로 주문상품 찾기",
-        "operationId": "selectOrderitemByOrderId",
+        "summary": "회원ID || 주문ID || 주문상태로 주문상품 찾기",
+        "operationId": "selectOrderitemByMemberIdOrderIdStatus",
         "tags": [
           "ApiOrderitem"
         ],
-        "description": "주문 아이디로 주문상품 찾기",
+        "description": "회원ID || 주문ID || 주문상태로 주문상품 찾기",
         "parameters": [
+          {
+            "in": "query",
+            "name": "memberId",
+            "required": true,
+            "description": null,
+            "schema": {
+              "type": "number"
+            }
+          },
           {
             "in": "query",
             "name": "orderId",
@@ -523,6 +532,15 @@
             "description": null,
             "schema": {
               "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "orderStatus",
+            "required": true,
+            "description": null,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -532,7 +550,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SelectOrderitemByOrderIdResponse"
+                  "$ref": "#/components/schemas/SelectOrderitemByMemberIdOrderIdStatusResponse"
                 }
               }
             }
@@ -909,11 +927,17 @@
           }
         }
       },
-      "SelectOrderitemByOrderIdRequest": {
+      "SelectOrderitemByMemberIdOrderIdStatusRequest": {
         "type": "object",
         "properties": {
+          "memberId": {
+            "type": "number"
+          },
           "orderId": {
             "type": "number"
+          },
+          "orderStatus": {
+            "type": "string"
           }
         }
       },
@@ -1062,7 +1086,7 @@
           }
         }
       },
-      "SelectOrderitemByOrderIdResponse": {
+      "SelectOrderitemByMemberIdOrderIdStatusResponse": {
         "type": "object",
         "properties": {
           "orderitemsDetail": {

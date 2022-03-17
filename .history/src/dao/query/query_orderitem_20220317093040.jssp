@@ -32,9 +32,7 @@ query selectOrderitemByMemberIdOrderIdStatus(memberId Long, orderId Long, orderS
                JOIN delivery d ON d.delivery_id = o.delivery_id
       where 
       oi.member_id = :memberId
-      <if test='orderId != null and orderId != ""'> and order_id = :orderId</if>
-      <if test='orderStatus != null and orderStatus != ""'> and order_status = :orderStatus</if>
-
+      <if test='orderId != null and orderId != ""'> and order_id = :order_id</if>
 
 }	
 

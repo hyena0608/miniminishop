@@ -35,7 +35,7 @@ public interface MiniminishopMapper {
 
   long deleteOneOrderItem(@Param("orderitemId") long orderitemId, @Param("memberId") long memberId, @Param("itemId") long itemId);
 
-  List<OrderitemDetailVo> selectOrderitemByMemberIdOrderId(@Param("memberId") long memberId, @Param("orderId") long orderId);
+  List<OrderitemDetailVo> selectOrderitemByMemberIdOrderIdStatus(@Param("memberId") long memberId, @Param("orderId") long orderId, @Param("orderStatus") String orderStatus);
 
   long deleteAllOrderitem();
 
