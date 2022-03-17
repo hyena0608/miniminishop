@@ -4,5 +4,4 @@ struct Rider '라이더'{
   riderName Name;
   riderVehicle Name;
   riderStatus Type;
-  
 }

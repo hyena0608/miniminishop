@@ -9,13 +9,13 @@ define opcode[controller=ApiOrderitem, baseURL='/api/v1/']
     deleteOneOrderItem 5002 '주문상품 삭제'
 
     [method=get, action='orderitem/getByOrderId', noauth, overwrite=false]
-    selectOrderitemByMemberIdOrderIdStatus 5003 '회원ID || 주문ID || 주문상태로 주문상품 조회'
+    selectOrderitemByMemberIdOrderIdStatus 5003 '회원ID || 주문ID || 주문상태로 주문상품 찾기'
 
     [method=post, action='orderitem/deleteAll', noauth, overwrite=false]
-    deleteAllOrderitem 5004 '모든 주문상품 삭제'
+    deleteAllOrderitem 5004 '모든 주문상품 지우기'
 
     [method=get, action='orderitem/getByOrderitemId', noauth overwrite=false]
-    selectOrderitemByOrderitemId 5005 '주문상품ID로 주문 상품 조회'
+    selectOrderitemByOrderitemId 5005 '주문상품ID로 주문 상품 가져오기'
 
 }
 

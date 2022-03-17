@@ -33,12 +33,16 @@
       "description": "ApiMember Controller"
     },
     {
+      "name": "ApiOrderitem",
+      "description": "ApiOrderitem Controller"
+    },
+    {
       "name": "ApiOrder",
       "description": "ApiOrder Controller"
     },
     {
-      "name": "ApiOrderitem",
-      "description": "ApiOrderitem Controller"
+      "name": "ApiRider",
+      "description": "ApiRider Controller"
     }
   ],
   "paths": {
@@ -379,70 +383,6 @@
         }
       }
     },
-    "/api/v1//order/add": {
-      "post": {
-        "summary": "주문",
-        "operationId": "insertOrder",
-        "tags": [
-          "ApiOrder"
-        ],
-        "requestBody": {
-          "description": "주문",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/InsertOrderRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/InsertOrderResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1//order/status": {
-      "post": {
-        "summary": "주문 상태 변경",
-        "operationId": "updateOrderStatus",
-        "tags": [
-          "ApiOrder"
-        ],
-        "requestBody": {
-          "description": "주문 상태 변경",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateOrderStatusRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UpdateOrderStatusResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/v1//orderitem/add": {
       "post": {
         "summary": "주문상품 담기",
@@ -622,6 +562,168 @@
           }
         }
       }
+    },
+    "/api/v1//order/add": {
+      "post": {
+        "summary": "주문",
+        "operationId": "insertOrder",
+        "tags": [
+          "ApiOrder"
+        ],
+        "requestBody": {
+          "description": "주문",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InsertOrderResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1//order/status": {
+      "post": {
+        "summary": "주문 상태 변경",
+        "operationId": "updateOrderStatus",
+        "tags": [
+          "ApiOrder"
+        ],
+        "requestBody": {
+          "description": "주문 상태 변경",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrderStatusRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateOrderStatusResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1//rider/add": {
+      "post": {
+        "summary": "라이더 회원 가입",
+        "operationId": "insertRider",
+        "tags": [
+          "ApiRider"
+        ],
+        "requestBody": {
+          "description": "라이더 회원 가입",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertRiderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InsertRiderResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1//rider/getRiderListByStatus": {
+      "get": {
+        "summary": "라이더 배달 상태로 라이더 리스트 조회",
+        "operationId": "selectRiderListByStatus",
+        "tags": [
+          "ApiRider"
+        ],
+        "description": "라이더 배달 상태로 라이더 리스트 조회",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "riderStatus",
+            "required": true,
+            "description": null,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SelectRiderListByStatusResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1//rider/getRiderByRiderId": {
+      "get": {
+        "summary": "라이더 아이디로 라이더 조회",
+        "operationId": "selectRiderByRiderId",
+        "tags": [
+          "ApiRider"
+        ],
+        "description": "라이더 아이디로 라이더 조회",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "riderId",
+            "required": true,
+            "description": null,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SelectRiderByRiderIdResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -764,6 +866,23 @@
           }
         }
       },
+      "Rider": {
+        "type": "object",
+        "properties": {
+          "riderId": {
+            "type": "number"
+          },
+          "riderName": {
+            "type": "string"
+          },
+          "riderVehicle": {
+            "type": "string"
+          },
+          "riderStatus": {
+            "type": "string"
+          }
+        }
+      },
       "InsertDeliveryRequest": {
         "type": "object",
         "properties": {
@@ -871,28 +990,6 @@
           }
         }
       },
-      "InsertOrderRequest": {
-        "type": "object",
-        "properties": {
-          "orderStatus": {
-            "type": "string"
-          },
-          "memberId": {
-            "type": "number"
-          }
-        }
-      },
-      "UpdateOrderStatusRequest": {
-        "type": "object",
-        "properties": {
-          "orderId": {
-            "type": "number"
-          },
-          "orderStatus": {
-            "type": "string"
-          }
-        }
-      },
       "InsertOrderItemRequest": {
         "type": "object",
         "properties": {
@@ -953,6 +1050,58 @@
         "type": "object",
         "properties": {
           "orderitemId": {
+            "type": "number"
+          }
+        }
+      },
+      "InsertOrderRequest": {
+        "type": "object",
+        "properties": {
+          "orderStatus": {
+            "type": "string"
+          },
+          "memberId": {
+            "type": "number"
+          },
+          "riderId": {
+            "type": "number"
+          }
+        }
+      },
+      "UpdateOrderStatusRequest": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "number"
+          },
+          "orderStatus": {
+            "type": "string"
+          }
+        }
+      },
+      "InsertRiderRequest": {
+        "type": "object",
+        "properties": {
+          "riderName": {
+            "type": "string"
+          },
+          "riderVehicle": {
+            "type": "string"
+          }
+        }
+      },
+      "SelectRiderListByStatusRequest": {
+        "type": "object",
+        "properties": {
+          "riderStatus": {
+            "type": "string"
+          }
+        }
+      },
+      "SelectRiderByRiderIdRequest": {
+        "type": "object",
+        "properties": {
+          "riderId": {
             "type": "number"
           }
         }
@@ -1054,22 +1203,6 @@
           }
         }
       },
-      "InsertOrderResponse": {
-        "type": "object",
-        "properties": {
-          "orderId": {
-            "type": "number"
-          }
-        }
-      },
-      "UpdateOrderStatusResponse": {
-        "type": "object",
-        "properties": {
-          "orderId": {
-            "type": "number"
-          }
-        }
-      },
       "InsertOrderItemResponse": {
         "type": "object",
         "properties": {
@@ -1110,6 +1243,49 @@
         "properties": {
           "orderitem": {
             "$ref": "#/components/schemas/Orderitem"
+          }
+        }
+      },
+      "InsertOrderResponse": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "number"
+          }
+        }
+      },
+      "UpdateOrderStatusResponse": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "number"
+          }
+        }
+      },
+      "InsertRiderResponse": {
+        "type": "object",
+        "properties": {
+          "riderId": {
+            "type": "number"
+          }
+        }
+      },
+      "SelectRiderListByStatusResponse": {
+        "type": "object",
+        "properties": {
+          "riders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Rider"
+            }
+          }
+        }
+      },
+      "SelectRiderByRiderIdResponse": {
+        "type": "object",
+        "properties": {
+          "rider": {
+            "$ref": "#/components/schemas/Rider"
           }
         }
       }

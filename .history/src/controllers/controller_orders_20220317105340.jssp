@@ -6,7 +6,7 @@ define opcode[controller=ApiOrder, baseURL='/api/v1/']
     insertOrder 3001 '주문'
 
     [method=post, action='order/status', noauth, overwrite=false]
-    updateOrderStatus 3002 '주문 상태 수정'
+    updateOrderStatus 3002 '주문 상태 변경'
 
 }
 
@@ -40,5 +40,5 @@ req updateOrderStatus {
 res updateOrderStatus {
 
   orderId Long;
-
+  
 }

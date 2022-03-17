@@ -7,5 +7,7 @@ export default class InsertOrderRequest {
     this.orderStatus = "";
 
     this.memberId = 0;
+
+    this.riderId = 0;
   }
 }

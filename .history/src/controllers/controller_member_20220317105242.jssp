@@ -5,10 +5,10 @@ define opcode[controller=ApiMember, baseURL='/api/v1/']
     [method=post, action='member/add', noauth, overwrite=false]
 
     [method=get, action='member/getMemberList', noauth, overwrite=false]
-    selectMemberList 1002 '회원 리스트 조회'
+    selectMemberList 1002 '회원 리스트 가져오기'
 
     [method=get, action='member/getMemberById', noauth, overwrite=false]
-    selectMemberById 1003 '회원 ID로 회원 조회'
+    selectMemberById 1003 '회원 번호로 회원 찾아오기'
 
 }
 
@@ -53,5 +53,5 @@ res selectMemberList {
 res selectMemberById {
 
   member Member;
-
+  
 }

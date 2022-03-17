@@ -87,4 +87,16 @@ public class MiniminishopMapperService {
   public long updateOrderStatus(long orderId, String orderStatus) {
     return mapper.updateOrderStatus(orderId, orderStatus);
   }
+
+  public void insertRider(String riderName, String riderVehicle) {
+    mapper.insertRider(riderName, riderVehicle);
+  }
+
+  public void selectRiderListByStatus(String riderStatus) {
+    mapper.selectRiderListByStatus(riderStatus);
+  }
+
+  public void selectRiderByRiderId(long orderId) {
+    mapper.selectRiderByRiderId(orderId);
+  }
 }

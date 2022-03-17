@@ -131,23 +131,9 @@
     ]]>
   </delete>
 
-  <resultMap id="OrderitemDetailVoMap" type="OrderitemDetailVo">
-    <id property="orderId" column="order_id"/>
-    <result property="orderStatus" column="order_status"/>
-    <result property="deliveryStatus" column="delivery_status"/>
-    <collection property="itemsOrdered" resultMap="itemMap"/>
-  </resultMap>
-
-  <resultMap id="itemMap" type="ItemOrderedVo">
-    <result property="itemId" column="item_id"/>
-    <result property="itemName" column="item_name"/>
-    <result property="itemAmount" column="item_amount"/>
-    <result property="itemPrice" column="item_price"/>
-  </resultMap>
-
-  <select id="selectOrderitemByMemberIdOrderIdStatus" resultMap="OrderitemDetailVoMap">
+  <select id="selectOrderitemByMemberIdOrderIdStatus" resultType="OrderitemDetailVo">
     <![CDATA[
-        select oi.order_id,
+    select oi.order_id,
                o.order_status,
                d.delivery_status,
                i.item_id,
@@ -160,9 +146,9 @@
                JOIN delivery d ON d.delivery_id = o.delivery_id
       where 
       oi.member_id = #{memberId}
+      <if test='orderId != null and orderId != ""'> and order_id = #{orderId}</if>
+      <if test='orderStatus != null and orderStatus != ""'> and order_status = #{orderStatus}</if>
     ]]>
-    <if test='orderId != null and orderId != ""'> and o.order_id = #{orderId}</if>
-    <if test='orderStatus != null and orderStatus != ""'> and o.order_status = #{orderStatus}</if>
   </select>
 
   <delete id="deleteAllOrderitem">
@@ -198,4 +184,33 @@
 		order_id = #{orderId}
     ]]>
   </update>
+
+  <insert id="insertRider">
+    <![CDATA[
+    insert into rider(rider_name, rider_vehicle)
+	values(#{riderName}, #{riderVehicle})
+    ]]>
+  </insert>
+
+  <select id="selectRiderListByStatus">
+    <![CDATA[
+    select rider_id,
+			rider_name,
+			rider_vehicle,
+			rider_status
+	from rider r
+	where r.rider_status = #{riderStatus}
+    ]]>
+  </select>
+
+  <select id="selectRiderByRiderId">
+    <![CDATA[
+    select rider_id,
+			rider_name,
+			rider_vehicle,
+			rider_status
+	from rider r
+	where r.rider_id = #{riderId}
+    ]]>
+  </select>
 </mapper>

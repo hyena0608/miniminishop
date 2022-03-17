@@ -1,8 +1,6 @@
 struct Item '상품'{
-
   itemId Long;
   itemName Name;
   itemAmount Amount;
   itemPrice Money;
-  
 }

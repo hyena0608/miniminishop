@@ -15,7 +15,7 @@ define opcode[controller=ApiOrderitem, baseURL='/api/v1/']
     deleteAllOrderitem 5004 '모든 주문상품 삭제'
 
     [method=get, action='orderitem/getByOrderitemId', noauth overwrite=false]
-    selectOrderitemByOrderitemId 5005 '주문상품ID로 주문 상품 조회'
+    selectOrderitemByOrderitemId 5005 '주문상품ID로 주문 상품 가져오기'
 
 }
 

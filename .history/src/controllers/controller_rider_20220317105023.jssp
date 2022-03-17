@@ -1,7 +1,6 @@
 
 define opcode[controller=ApiRider, baseURL='/api/v1/']
 {
-
     [method=post, action='rider/add', noauth, overwrite=false]
     insertRider 6001 '라이더 회원 가입'
 
@@ -10,7 +9,6 @@ define opcode[controller=ApiRider, baseURL='/api/v1/']
 
     [method=get, action='rider/getRiderByRiderId', noauth, overwrite=false]
     selectRiderByRiderId 6003 '라이더 아이디로 라이더 조회'
-
 }
 
 
@@ -18,44 +16,32 @@ define opcode[controller=ApiRider, baseURL='/api/v1/']
  * 6001
  */
 req insertRider {
-
   riderName Name;
   riderVehicle Name;
-
 }
 
 res insertRider {
-
   riderId Long;
-
 }
 
 /**
  * 6002
  */
 req selectRiderListByStatus {
-
   riderStatus Type;
-
 }
 
 res selectRiderListByStatus {
-
   riders list<Rider>
-
 }
 
 /**
  * 6003
  */
 req selectRiderByRiderId {
-
   riderId Long;
-
 }
 
 res selectRiderByRiderId {
-
   rider Rider
-  
 }

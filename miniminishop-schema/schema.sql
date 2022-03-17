@@ -15,7 +15,8 @@ CREATE TABLE orders (
   order_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   order_status VARCHAR(32) NOT NULL,
   member_id BIGINT NOT NULL,
-  delivery_id BIGINT NOT NULL
+  delivery_id BIGINT NOT NULL,
+  rider_id BIGINT NOT NULL
 );
 
 select "delivery";
@@ -39,9 +40,18 @@ select "orderitem";
 
 CREATE TABLE orderitem (
   orderitem_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  memberId BIGINT NOT NULL,
-  itemId BIGINT NOT NULL,
-  itemPrice BIGINT NOT NULL,
-  itemAmount INT NOT NULL,
-  orderId BIGINT NOT NULL
+  member_id BIGINT NOT NULL,
+  item_id BIGINT NOT NULL,
+  item_price BIGINT NOT NULL,
+  item_amount INT NOT NULL,
+  order_id BIGINT NOT NULL
+);
+
+select "rider";
+
+CREATE TABLE rider (
+  rider_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  rider_name VARCHAR(64) NOT NULL,
+  rider_vehicle VARCHAR(64) NOT NULL,
+  rider_status VARCHAR(32) NOT NULL
 );

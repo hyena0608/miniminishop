@@ -8,17 +8,15 @@ import java.util.List;
 import java.sql.Date;
 import java.sql.Time;
 
-@ApiModel(description = "회원")
+@ApiModel(description = "라이더")
 @Data
-public class Member {
+public class Rider {
 
-  public long memberId = 0;
+  public long riderId = 0;
 
-  public int memberType = 0;
+  public String riderName = "";
 
-  public String memberName = "";
+  public String riderVehicle = "";
 
-  public String memberPhone = "";
-
-  public  memberStartDate;
+  public String riderStatus = "";
 }
