@@ -68,13 +68,4 @@ res selectRiderByRiderId {
  */
 req updateRiderStatus {
 
-  riderId Long;
-  riderStatus Type;
-
-}
-
-res updateRiderStatus {
-
-  riderId Long;
-
 }

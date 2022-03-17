@@ -27,7 +27,7 @@ public class ApiOrderitemController {
   private InsertOrderItemHandler insertOrderItemHandler;
 
   @RequestMapping(method = RequestMethod.POST, value = "orderitem/add", consumes = MediaType.APPLICATION_JSON_VALUE)
-  @ApiOperation(value = "주문상품 담기")
+  @ApiOperation(value = "주문상품 추가")
   InsertOrderItemResponse insertOrderItem(@RequestBody InsertOrderItemRequest req, HttpServletRequest request) {
     insertOrderItemHandler.setHttpServletRequest(request);
     return insertOrderItemHandler.execute(null, req);
@@ -36,7 +36,7 @@ public class ApiOrderitemController {
   private DeleteOneOrderItemHandler deleteOneOrderItemHandler;
 
   @RequestMapping(method = RequestMethod.POST, value = "orderitem/delete", consumes = MediaType.APPLICATION_JSON_VALUE)
-  @ApiOperation(value = "주문상품 덜기")
+  @ApiOperation(value = "주문상품 삭제")
   DeleteOneOrderItemResponse deleteOneOrderItem(@RequestBody DeleteOneOrderItemRequest req, HttpServletRequest request) {
     deleteOneOrderItemHandler.setHttpServletRequest(request);
     return deleteOneOrderItemHandler.execute(null, req);
@@ -45,7 +45,7 @@ public class ApiOrderitemController {
   private SelectOrderitemByMemberIdOrderIdStatusHandler selectOrderitemByMemberIdOrderIdStatusHandler;
 
   @RequestMapping(method = RequestMethod.GET, value = "orderitem/getByOrderId")
-  @ApiOperation(value = "회원ID || 주문ID || 주문상태로 주문상품 찾기")
+  @ApiOperation(value = "회원ID || 주문ID || 주문상태로 주문상품 조회")
   SelectOrderitemByMemberIdOrderIdStatusResponse selectOrderitemByMemberIdOrderIdStatus(@RequestParam("memberId") long memberId, @RequestParam("orderId") long orderId, @RequestParam("orderStatus") String orderStatus, HttpServletRequest request) {
     selectOrderitemByMemberIdOrderIdStatusHandler.setHttpServletRequest(request);
     SelectOrderitemByMemberIdOrderIdStatusRequest req = new SelectOrderitemByMemberIdOrderIdStatusRequest();
@@ -58,7 +58,7 @@ public class ApiOrderitemController {
   private DeleteAllOrderitemHandler deleteAllOrderitemHandler;
 
   @RequestMapping(method = RequestMethod.POST, value = "orderitem/deleteAll", consumes = MediaType.APPLICATION_JSON_VALUE)
-  @ApiOperation(value = "모든 주문상품 지우기")
+  @ApiOperation(value = "모든 주문상품 삭제")
   DeleteAllOrderitemResponse deleteAllOrderitem(@RequestBody DeleteAllOrderitemRequest req, HttpServletRequest request) {
     deleteAllOrderitemHandler.setHttpServletRequest(request);
     return deleteAllOrderitemHandler.execute(null, req);
@@ -67,7 +67,7 @@ public class ApiOrderitemController {
   private SelectOrderitemByOrderitemIdHandler selectOrderitemByOrderitemIdHandler;
 
   @RequestMapping(method = RequestMethod.GET, value = "orderitem/getByOrderitemId")
-  @ApiOperation(value = "주문상품ID로 주문 상품 가져오기")
+  @ApiOperation(value = "주문상품ID로 주문 상품 조회")
   SelectOrderitemByOrderitemIdResponse selectOrderitemByOrderitemId(@RequestParam("orderitemId") long orderitemId, HttpServletRequest request) {
     selectOrderitemByOrderitemIdHandler.setHttpServletRequest(request);
     SelectOrderitemByOrderitemIdRequest req = new SelectOrderitemByOrderitemIdRequest();

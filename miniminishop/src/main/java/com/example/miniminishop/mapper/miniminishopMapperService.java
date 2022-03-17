@@ -80,8 +80,8 @@ public class MiniminishopMapperService {
     return mapper.selectOrderitemByOrderitemId(orderitemId);
   }
 
-  public long insertOrder(String orderStatus, long memberId, long deliveryId) {
-    return mapper.insertOrder(orderStatus, memberId, deliveryId);
+  public long insertOrder(String orderStatus, long memberId, long deliveryId, long riderId) {
+    return mapper.insertOrder(orderStatus, memberId, deliveryId, riderId);
   }
 
   public long updateOrderStatus(long orderId, String orderStatus) {
@@ -98,5 +98,9 @@ public class MiniminishopMapperService {
 
   public void selectRiderByRiderId(long orderId) {
     mapper.selectRiderByRiderId(orderId);
+  }
+
+  public void updateRiderStatus(long riderId, String riderStatus) {
+    mapper.updateRiderStatus(riderId, riderStatus);
   }
 }

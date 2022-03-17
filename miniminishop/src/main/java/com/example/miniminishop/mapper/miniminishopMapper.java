@@ -41,7 +41,7 @@ public interface MiniminishopMapper {
 
   OrderitemVo selectOrderitemByOrderitemId(@Param("orderitemId") long orderitemId);
 
-  long insertOrder(@Param("orderStatus") String orderStatus, @Param("memberId") long memberId, @Param("deliveryId") long deliveryId);
+  long insertOrder(@Param("orderStatus") String orderStatus, @Param("memberId") long memberId, @Param("deliveryId") long deliveryId, @Param("riderId") long riderId);
 
   long updateOrderStatus(@Param("orderId") long orderId, @Param("orderStatus") String orderStatus);
 
@@ -50,4 +50,6 @@ public interface MiniminishopMapper {
   void selectRiderListByStatus(@Param("riderStatus") String riderStatus);
 
   void selectRiderByRiderId(@Param("orderId") long orderId);
+
+  void updateRiderStatus(@Param("rider_id") long rider_id, @Param("riderStatus") String riderStatus);
 }

@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
-@ApiModel(description = "회원ID || 주문ID || 주문상태로 주문상품 찾기")
+@ApiModel(description = "회원ID || 주문ID || 주문상태로 주문상품 조회")
 @Data
 public class SelectOrderitemByMemberIdOrderIdStatusResponse extends BaseResponse {
 

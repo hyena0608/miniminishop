@@ -1,9 +1,9 @@
-query insertOrder(orderStatus Type, memberId Long, deliveryId Long, riderId Long) Long {
+query insertOrder(orderStatus Type, memberId NumID, deliveryId NumID) Long {
 
 	insert into orders(
-		order_status, member_id, delivery_id, riderId
+		order_status, member_id, delivery_id
 	) values (
-		:orderStatus, :memberId, :deliveryId, :riderId
+		:orderStatus, :memberId, :deliveryId
 	)
 
 }

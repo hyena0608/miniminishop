@@ -10,16 +10,15 @@ import java.util.List;
 
 @Slf4j
 @Component
-public class InsertOrderHandler extends BaseHandler {
+public class UpdateRiderStatusHandler extends BaseHandler {
 
-  public InsertOrderResponse execute(CustomUserDetails user, InsertOrderRequest req) {
-    InsertOrderResponse res = new InsertOrderResponse();
+  public UpdateRiderStatusResponse execute(CustomUserDetails user, UpdateRiderStatusRequest req) {
+    UpdateRiderStatusResponse res = new UpdateRiderStatusResponse();
 
-    final String orderStatus = req.getOrderStatus();
-    final long memberId = req.getMemberId();
     final long riderId = req.getRiderId();
+    final String riderStatus = req.getRiderStatus();
 
-    if(emptyParam(orderStatus) || emptyParam(memberId) || emptyParam(riderId)) {
+    if(emptyParam(riderId) || emptyParam(riderStatus)) {
       res.setCode(ResultCode.BadParams);
       return res;
     }

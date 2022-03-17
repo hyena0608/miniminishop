@@ -398,6 +398,25 @@ export class ApiService {
       })
     })
   }
+
+  updateRiderStatus(req /*: UpdateRiderStatusRequest*/) {
+    const url = '/api/v1//rider/status?' + qs.stringify(req);
+    return new Promise/*<UpdateRiderStatusResponse>*/((resolve, reject) => {
+      if (this.useMock) {
+        let resData = require('../mock/ApiRider/6004_updateRiderStatus');
+        resolve(resData.default[0]);
+        return;
+      }
+      Vue.axios.get/*<UpdateRiderStatusResponse>*/(url).then(res => {
+        if (res.status === 200) {
+          resolve(res.data);
+          return;
+        }
+        console.error(res.status, res.statusText);
+        reject(null);
+      })
+    })
+  }
 }
 const _api = new ApiService();
 ApiService.install = function (Vue, /* options?: any */) {

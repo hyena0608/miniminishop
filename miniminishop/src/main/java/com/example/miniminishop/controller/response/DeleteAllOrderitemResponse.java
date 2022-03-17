@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
-@ApiModel(description = "모든 주문상품 지우기")
+@ApiModel(description = "모든 주문상품 삭제")
 @Data
 public class DeleteAllOrderitemResponse extends BaseResponse {
 

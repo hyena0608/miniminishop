@@ -6,7 +6,13 @@ import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
-@ApiModel(description = "회원 리스트 조회")
+@ApiModel(description = "라이더 상태 바꾸기")
 @Data
-public class SelectMemberListRequest {
+public class UpdateRiderStatusRequest {
+
+  @ApiParam(value = "null", required = true)
+  private long riderId;
+
+  @ApiParam(value = "null", required = true)
+  private String riderStatus;
 }

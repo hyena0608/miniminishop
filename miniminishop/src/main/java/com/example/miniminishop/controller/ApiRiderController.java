@@ -54,4 +54,16 @@ public class ApiRiderController {
     req.setRiderId(riderId);
     return selectRiderByRiderIdHandler.execute(null, req);
   }
+
+  private UpdateRiderStatusHandler updateRiderStatusHandler;
+
+  @RequestMapping(method = RequestMethod.GET, value = "rider/status")
+  @ApiOperation(value = "라이더 상태 바꾸기")
+  UpdateRiderStatusResponse updateRiderStatus(@RequestParam("riderId") long riderId, @RequestParam("riderStatus") String riderStatus, HttpServletRequest request) {
+    updateRiderStatusHandler.setHttpServletRequest(request);
+    UpdateRiderStatusRequest req = new UpdateRiderStatusRequest();
+    req.setRiderId(riderId);
+    req.setRiderStatus(riderStatus);
+    return updateRiderStatusHandler.execute(null, req);
+  }
 }

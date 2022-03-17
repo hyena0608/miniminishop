@@ -169,9 +169,9 @@
   <insert id="insertOrder">
     <![CDATA[
     insert into orders(
-		order_status, member_id, delivery_id
+		order_status, member_id, delivery_id, riderId
 	) values (
-		#{orderStatus}, #{memberId}, #{deliveryId}
+		#{orderStatus}, #{memberId}, #{deliveryId}, #{riderId}
 	)
     ]]>
   </insert>
@@ -213,4 +213,12 @@
 	where r.rider_id = #{riderId}
     ]]>
   </select>
+
+  <update id="updateRiderStatus">
+    <![CDATA[
+    update rider set
+		rider_status = #{riderStatus}
+	where rider_id = #{riderId}
+    ]]>
+  </update>
 </mapper>

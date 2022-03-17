@@ -36,7 +36,7 @@ public class ApiOrderController {
   private UpdateOrderStatusHandler updateOrderStatusHandler;
 
   @RequestMapping(method = RequestMethod.POST, value = "order/status", consumes = MediaType.APPLICATION_JSON_VALUE)
-  @ApiOperation(value = "주문 상태 변경")
+  @ApiOperation(value = "주문 상태 수정")
   UpdateOrderStatusResponse updateOrderStatus(@RequestBody UpdateOrderStatusRequest req, HttpServletRequest request) {
     updateOrderStatusHandler.setHttpServletRequest(request);
     return updateOrderStatusHandler.execute(null, req);

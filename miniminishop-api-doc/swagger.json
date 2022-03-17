@@ -329,12 +329,12 @@
     },
     "/api/v1//member/getMemberList": {
       "get": {
-        "summary": "회원 리스트 가져오기",
+        "summary": "회원 리스트 조회",
         "operationId": "selectMemberList",
         "tags": [
           "ApiMember"
         ],
-        "description": "회원 리스트 가져오기",
+        "description": "회원 리스트 조회",
         "parameters": [],
         "responses": {
           "200": {
@@ -352,12 +352,12 @@
     },
     "/api/v1//member/getMemberById": {
       "get": {
-        "summary": "회원 번호로 회원 찾아오기",
+        "summary": "회원 ID로 회원 조회",
         "operationId": "selectMemberById",
         "tags": [
           "ApiMember"
         ],
-        "description": "회원 번호로 회원 찾아오기",
+        "description": "회원 ID로 회원 조회",
         "parameters": [
           {
             "in": "query",
@@ -385,13 +385,13 @@
     },
     "/api/v1//orderitem/add": {
       "post": {
-        "summary": "주문상품 담기",
+        "summary": "주문상품 추가",
         "operationId": "insertOrderItem",
         "tags": [
           "ApiOrderitem"
         ],
         "requestBody": {
-          "description": "주문상품 담기",
+          "description": "주문상품 추가",
           "required": true,
           "content": {
             "application/json": {
@@ -417,13 +417,13 @@
     },
     "/api/v1//orderitem/delete": {
       "post": {
-        "summary": "주문상품 덜기",
+        "summary": "주문상품 삭제",
         "operationId": "deleteOneOrderItem",
         "tags": [
           "ApiOrderitem"
         ],
         "requestBody": {
-          "description": "주문상품 덜기",
+          "description": "주문상품 삭제",
           "required": true,
           "content": {
             "application/json": {
@@ -449,12 +449,12 @@
     },
     "/api/v1//orderitem/getByOrderId": {
       "get": {
-        "summary": "회원ID || 주문ID || 주문상태로 주문상품 찾기",
+        "summary": "회원ID || 주문ID || 주문상태로 주문상품 조회",
         "operationId": "selectOrderitemByMemberIdOrderIdStatus",
         "tags": [
           "ApiOrderitem"
         ],
-        "description": "회원ID || 주문ID || 주문상태로 주문상품 찾기",
+        "description": "회원ID || 주문ID || 주문상태로 주문상품 조회",
         "parameters": [
           {
             "in": "query",
@@ -500,13 +500,13 @@
     },
     "/api/v1//orderitem/deleteAll": {
       "post": {
-        "summary": "모든 주문상품 지우기",
+        "summary": "모든 주문상품 삭제",
         "operationId": "deleteAllOrderitem",
         "tags": [
           "ApiOrderitem"
         ],
         "requestBody": {
-          "description": "모든 주문상품 지우기",
+          "description": "모든 주문상품 삭제",
           "required": true,
           "content": {
             "application/json": {
@@ -532,12 +532,12 @@
     },
     "/api/v1//orderitem/getByOrderitemId": {
       "get": {
-        "summary": "주문상품ID로 주문 상품 가져오기",
+        "summary": "주문상품ID로 주문 상품 조회",
         "operationId": "selectOrderitemByOrderitemId",
         "tags": [
           "ApiOrderitem"
         ],
-        "description": "주문상품ID로 주문 상품 가져오기",
+        "description": "주문상품ID로 주문 상품 조회",
         "parameters": [
           {
             "in": "query",
@@ -597,13 +597,13 @@
     },
     "/api/v1//order/status": {
       "post": {
-        "summary": "주문 상태 변경",
+        "summary": "주문 상태 수정",
         "operationId": "updateOrderStatus",
         "tags": [
           "ApiOrder"
         ],
         "requestBody": {
-          "description": "주문 상태 변경",
+          "description": "주문 상태 수정",
           "required": true,
           "content": {
             "application/json": {
@@ -718,6 +718,48 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SelectRiderByRiderIdResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1//rider/status": {
+      "get": {
+        "summary": "라이더 상태 바꾸기",
+        "operationId": "updateRiderStatus",
+        "tags": [
+          "ApiRider"
+        ],
+        "description": "라이더 상태 바꾸기",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "riderId",
+            "required": true,
+            "description": null,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "riderStatus",
+            "required": true,
+            "description": null,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateRiderStatusResponse"
                 }
               }
             }
@@ -1106,6 +1148,17 @@
           }
         }
       },
+      "UpdateRiderStatusRequest": {
+        "type": "object",
+        "properties": {
+          "riderId": {
+            "type": "number"
+          },
+          "riderStatus": {
+            "type": "string"
+          }
+        }
+      },
       "InsertDeliveryResponse": {
         "type": "object",
         "properties": {
@@ -1286,6 +1339,14 @@
         "properties": {
           "rider": {
             "$ref": "#/components/schemas/Rider"
+          }
+        }
+      },
+      "UpdateRiderStatusResponse": {
+        "type": "object",
+        "properties": {
+          "riderId": {
+            "type": "number"
           }
         }
       }

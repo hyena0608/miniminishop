@@ -26,11 +26,3 @@ query selectRiderByRiderId (orderId Long) {
 	where r.rider_id = :riderId
 
 }
-
-query updateRiderStatus (rider_id Long, riderStatus Type) {
-
-	update rider set
-		rider_status = :riderStatus
-	where rider_id = :riderId
-
-}

@@ -3,7 +3,7 @@ query insertOrder(orderStatus Type, memberId Long, deliveryId Long, riderId Long
 	insert into orders(
 		order_status, member_id, delivery_id, riderId
 	) values (
-		:orderStatus, :memberId, :deliveryId, :riderId
+		:orderStatus, :memberId, :deliveryId
 	)
 
 }

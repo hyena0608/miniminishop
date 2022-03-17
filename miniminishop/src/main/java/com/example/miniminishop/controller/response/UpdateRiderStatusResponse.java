@@ -8,9 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
-@ApiModel(description = "주문 상태 수정")
+@ApiModel(description = "라이더 상태 바꾸기")
 @Data
-public class UpdateOrderStatusResponse extends BaseResponse {
+public class UpdateRiderStatusResponse extends BaseResponse {
 
-  public long orderId = 0;
+  public long riderId = 0;
 }

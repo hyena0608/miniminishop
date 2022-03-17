@@ -6,7 +6,7 @@ import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
-@ApiModel(description = "주문 상태 변경")
+@ApiModel(description = "주문 상태 수정")
 @Data
 public class UpdateOrderStatusRequest {
 
